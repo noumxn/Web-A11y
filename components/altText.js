@@ -10,7 +10,11 @@ export const checkAltText = (document) => {
     const images = document.querySelectorAll('img, [role="img"]');
     images.forEach((element, index) => {
       const alt = element.getAttribute('alt');
-      if (!alt) {
+      const isHidden = element.hasAttribute('aria-hidden') && element.getAttribute('aria-hidden') === 'true';
+      const displayNone = element.hasAttribute('style') && element.getAttribute('style') === 'display:none'
+      const hasDecorativeClass = element.classList.contains('decorative');
+
+      if (!alt && !isHidden && !hasDecorativeClass && !displayNone) {
         output = output + `${chalk.red('\nImage or icon without appropriate alt text:')}${chalk.cyan(element.outerHTML)}`;
       }
     });

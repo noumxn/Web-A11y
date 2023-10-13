@@ -7,16 +7,27 @@ import chalk from 'chalk';
 export const checkAriaAttr = (document) => {
   try {
     let output = "";
-    const ariaElements = document.querySelectorAll('[aria-label]:not([aria-labelledby]):not([aria-label]), [aria-labelledby]:not([aria-label]):not([aria-labelledby])');
-    for (const ele of ariaElements) {
-      output = output + `${chalk.red('\nComplex element without both aria-label and aria-labelledby:')}${chalk.cyan($.html(ele))}`
+    const complexElements = ['input', 'button', 'select', 'textarea'];
+    for (const element of complexElements) {
+      const ariaElements = document.querySelectorAll(element);
+      for (let e of ariaElements) {
+        const ariaLabel = e.getAttribute('aria-label');
+        const ariaLabelledBy = e.getAttribute('aria-labelledby');
+        const hasAssociatedLabel = e.labels && e.labels.length > 0;
+        const isHidden = e.hasAttribute('type') && e.getAttribute('type') === 'hidden';
+        const displayNone = e.hasAttribute('style') && e.getAttribute('style') === 'display:none'
+
+        if (!ariaLabel && !ariaLabelledBy && !hasAssociatedLabel && !isHidden && !displayNone) {
+          output += `${chalk.red('\nComplex element without appropriate label:')}${chalk.cyan(e.outerHTML)}`
+        }
+      }
     }
     if (output.length === 0) {
-      return chalk.green(`Aria Attributes test passed!`)
+      return chalk.green(`Aria Attributes test passed!`);
     } else {
       return output;
     }
   } catch (e) {
-    return `${chalk.red('Error parsing the HTML file:')}${e}`;
+    return `${chalk.red('Error parsing the HTML file:')} ${e}`;
   }
 };
