@@ -34,8 +34,8 @@ export const checkParagraphs = (document) => {
       return chalk.green('Paragraph recognition test passed!');
     } else {
       const output = paragraphs.map((paragraph, index) => {
-        const paragraphText = paragraph.map(node => node.textContent).join(' ');
-        return `${chalk.red(`Paragraph not properly formatted:`)} ${chalk.cyan(paragraphText)}`;
+        const paragraphHTML = paragraph.map(node => node.outerHTML).join(' ');
+        return `${chalk.red(`Paragraph not properly formatted:`)} ${chalk.cyan(paragraphHTML)}`;
       });
       return output.join('\n');
     }

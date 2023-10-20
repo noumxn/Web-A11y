@@ -4,13 +4,20 @@ import {checkCaptions} from './captions.js';
 import {checkAudioDesc} from './audioDesc.js';
 import {checkTimeBasedMediaAlt} from './altPresentations.js';
 import {checkParagraphs} from './paragraphText.js';
+import {checkNonSensoryRef} from './nonSensoryRef.js';
 
 export const testAccessibility = (document) => {
   // TODO: Sort these in order of priority
-  console.log(checkAriaAttr(document));
-  console.log(checkAltText(document));
-  console.log(checkCaptions(document));
-  console.log(checkAudioDesc(document));
-  console.log(checkTimeBasedMediaAlt(document));
-  console.log(checkParagraphs(document));
+  funcRunner(checkAriaAttr, document);
+  funcRunner(checkAltText, document);
+  funcRunner(checkCaptions, document);
+  funcRunner(checkAudioDesc, document);
+  funcRunner(checkTimeBasedMediaAlt, document);
+  funcRunner(checkParagraphs, document);
+  funcRunner(checkNonSensoryRef, document);
+}
+
+function funcRunner(func, document) {
+  const output = func(document);
+  if (output) console.log(output);
 }
