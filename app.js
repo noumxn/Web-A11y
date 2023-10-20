@@ -6,6 +6,8 @@ import {validateHtml} from './utils/htmlValidator.js';
 import {saveToOutputFile} from './utils/fileSaver.js';
 import {JSDOM} from 'jsdom';
 
+// NOTE: This is to suppress the punycode deprication warning
+process.noDeprecation = true;
 
 (async () => {
   const url = process.argv[2];

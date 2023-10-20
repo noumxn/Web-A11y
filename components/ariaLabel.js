@@ -15,7 +15,7 @@ export const checkAriaAttr = (document) => {
         const ariaLabelledBy = e.getAttribute('aria-labelledby');
         const hasAssociatedLabel = e.labels && e.labels.length > 0;
         const isHidden = e.hasAttribute('type') && e.getAttribute('type') === 'hidden';
-        const displayNone = e.hasAttribute('style') && e.getAttribute('style') === 'display:none'
+        const displayNone = e.hasAttribute('style') && (e.getAttribute('style').includes('none'))
 
         if (!ariaLabel && !ariaLabelledBy && !hasAssociatedLabel && !isHidden && !displayNone) {
           output += `${chalk.red('\nComplex element without appropriate label:')}${chalk.cyan(e.outerHTML)}`
