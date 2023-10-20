@@ -3,6 +3,7 @@ import {checkAltText} from './altText.js'
 import {checkCaptions} from './captions.js';
 import {checkAudioDesc} from './audioDesc.js';
 import {checkTimeBasedMediaAlt} from './altPresentations.js';
+import {checkParagraphs} from './paragraphText.js';
 
 export const testAccessibility = (document) => {
   // TODO: Sort these in order of priority
@@ -11,4 +12,5 @@ export const testAccessibility = (document) => {
   console.log(checkCaptions(document));
   console.log(checkAudioDesc(document));
   console.log(checkTimeBasedMediaAlt(document));
+  console.log(checkParagraphs(document));
 }
