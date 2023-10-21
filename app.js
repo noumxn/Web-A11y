@@ -1,10 +1,10 @@
-import fs from 'fs-extra';
-import chalk from 'chalk';
-import {testAccessibility} from './components/index.js';
-import {scrapeWebsite} from './utils/webScraper.js';
-import {validateHtml} from './utils/htmlValidator.js';
-import {saveToOutputFile} from './utils/fileSaver.js';
-import {JSDOM} from 'jsdom';
+import fs from "fs-extra";
+import chalk from "chalk";
+import { testAccessibility } from "./components/index.js";
+import { scrapeWebsite } from "./utils/webScraper.js";
+import { validateHtml } from "./utils/htmlValidator.js";
+import { saveToOutputFile } from "./utils/fileSaver.js";
+import { JSDOM } from "jsdom";
 
 // NOTE: This is to suppress the punycode deprication warning
 process.noDeprecation = true;
@@ -13,7 +13,7 @@ process.noDeprecation = true;
   const url = process.argv[2];
 
   if (!url) {
-    console.error(chalk.red('Error: Please provide a website URL.'));
+    console.error(chalk.red("Error: Please provide a website URL."));
     return;
   }
 
@@ -28,18 +28,21 @@ process.noDeprecation = true;
     if (validationResult === false) {
       console.log(chalk.green("HTML is Valid!"));
     } else {
-      console.error(chalk.red("HTML is not valid. This is a list of Issues: "), validationResult);
+      console.error(
+        chalk.red("HTML is not valid. This is a list of Issues: "),
+        validationResult,
+      );
     }
   } catch (e) {
-    console.error('Error:', e);
+    console.error("Error:", e);
   }
 
   try {
-    console.log("Accessibility Issues:")
+    console.log("Accessibility Issues:");
     // Load the HTML file
-    const data = fs.readFileSync('./output.html', 'utf-8');
+    const data = fs.readFileSync("./output.html", "utf-8");
     const dom = new JSDOM(data);
-    const {document} = dom.window;
+    const { document } = dom.window;
     testAccessibility(document);
   } catch (e) {
     console.error(e);

@@ -1,4 +1,4 @@
-import {chromium} from 'playwright';
+import { chromium } from "playwright";
 
 /*
  * @param {url} String
@@ -12,14 +12,12 @@ export const scrapeWebsite = async (url, timeout = 300000) => {
     const context = await browser.newContext();
     const page = await context.newPage();
 
-    await page.goto(url, {timeout});
+    await page.goto(url, { timeout });
     const htmlContent = await page.content();
     await browser.close();
 
-
     return htmlContent;
-
   } catch (e) {
-    console.error("Error while fetching HTML content: ", e)
+    console.error("Error while fetching HTML content: ", e);
   }
-}
+};

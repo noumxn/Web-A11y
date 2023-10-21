@@ -7,7 +7,7 @@ import chalk from "chalk";
 export const checkParagraphs = (document) => {
   try {
     const paragraphs = [];
-    const textNodes = document.querySelectorAll('p');
+    const textNodes = document.querySelectorAll("p");
 
     let currentParagraph = [];
 
@@ -31,15 +31,17 @@ export const checkParagraphs = (document) => {
     }
 
     if (paragraphs.length === 0) {
-      return chalk.green('Paragraph recognition test passed!');
+      return chalk.green("Paragraph recognition test passed!");
     } else {
       const output = paragraphs.map((paragraph, index) => {
-        const paragraphHTML = paragraph.map(node => node.outerHTML).join(' ');
-        return `${chalk.red(`Paragraph not properly formatted:`)} ${chalk.cyan(paragraphHTML)}`;
+        const paragraphHTML = paragraph.map((node) => node.outerHTML).join(" ");
+        return `${chalk.red(`Paragraph not properly formatted:`)} ${chalk.cyan(
+          paragraphHTML,
+        )}`;
       });
-      return output.join('\n');
+      return output.join("\n");
     }
   } catch (e) {
-    return `${chalk.red('Error parsing the HTML file:')} ${e}`;
+    return `${chalk.red("Error parsing the HTML file:")} ${e}`;
   }
 };
