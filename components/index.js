@@ -6,6 +6,7 @@ import { checkTimeBasedMediaAlt } from "./altPresentations.js";
 import { checkParagraphs } from "./paragraphText.js";
 import { checkNonSensoryRef } from "./nonSensoryRef.js";
 import { checkPageTitle } from "./pageTitle.js";
+import { checkButtonAccess } from "./buttons.js";
 
 export const testAccessibility = (document) => {
   // TODO: Sort these in order of priority
@@ -17,6 +18,7 @@ export const testAccessibility = (document) => {
   funcRunner(checkParagraphs, document);
   funcRunner(checkNonSensoryRef, document);
   funcRunner(checkPageTitle, document);
+  funcRunner(checkButtonAccess, document);
 };
 
 //needs to be async so it will wait for output before finishing

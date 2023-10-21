@@ -3,7 +3,7 @@ import chalk from "chalk";
 import { checkPageTitle } from "../components/pageTitle.js";
 import { expect } from "chai";
 
-describe("Keyboard Accessibility Tests", () => {
+describe("Keyboard Page Title Tests", () => {
   it("should pass after finding the page title", async () => {
     const html1 = `<!DOCTYPE html>
 <html>
