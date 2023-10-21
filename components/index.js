@@ -19,7 +19,8 @@ export const testAccessibility = (document) => {
   funcRunner(checkPageTitle, document);
 };
 
-function funcRunner(func, document) {
-  const output = func(document);
+//needs to be async so it will wait for output before finishing
+async function funcRunner(func, document) {
+  const output = await func(document);
   if (output) console.log(output);
 }

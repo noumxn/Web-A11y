@@ -14,7 +14,7 @@ export const checkPageTitle = async (document) => {
     if (title) {
       //simulates keyboard accessibility by giving focus to the title element
       await title.focus();
-      output += chalk.green("The title is keyboard accessible!");
+      output += chalk.green("Keyboard accessiblity for page title passed!");
       return output;
     } else {
       output += chalk.red("\nThe website title is not keyboard accessible:");

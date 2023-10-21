@@ -15,7 +15,7 @@ describe("Keyboard Accessibility Tests", () => {
     const { document: document1 } = dom1.window;
     const result1 = await checkPageTitle(document1);
     expect(result1).to.include(
-      chalk.green("The title is keyboard accessible!")
+      chalk.green("Keyboard accessiblity for page title passed!")
     );
   });
   it("should fail because there is no page title", async () => {
