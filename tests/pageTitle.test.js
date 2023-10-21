@@ -15,7 +15,21 @@ describe("Keyboard Accessibility Tests", () => {
     const { document: document1 } = dom1.window;
     const result1 = await checkPageTitle(document1);
     expect(result1).to.include(
-      chalk.green("The title is keyboard accessible!"),
+      chalk.green("The title is keyboard accessible!")
+    );
+  });
+  it("should fail because there is no page title", async () => {
+    const html1 = `<!DOCTYPE html>
+<html>
+<body>
+<p>This is not a page title</p>
+</body>
+</html>`;
+    const dom1 = new JSDOM(html1);
+    const { document: document1 } = dom1.window;
+    const result1 = await checkPageTitle(document1);
+    expect(result1).to.include(
+      chalk.red("\nThe website title is not keyboard accessible:")
     );
   });
 });
