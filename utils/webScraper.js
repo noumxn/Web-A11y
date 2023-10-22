@@ -1,4 +1,4 @@
-import {chromium} from 'playwright';
+import axios from "axios";
 
 /*
  * @param {url} String
@@ -6,20 +6,13 @@ import {chromium} from 'playwright';
  * @return {htmlContent} Returns string representation of raw HTML
  **/
 
-export const scrapeWebsite = async (url, timeout = 300000) => {
+export const scrapeWebsite = async (url) => {
   try {
-    const browser = await chromium.launch();
-    const context = await browser.newContext();
-    const page = await context.newPage();
-
-    await page.goto(url, {timeout});
-    const htmlContent = await page.content();
-    await browser.close();
-
+    const response = await axios.get(url);
+    const htmlContent = response.data;
 
     return htmlContent;
-
   } catch (e) {
-    console.error("Error while fetching HTML content: ", e)
+    console.error("Error while fetching HTML content: ", e);
   }
-}
+};
