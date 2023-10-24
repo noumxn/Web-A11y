@@ -1,7 +1,7 @@
 import chalk from 'chalk';
 
 /*
- * @description PERCIEVABLE: Text Alternatives: Check for appropriate alt text for images, icons, and non-text content.
+ * @description NAVIGABLE: Verify the availability of skip links and landmarks for easy navigation
  **/
 
 export const checkSkipLinks = (document) => {
