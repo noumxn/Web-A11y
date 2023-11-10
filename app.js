@@ -1,3 +1,8 @@
+/*
+ * @file app.js
+ * @description Outward facing interface that calls all the functions that run the application
+ **/
+
 import fs from 'fs-extra';
 import chalk from 'chalk';
 import {testAccessibility} from './components/index.js';
@@ -10,6 +15,11 @@ const outputFilePath = "./output.html"
 
 // NOTE: This is to suppress the punycode deprication warning in Node Version 21.0.0
 process.noDeprecation = true;
+
+/*
+ * @function main()
+ * @arg {string} url | process.argv[2]
+ **/
 
 (async () => {
   const url = process.argv[2];
