@@ -2,8 +2,15 @@ import chalk from 'chalk';
 import textReadability from 'text-readability';
 
 /*
- * @description Use plain language and avoid figures of speech, idioms, and complicated metaphors.
- *              Write content at an 8th grade reading level.
+ * @function checkReadability
+ * @param {Document} document
+ * @return {string} Success message if the Flesch-Kincaid reading level is less than or equal to 12
+ * @return {string} Failure message if the Flesch-Kincaid reading level is greater than 12
+ * @throws Error parsing the HTML file
+ * @description 
+ * 1.A
+ * Use plain language and avoid figures of speech, idioms, and complicated metaphors.
+ * Write content at an 8th grade reading level.
  **/
 
 export const checkReadability = (document) => {
@@ -20,13 +27,13 @@ export const checkReadability = (document) => {
     // Calculate Flesch-Kincaid Grade Level
     const fleschGradeLevel = textReadability.fleschKincaidGrade(textContent);
 
-    // Check if the grade level is at or below 8
+    // Check if the grade level is at or below 12
     if (fleschGradeLevel <= 12) {
       return chalk.green(`Readability test passed! (Flesch-Kincaid Grade Level: ${fleschGradeLevel.toFixed(2)}`)
     } else {
       return chalk.red(`Readability test failed! (Flesch-Kincaid Grade Level: ${fleschGradeLevel.toFixed(2)}`)
     }
   } catch (e) {
-    return `${chalk.red('Error parsing the HTML file:')} ${e}`;
+    throw `${chalk.red('Error parsing the HTML file:')} ${e}`;
   }
 };
