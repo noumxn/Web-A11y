@@ -8,8 +8,6 @@ import {checkAltText} from './altText.js'
 import {checkCaptions} from './captions.js';
 import {checkAudioDesc} from './audioDesc.js';
 import {checkTimeBasedMediaAlt} from './altPresentations.js';
-import {checkParagraphs} from './paragraphText.js';
-import {checkNonSensoryRef} from './nonSensoryRef.js';
 import {checkReadability} from './readabilityIndex.js';
 import {checkDescriptiveHeadings} from './descriptiveHeadings.js';
 
@@ -27,8 +25,6 @@ export const testAccessibility = (document) => {
   funcRunner(checkCaptions, document);
   funcRunner(checkAudioDesc, document);
   funcRunner(checkTimeBasedMediaAlt, document);
-  funcRunner(checkParagraphs, document);
-  funcRunner(checkNonSensoryRef, document);
   funcRunner(checkReadability, document);
   funcRunner(checkDescriptiveHeadings, document);
 }
