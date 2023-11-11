@@ -11,6 +11,7 @@ import {checkTimeBasedMediaAlt} from './altPresentations.js';
 import {checkParagraphs} from './paragraphText.js';
 import {checkNonSensoryRef} from './nonSensoryRef.js';
 import {checkReadability} from './readabilityIndex.js';
+import {checkDescriptiveHeadings} from './descriptiveHeadings.js';
 
 
 /*
@@ -29,6 +30,7 @@ export const testAccessibility = (document) => {
   funcRunner(checkParagraphs, document);
   funcRunner(checkNonSensoryRef, document);
   funcRunner(checkReadability, document);
+  funcRunner(checkDescriptiveHeadings, document);
 }
 
 /*
