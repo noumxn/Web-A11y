@@ -1,9 +1,11 @@
 import axios from "axios";
 
 /*
- * @param {url} String
- * @description Fetches HTML content of webpage provided in the URL
+ * @async
+ * @param {string} url
  * @return {htmlContent} Returns string representation of raw HTML
+ * @throws Error When fetching using Axios fails
+ * @description Fetches HTML content of webpage provided in the URL
  **/
 
 export const scrapeWebsite = async (url) => {

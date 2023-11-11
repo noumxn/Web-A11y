@@ -3,9 +3,12 @@ import axios from 'axios';
 axios.defaults.headers.post["Content-Type"] = "text/html; charset=utf-8";
 
 /*
- * @param {htmlContent} String
- * @description Validates HTML content
- * @return {false, markupErrors} Returns false if no errors found. Returns an array called markupErrors if errors found
+ * @async
+ * @function validateHtml
+ * @param {string} htmlContent
+ * @return {boolean} returns false when no HTML validity issues
+ * @return {Array} returns markupErrors when there are HTML validity issues
+ * @description Validates HTML using the w3 HTML Validator API
  **/
 
 export const validateHtml = async (htmlContent) => {
