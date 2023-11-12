@@ -40,3 +40,4 @@ function funcRunner(func, document) {
   const output = func(document);
   if (output) console.log(output);
 }
+

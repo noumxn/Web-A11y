@@ -3,14 +3,14 @@
  * @description Outward facing interface that calls all the functions that run the application
  **/
 
-import fs from 'fs-extra';
 import chalk from 'chalk';
-import {testAccessibility} from './components/index.js';
-import {scrapeWebsite} from './utils/webScraper.js';
-import {validateHtml} from './utils/htmlValidator.js';
-import {saveToOutputFile} from './utils/fileSaver.js';
-import {JSDOM} from 'jsdom';
-import {__manual__, __prod__} from './constants.js';
+import fs from 'fs-extra';
+import { JSDOM } from 'jsdom';
+import { testAccessibility } from './components/index.js';
+import { __manual__, __prod__ } from './constants.js';
+import { saveToOutputFile } from './utils/fileSaver.js';
+import { validateHtml } from './utils/htmlValidator.js';
+import { scrapeWebsite } from './utils/webScraper.js';
 const outputFilePath = "./output.html"
 
 // NOTE: This is to suppress the punycode deprication warning in Node Version 21.0.0
@@ -35,6 +35,7 @@ process.noDeprecation = true;
       // Use axios to fetch html content
       htmlContent = await scrapeWebsite(url);
       // Create a new file with html content
+      if (!htmlContent) return
       await saveToOutputFile(htmlContent);
     } else {
       htmlContent = fs.readFileSync(outputFilePath, "utf-8")
@@ -48,18 +49,13 @@ process.noDeprecation = true;
       console.error(chalk.red("HTML is not valid. This is a list of Issues: "), validationResult);
       if (__prod__) return
     }
-  } catch (e) {
-    console.error('Error:', e);
-  }
-
-  try {
     console.log("Accessibility Issues:")
     // Load the HTML file
     const data = fs.readFileSync(outputFilePath, 'utf-8');
     const dom = new JSDOM(data);
-    const {document} = dom.window;
+    const { document } = dom.window;
     testAccessibility(document);
   } catch (e) {
-    console.error(e);
+    console.error('Error:', e);
   }
 })();

@@ -15,6 +15,10 @@ export const scrapeWebsite = async (url) => {
 
     return htmlContent;
   } catch (e) {
-    console.error("Error while fetching HTML content: ", e);
+    if (e.response.data) {
+      return e.response.data
+    } else {
+      throw "Error while fetching HTML content"
+    }
   }
 };
