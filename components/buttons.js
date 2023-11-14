@@ -1,26 +1,44 @@
-/***
- *checks if a page title is accessible
- ***/
-
 import chalk from "chalk";
 
 export const checkButtonAccess = async (document) => {
   try {
-    const button = document.querySelector("button");
+    const buttons = document.querySelectorAll("button");
     let output = "";
-    if (!button) {
-      output += `${chalk.red("\nButton is not found.")}`;
+    if (!buttons || buttons.length === 0) {
+      output += `${chalk.red("\nNo buttons found.")}`;
       return output;
-    } else {
-      await button.focus();
-      if (output.length == 0) {
-        output += chalk.green(
-          "Keyboard accessiblity for all buttons have passed!"
+    }
+
+    for (const [index, button] of Array.from(buttons).entries()) {
+      // Check if the button is visible and focusable
+      const isButtonVisible = (button) => {
+        return (
+          button.style.display !== "none" &&
+          button.style.visibility !== "hidden" &&
+          button.style.opacity !== "0" &&
+          !button.disabled
         );
-        return output;
+      };
+
+      if (!isButtonVisible(button)) {
+        output += `${chalk.yellow(
+          `\nButton ${index + 1} is invisible or not focusable.`
+        )}`;
+      } else {
+        // Focus on the button
+        await button.focus();
       }
     }
+
+    if (output.length === 0) {
+      output += chalk.green(
+        "Keyboard accessibility for all buttons has passed!"
+      );
+    }
+
+    return output;
   } catch (e) {
-    return `${chalk.red("Error parsing the HTML file:")} ${e}`;
+    console.error(`${chalk.red("Error checking accessibility:")} ${e}`);
+    return output;
   }
 };
