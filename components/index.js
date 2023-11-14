@@ -3,14 +3,14 @@
  * @description Inward facing interface that calls all the functions that test a web-page for accessibility
  **/
 
-import {checkAriaAttr} from './ariaLabel.js';
-import {checkAltText} from './altText.js'
-import {checkCaptions} from './captions.js';
-import {checkAudioDesc} from './audioDesc.js';
-import {checkTimeBasedMediaAlt} from './altPresentations.js';
-import {checkReadability} from './readabilityIndex.js';
-import {checkDescriptiveHeadings} from './descriptiveHeadings.js';
-
+import { checkAriaAttr } from "./ariaLabel.js";
+import { checkAltText } from "./altText.js";
+import { checkCaptions } from "./captions.js";
+import { checkAudioDesc } from "./audioDesc.js";
+import { checkTimeBasedMediaAlt } from "./altPresentations.js";
+import { checkReadability } from "./readabilityIndex.js";
+import { checkDescriptiveHeadings } from "./descriptiveHeadings.js";
+import { checkKeyboardAccessibility } from "./keyboardAccessible.js";
 
 /*
  * @function testAccessibility
@@ -27,7 +27,8 @@ export const testAccessibility = (document) => {
   funcRunner(checkTimeBasedMediaAlt, document);
   funcRunner(checkReadability, document);
   funcRunner(checkDescriptiveHeadings, document);
-}
+  funcRunner(checkKeyboardAccessibility, document);
+};
 
 /*
  * @function funcRunner
@@ -40,4 +41,3 @@ function funcRunner(func, document) {
   const output = func(document);
   if (output) console.log(output);
 }
-
