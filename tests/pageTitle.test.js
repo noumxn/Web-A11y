@@ -14,9 +14,7 @@ describe("Keyboard Page Title Tests", () => {
     const dom1 = new JSDOM(html1);
     const { document: document1 } = dom1.window;
     const result1 = await checkPageTitle(document1);
-    expect(result1).to.include(
-      chalk.green("Keyboard accessiblity for page title passed!")
-    );
+    expect(result1).to.include(chalk.green("Title check passed!"));
   });
   it("should fail because there is no page title", async () => {
     const html1 = `<!DOCTYPE html>
@@ -28,8 +26,6 @@ describe("Keyboard Page Title Tests", () => {
     const dom1 = new JSDOM(html1);
     const { document: document1 } = dom1.window;
     const result1 = await checkPageTitle(document1);
-    expect(result1).to.include(
-      chalk.red("\nThe website title is not keyboard accessible:")
-    );
+    expect(result1).to.include(chalk.red("The webpage does not have a title!"));
   });
 });

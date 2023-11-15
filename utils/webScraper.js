@@ -16,9 +16,9 @@ export const scrapeWebsite = async (url) => {
     return htmlContent;
   } catch (e) {
     if (e.response.data) {
-      return e.response.data
+      return e.response.data;
     } else {
-      throw "Error while fetching HTML content"
+      throw "Error while fetching HTML content";
     }
   }
 };

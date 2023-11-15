@@ -21,7 +21,7 @@ describe("Keyboard Accessibility Tests", () => {
     const { document: document1 } = dom1.window;
     const result1 = await checkKeyboardAccessibility(document1);
     expect(result1).to.equal(
-      chalk.green("Keyboard accessibility for all elements has passed!")
+      chalk.green("Keyboard accessibility for all elements has passed!"),
     );
   });
 
@@ -60,7 +60,7 @@ describe("Keyboard Accessibility Tests", () => {
     const { document: document3 } = dom3.window;
     const result3 = await checkKeyboardAccessibility(document3);
     expect(result3).to.equal(
-      "\u001b[33m\u001b[39m\n\u001b[33mElement 1 is invisible or not focusable.\u001b[39m"
+      "\u001b[33m\u001b[39m\n\u001b[33mElement 1 is invisible or not focusable.\u001b[39m",
     );
   });
   it("should pass after finding input:not([type='hidden'])", async () => {
@@ -83,7 +83,7 @@ describe("Keyboard Accessibility Tests", () => {
     const { document: document1 } = dom.window;
     const result4 = await checkKeyboardAccessibility(document1);
     expect(result4).to.equal(
-      chalk.green("Keyboard accessibility for all elements has passed!")
+      chalk.green("Keyboard accessibility for all elements has passed!"),
     );
   });
   it("should fail after finding an invisible or not focusable element", async () => {
@@ -106,7 +106,8 @@ describe("Keyboard Accessibility Tests", () => {
     const { document } = dom.window;
 
     const result5 = await checkKeyboardAccessibility(document);
-    expect(result5).to.equal(( "\u001b[33m\u001b[39m\n\u001b[33mElement 1 is invisible or not focusable.\u001b[39m")
+    expect(result5).to.equal(
+      "\u001b[33m\u001b[39m\n\u001b[33mElement 1 is invisible or not focusable.\u001b[39m",
     );
   });
 });

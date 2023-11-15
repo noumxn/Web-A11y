@@ -1,10 +1,20 @@
-/***
- *checks if a page title is accessible
- ***/
-
 import chalk from "chalk";
 
-export const checkPageTitle = async (document) => {
+/*
+ * @function checkPageTitle
+ * @param {Document} document
+ * @return {string} Success message if the webpage has a Title
+ * @return {string} Failure message if the title is missing from the webpage
+ * @throws Error parsing the HTML file
+ * @description
+ * 2.B
+ * Provide a unique title for each page or view.
+ * The title element, contained in the document's head element, is often the first
+ * piece of information announced by assistive technology. This helps tell people what
+ * page or view they are going to start navigating.
+ **/
+
+export const checkPageTitle = (document) => {
   try {
     //finds title on document
     const title = document.querySelector("title");
@@ -12,12 +22,10 @@ export const checkPageTitle = async (document) => {
     let output = "";
     //the title exists on the document
     if (title) {
-      //simulates keyboard accessibility by giving focus to the title element
-      await title.focus();
-      output += chalk.green("Keyboard accessiblity for page title passed!");
+      output += chalk.green("Title check passed!");
       return output;
     } else {
-      output += chalk.red("\nThe website title is not keyboard accessible:");
+      output += chalk.red("\nThe webpage does not have a title!");
       return output;
     }
   } catch (e) {

@@ -22,7 +22,7 @@ export const checkButtonAccess = async (document) => {
 
       if (!isButtonVisible(button)) {
         output += `${chalk.yellow(
-          `\nButton ${index + 1} is invisible or not focusable.`
+          `\nButton ${index + 1} is invisible or not focusable.`,
         )}`;
       } else {
         // Focus on the button
@@ -32,7 +32,7 @@ export const checkButtonAccess = async (document) => {
 
     if (output.length === 0) {
       output += chalk.green(
-        "Keyboard accessibility for all buttons has passed!"
+        "Keyboard accessibility for all buttons has passed!",
       );
     }
 

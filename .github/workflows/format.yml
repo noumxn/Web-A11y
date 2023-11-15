@@ -1,0 +1,28 @@
+name: Format and Test
+
+on:
+  pull_request:
+    paths:
+      - "**/*.js"
+
+jobs:
+  format-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "16"
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run Prettier
+        run: npm run format
+
+      - name: Run Tests
+        run: npm run test

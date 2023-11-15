@@ -7,6 +7,6 @@ import fs from "fs-extra";
  **/
 
 export const saveToOutputFile = async (htmlContent) => {
-  fs.outputFileSync('output.html', htmlContent, 'utf-8');
-  console.log('HTML content saved to output.html');
-}
+  fs.outputFileSync("output.html", htmlContent, "utf-8");
+  console.log("HTML content saved to output.html");
+};

@@ -1,6 +1,6 @@
 /*
  * @file components/index.js
- * @description Inward facing interface that calls all the functions that test a web-page for accessibility
+ * @description Inward facing wrapper interface that calls all the functions that test a web-page for accessibility
  **/
 
 import { checkAriaAttr } from "./ariaLabel.js";
@@ -11,6 +11,7 @@ import { checkTimeBasedMediaAlt } from "./altPresentations.js";
 import { checkReadability } from "./readabilityIndex.js";
 import { checkDescriptiveHeadings } from "./descriptiveHeadings.js";
 import { checkKeyboardAccessibility } from "./keyboardAccessible.js";
+import { checkPageTitle } from "./pageTitle.js";
 
 /*
  * @function testAccessibility
@@ -28,6 +29,7 @@ export const testAccessibility = async (document) => {
   funcRunner(checkReadability, document);
   funcRunner(checkDescriptiveHeadings, document);
   funcRunner(checkKeyboardAccessibility, document);
+  funcRunner(checkPageTitle, document);
 };
 
 /*
