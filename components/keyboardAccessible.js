@@ -37,9 +37,7 @@ export const checkKeyboardAccessibility = async (document) => {
       };
 
       if (!isElementVisible(element)) {
-        output += `${chalk.yellow(
-          `\nElement ${index + 1} is invisible or not focusable.`,
-        )}`;
+        output += `${chalk.red("\nElement is invisible or not focusable: ")} ${chalk.cyan(element.outerHTML)}`;
       } else {
         // Focus on the element
         await element.focus();
@@ -47,9 +45,7 @@ export const checkKeyboardAccessibility = async (document) => {
     }
 
     if (output.length === 0) {
-      output += chalk.green(
-        "Keyboard accessibility for all elements has passed!",
-      );
+      return `${chalk.green("Keyboard accessibility for all elements has passed!")}`
     }
 
     return output;

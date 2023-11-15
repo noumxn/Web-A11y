@@ -26,9 +26,7 @@ export const checkDescriptiveHeadings = (document) => {
     const percentageMatch = matchingTerms.length / keyTerms.length;
 
     if (percentageMatch < 0.4) {
-      output += `${chalk.red(
-        "\nThe heading may not be very descriptive of its content:",
-      )} ${chalk.cyan(heading.outerHTML)}`;
+      output += `${chalk.red("\nThe heading may not be very descriptive of its content:")} ${chalk.cyan(heading.outerHTML)}`;
     }
     return;
   };

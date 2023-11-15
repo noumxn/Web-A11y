@@ -1,7 +1,7 @@
-import { JSDOM } from "jsdom";
+import {JSDOM} from "jsdom";
 import chalk from "chalk";
-import { checkKeyboardAccessibility } from "../components/keyboardAccessible.js";
-import { expect } from "chai";
+import {checkKeyboardAccessibility} from "../components/keyboardAccessible.js";
+import {expect} from "chai";
 
 describe("Keyboard Accessibility Tests", () => {
   it("should pass after finding all focusable elements, button ", async () => {
@@ -18,7 +18,7 @@ describe("Keyboard Accessibility Tests", () => {
     </html>
     `;
     const dom1 = new JSDOM(html1);
-    const { document: document1 } = dom1.window;
+    const {document: document1} = dom1.window;
     const result1 = await checkKeyboardAccessibility(document1);
     expect(result1).to.equal(
       chalk.green("Keyboard accessibility for all elements has passed!"),
@@ -34,7 +34,7 @@ describe("Keyboard Accessibility Tests", () => {
       </html>
     `;
     const dom2 = new JSDOM(html2);
-    const { document: document2 } = dom2.window;
+    const {document: document2} = dom2.window;
     const result2 = await checkKeyboardAccessibility(document2);
     expect(result2).to.equal(chalk.red("\nNo focusable elements found."));
   });
@@ -57,11 +57,9 @@ describe("Keyboard Accessibility Tests", () => {
       </body>
       </html>`;
     const dom3 = new JSDOM(html3);
-    const { document: document3 } = dom3.window;
+    const {document: document3} = dom3.window;
     const result3 = await checkKeyboardAccessibility(document3);
-    expect(result3).to.equal(
-      "\u001b[33m\u001b[39m\n\u001b[33mElement 1 is invisible or not focusable.\u001b[39m",
-    );
+    expect(result3).to.include(chalk.red("\nElement is invisible or not focusable: "));
   });
   it("should pass after finding input:not([type='hidden'])", async () => {
     const html = `<!DOCTYPE html>
@@ -80,7 +78,7 @@ describe("Keyboard Accessibility Tests", () => {
       </html>`;
 
     const dom = new JSDOM(html);
-    const { document: document1 } = dom.window;
+    const {document: document1} = dom.window;
     const result4 = await checkKeyboardAccessibility(document1);
     expect(result4).to.equal(
       chalk.green("Keyboard accessibility for all elements has passed!"),
@@ -103,11 +101,9 @@ describe("Keyboard Accessibility Tests", () => {
       </html>`;
 
     const dom = new JSDOM(html);
-    const { document } = dom.window;
+    const {document} = dom.window;
 
     const result5 = await checkKeyboardAccessibility(document);
-    expect(result5).to.equal(
-      "\u001b[33m\u001b[39m\n\u001b[33mElement 1 is invisible or not focusable.\u001b[39m",
-    );
+    expect(result5).to.include(chalk.red("\nElement is invisible or not focusable: "));
   });
 });
