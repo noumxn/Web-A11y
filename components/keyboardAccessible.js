@@ -1,7 +1,20 @@
 import chalk from "chalk";
+/*
+ * @function checkKeyboardAccessibility
+ * @param {Document} document
+ * @return {string} Success message if all interative elements are focusable and are visible
+ * @return {string} Failure message if any complex element are not focusable and are not visible
+ * @throws Error parsing the HTML file
+ * @description 
+ * 3.A
+ * Make sure there is a visible focus style for interactive elements that are navigated to via keyboard input.
+ * 3.C
+ * Check for invisible focusable elements.
+ **/
 
 export const checkKeyboardAccessibility = async (document) => {
   try {
+    
     const focusableElements = document.querySelectorAll(
       "button, a[href], input:not([type='hidden']), [tabindex]:not([tabindex='-1'])"
     );

@@ -19,7 +19,7 @@ import { checkKeyboardAccessibility } from "./keyboardAccessible.js";
  * @todo Sort these in order of priority
  **/
 
-export const testAccessibility = (document) => {
+export const testAccessibility = async (document) => {
   funcRunner(checkAriaAttr, document);
   funcRunner(checkAltText, document);
   funcRunner(checkCaptions, document);
@@ -37,7 +37,7 @@ export const testAccessibility = (document) => {
  * @description Executes the function passed in as param, while passing document as its arguement, and logs the output returned
  **/
 
-function funcRunner(func, document) {
-  const output = func(document);
+async function funcRunner(func, document) {
+  const output = await func(document);
   if (output) console.log(output);
 }
