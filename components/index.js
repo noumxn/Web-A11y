@@ -1,16 +1,17 @@
 /*
  * @file components/index.js
- * @description Inward facing interface that calls all the functions that test a web-page for accessibility
+ * @description Inward facing wrapper interface that calls all the functions that test a web-page for accessibility
  **/
 
-import {checkAriaAttr} from './ariaLabel.js';
-import {checkAltText} from './altText.js'
-import {checkCaptions} from './captions.js';
-import {checkAudioDesc} from './audioDesc.js';
-import {checkTimeBasedMediaAlt} from './altPresentations.js';
-import {checkReadability} from './readabilityIndex.js';
-import {checkDescriptiveHeadings} from './descriptiveHeadings.js';
-
+import { checkAriaAttr } from "./ariaLabel.js";
+import { checkAltText } from "./altText.js";
+import { checkCaptions } from "./captions.js";
+import { checkAudioDesc } from "./audioDesc.js";
+import { checkTimeBasedMediaAlt } from "./altPresentations.js";
+import { checkReadability } from "./readabilityIndex.js";
+import { checkDescriptiveHeadings } from "./descriptiveHeadings.js";
+import { checkKeyboardAccessibility } from "./keyboardAccessible.js";
+import { checkPageTitle } from "./pageTitle.js";
 
 /*
  * @function testAccessibility
@@ -19,7 +20,7 @@ import {checkDescriptiveHeadings} from './descriptiveHeadings.js';
  * @todo Sort these in order of priority
  **/
 
-export const testAccessibility = (document) => {
+export const testAccessibility = async (document) => {
   funcRunner(checkAriaAttr, document);
   funcRunner(checkAltText, document);
   funcRunner(checkCaptions, document);
@@ -27,7 +28,9 @@ export const testAccessibility = (document) => {
   funcRunner(checkTimeBasedMediaAlt, document);
   funcRunner(checkReadability, document);
   funcRunner(checkDescriptiveHeadings, document);
-}
+  funcRunner(checkKeyboardAccessibility, document);
+  funcRunner(checkPageTitle, document);
+};
 
 /*
  * @function funcRunner
@@ -36,8 +39,7 @@ export const testAccessibility = (document) => {
  * @description Executes the function passed in as param, while passing document as its arguement, and logs the output returned
  **/
 
-function funcRunner(func, document) {
-  const output = func(document);
+async function funcRunner(func, document) {
+  const output = await func(document);
   if (output) console.log(output);
 }
-

@@ -10,9 +10,11 @@
   ],
   "devDependencies": {
     "chai": "^4.3.10",
-    "mocha": "^10.2.0"
+    "mocha": "^10.2.0",
+    "prettier": "3.0.3"
   },
   "scripts": {
+    "format": "prettier --write .",
     "test": "mocha --require esm tests/**/*.test.js",
     "start": "node app.js"
   },
