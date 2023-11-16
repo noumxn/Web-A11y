@@ -1,9 +1,8 @@
 name: Format and Test
 
 on:
+  push:
   pull_request:
-    paths:
-      - "**/*.js"
 
 jobs:
   format-and-test:
@@ -21,8 +20,11 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Run Prettier
-        run: npm run format
+      - name: ESLint
+        run: npm run fix .
+
+      - name: Prettier
+        run: npx prettier --write .
 
       - name: Run Tests
         run: npm run test

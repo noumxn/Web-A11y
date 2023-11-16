@@ -11,12 +11,17 @@
   "devDependencies": {
     "chai": "^4.3.10",
     "mocha": "^10.2.0",
-    "prettier": "3.0.3"
+    "prettier": "^3.1.0"
   },
   "scripts": {
-    "format": "prettier --write .",
     "test": "mocha --require esm tests/**/*.test.js",
-    "start": "node app.js"
+    "start": "node app.js",
+    "lint": "eslint --ext .ts,.tsx ./src",
+    "fix": "yarn format && yarn lint:fix",
+    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
+    "lint:fix": "eslint --fix 'src/**/*.{js,jsx,ts,tsx}'",
+    "fix:eslint": "eslint src --ext .js,.ts,.jsx,.tsx --fix",
+    "fix:prettier": "prettier --write ."
   },
   "dependencies": {
     "axios": "^1.5.1",
