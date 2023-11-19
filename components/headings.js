@@ -23,7 +23,7 @@ export const checkHeadings = (document) => {
       return chalk.green("H1 Tag test passed!");
     } else {
       let output = chalk.red("More than one H1 tag found on the web-page:");
-      h1Headings.forEach((element, index) => {
+      h1Headings.forEach((element, _index) => {
         output += `\n${chalk.cyan(element.outerHTML)}`;
       });
       return output;
