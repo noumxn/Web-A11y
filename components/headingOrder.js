@@ -20,7 +20,7 @@ import chalk from "chalk";
 export const checkHeadingOrder = (document) => {
   try {
     const headings = document.querySelectorAll("h1, h2, h3, h4, h5, h6");
-    let currMax = 0;
+    let currMax = 0
 
     for (const heading of headings) {
       const level = parseInt(heading.tagName[1]);
