@@ -15,6 +15,7 @@ import { checkPageTitle } from "./pageTitle.js";
 import { checkSkipLinks } from "./easyNavigation.js";
 import { checkHeadings } from "./headings.js";
 import { checkHeadingOrder } from "./headingOrder.js";
+import { checkGlobalCode } from "./globalCode.js";
 
 /*
  * @function testAccessibility
@@ -36,6 +37,7 @@ export const testAccessibility = async (document) => {
   funcRunner(checkSkipLinks, document);
   funcRunner(checkHeadings, document);
   funcRunner(checkHeadingOrder, document);
+  funcRunner(checkGlobalCode, document);
 };
 
 /*
