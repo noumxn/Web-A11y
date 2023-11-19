@@ -3,16 +3,18 @@
  * @description Inward facing wrapper interface that calls all the functions that test a web-page for accessibility
  **/
 
-import {checkAriaAttr} from "./ariaLabel.js";
-import {checkAltText} from "./altText.js";
-import {checkCaptions} from "./captions.js";
-import {checkAudioDesc} from "./audioDesc.js";
-import {checkTimeBasedMediaAlt} from "./altPresentations.js";
-import {checkReadability} from "./readabilityIndex.js";
-import {checkDescriptiveHeadings} from "./descriptiveHeadings.js";
-import {checkKeyboardAccessibility} from "./keyboardAccessible.js";
-import {checkPageTitle} from "./pageTitle.js";
-import {checkHeadings} from "./headings.js";
+import { checkAriaAttr } from "./ariaLabel.js";
+import { checkAltText } from "./altText.js";
+import { checkCaptions } from "./captions.js";
+import { checkAudioDesc } from "./audioDesc.js";
+import { checkTimeBasedMediaAlt } from "./altPresentations.js";
+import { checkReadability } from "./readabilityIndex.js";
+import { checkDescriptiveHeadings } from "./descriptiveHeadings.js";
+import { checkKeyboardAccessibility } from "./keyboardAccessible.js";
+import { checkPageTitle } from "./pageTitle.js";
+import { checkSkipLinks } from "./easyNavigation.js";
+import { checkHeadings } from "./headings.js";
+import { checkHeadingOrder } from "./headingOrder.js";
 
 /*
  * @function testAccessibility
@@ -31,7 +33,9 @@ export const testAccessibility = async (document) => {
   funcRunner(checkDescriptiveHeadings, document);
   funcRunner(checkKeyboardAccessibility, document);
   funcRunner(checkPageTitle, document);
+  funcRunner(checkSkipLinks, document);
   funcRunner(checkHeadings, document);
+  funcRunner(checkHeadingOrder, document);
 };
 
 /*

@@ -9,14 +9,14 @@ import chalk from "chalk";
  * @description
  * 5.B
  * Use heading elements to introduce content.
- * The h1 element should be used to communicate the high-level purpose of the page or view. 
- * Do not use the h1 element for a heading that does not change between pages or 
+ * The h1 element should be used to communicate the high-level purpose of the page or view.
+ * Do not use the h1 element for a heading that does not change between pages or
  * views (for example, the site's name).
  **/
 
 export const checkHeadings = (document) => {
   try {
-    const h1Headings = document.querySelectorAll('h1');
+    const h1Headings = document.querySelectorAll("h1");
     const numH1Headings = h1Headings.length;
 
     if (numH1Headings <= 1) {

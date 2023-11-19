@@ -5,12 +5,12 @@
 
 import chalk from "chalk";
 import fs from "fs-extra";
-import {JSDOM} from "jsdom";
-import {testAccessibility} from "./components/index.js";
-import {__manual__, __prod__} from "./constants.js";
-import {saveToOutputFile} from "./utils/fileSaver.js";
-import {validateHtml} from "./utils/htmlValidator.js";
-import {scrapeWebsite} from "./utils/webScraper.js";
+import { JSDOM } from "jsdom";
+import { testAccessibility } from "./components/index.js";
+import { __manual__, __prod__ } from "./constants.js";
+import { saveToOutputFile } from "./utils/fileSaver.js";
+import { validateHtml } from "./utils/htmlValidator.js";
+import { scrapeWebsite } from "./utils/webScraper.js";
 const outputFilePath = "./output.html";
 
 // NOTE: This is to suppress the punycode deprication warning in Node Version 21.0.0
@@ -56,7 +56,7 @@ process.noDeprecation = true;
     // Load the HTML file
     const data = fs.readFileSync(outputFilePath, "utf-8");
     const dom = new JSDOM(data);
-    const {document} = dom.window;
+    const { document } = dom.window;
     testAccessibility(document);
   } catch (e) {
     console.error("Error:", e);
