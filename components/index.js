@@ -12,6 +12,7 @@ import { checkReadability } from "./readabilityIndex.js";
 import { checkDescriptiveHeadings } from "./descriptiveHeadings.js";
 import { checkKeyboardAccessibility } from "./keyboardAccessible.js";
 import { checkPageTitle } from "./pageTitle.js";
+import { checkLinkElements } from "./controls.js";
 
 /*
  * @function testAccessibility
@@ -30,6 +31,7 @@ export const testAccessibility = async (document) => {
   funcRunner(checkDescriptiveHeadings, document);
   funcRunner(checkKeyboardAccessibility, document);
   funcRunner(checkPageTitle, document);
+  funcRunner(checkLinkElements, document);
 };
 
 /*
