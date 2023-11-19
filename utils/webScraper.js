@@ -1,25 +1,24 @@
-import {chromium} from 'playwright';
+import axios from "axios";
 
 /*
- * @param {url} String
- * @description Fetches HTML content of webpage provided in the URL
+ * @async
+ * @param {string} url
  * @return {htmlContent} Returns string representation of raw HTML
+ * @throws Error When fetching using Axios fails
+ * @description Fetches HTML content of webpage provided in the URL
  **/
 
-export const scrapeWebsite = async (url, timeout = 300000) => {
+export const scrapeWebsite = async (url) => {
   try {
-    const browser = await chromium.launch();
-    const context = await browser.newContext();
-    const page = await context.newPage();
-
-    await page.goto(url, {timeout});
-    const htmlContent = await page.content();
-    await browser.close();
-
+    const response = await axios.get(url);
+    const htmlContent = response.data;
 
     return htmlContent;
-
   } catch (e) {
-    console.error("Error while fetching HTML content: ", e)
+    if (e.response.data) {
+      return e.response.data;
+    } else {
+      throw "Error while fetching HTML content";
+    }
   }
-}
+};
