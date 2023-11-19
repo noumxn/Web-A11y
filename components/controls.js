@@ -18,9 +18,9 @@ export const checkLinkElements = (document) => {
     for (const link of links) {
     const nodeElement = link.nodeName.toLowerCase();
       if (nodeElement !== 'a' && nodeElement !== 'link') {
-        return chalk.red(`Error: Element with href="${link.getAttribute('href')}" is not an <a> element. Element is ${link.outerHTML}`);
+        return chalk.red(`Element with href="${link.getAttribute('href')}" is not an <a> element. Element is ${link.outerHTML}`);
       }
     }
   
-    return chalk.green('All elements with href attributes use the <a> element.');
+    return chalk.green('All elements with href attributes use the <a> element!');
   };
