@@ -26,7 +26,7 @@ export const checkAltText = (document) => {
   try {
     let output = "";
     const images = document.querySelectorAll('img, [role="img"]');
-    images.forEach((element, index) => {
+    images.forEach((element) => {
       const alt = element.getAttribute("alt");
       const isHidden =
         element.hasAttribute("aria-hidden") &&

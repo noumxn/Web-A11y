@@ -38,6 +38,7 @@ export const checkButtonAccess = async (document) => {
 
     return output;
   } catch (e) {
+    let output = "";
     console.error(`${chalk.red("Error checking accessibility:")} ${e}`);
     return output;
   }

@@ -19,7 +19,7 @@ export const checkSkipLinks = (document) => {
   try {
     const images = document.querySelectorAll('a, [role="a"]');
     let hasSkip = false;
-    images.forEach((element, index) => {
+    images.forEach((element, _index) => {
       var linkPattern = new RegExp("#main[\\w-]*", "i");
       const link = element.getAttribute("href");
       if (linkPattern.test(link)) {
