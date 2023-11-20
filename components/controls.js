@@ -9,7 +9,6 @@ import chalk from "chalk";
  * @description
  * 7.A
  * The a element should be used 
- * Heading elements construct a document outline, and should not be used for purely visual design.
  **/
 
 export const checkLinkElements = (document) => {
@@ -25,13 +24,23 @@ export const checkLinkElements = (document) => {
     return chalk.green('All elements with href attributes use the <a> element!');
   };
 
-  
+/*
+* @function checkFocusStyles
+* @param {Document} document
+* @return {string} Success message if all control items (a with href, button, input, textarea, select) has a :focus state
+* @return {string} Failure message if any control items do not have a :focus state
+* @throws Error parsing the HTML file
+* @description
+* 7.C
+* Control elements are expected to have :focus states so that users will know to interact with it.
+**/
+
 export const checkFocusStyles = (document) => {
-  const controls = document.querySelectorAll('[href], button');
+  const controls = document.querySelectorAll('[href], button, input, textarea, select');
 
   for (const control of controls) {
     const nodeElement = control.nodeName.toLowerCase();
-    if (nodeElement !== 'a' && nodeElement !== 'link' || nodeElement == "button") {
+    if (nodeElement !== 'a' && nodeElement !== 'link' || nodeElement == "button" || nodeElement == "input" ||nodeElement == "textarea" ||nodeElement == "select" ) {
       control.focus();
 
       if (!document.activeElement.isSameNode(control)) {
