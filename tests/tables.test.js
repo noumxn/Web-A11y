@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import { checkTableStructure, checkTableHeaders } from "../components/tables.js";
+import { checkTableStructure, checkTableHeaders, checkTableCaptions } from "../components/tables.js";
 import { JSDOM } from "jsdom";
 import chalk from "chalk";
 
@@ -45,4 +45,23 @@ describe("Table Headers", () => {
         const result2 = checkTableHeaders(document2);
         expect(result2).to.include(chalk.red('The table header is missing <th> element(s).'));
     });
+});
+
+describe("Table Captions", () => {
+    it("should pass when there's a caption element inside the table", () => {
+        const html1 = `<html><body><table><caption></caption></table></body></html>`;
+        const dom1 = new JSDOM(html1);
+        const { document: document1 } = dom1.window;
+        const result1 = checkTableCaptions(document1);
+        expect(result1).to.include(chalk.green("All tables contain captions!"));
+    });
+
+    it("should fail the table element does not have a caption element", () => {
+        const html2 = `<html><body><table></table></body></html>`;
+        const dom2 = new JSDOM(html2);
+        const { document: document2 } = dom2.window;
+        const result2 = checkTableCaptions(document2);
+        expect(result2).to.include(chalk.red('Table(s) are missing the caption element.'));
+    });
+    
 });

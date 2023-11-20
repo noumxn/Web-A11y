@@ -8,7 +8,7 @@ import chalk from "chalk";
  * @throws Error parsing the HTML file
  * @description
  * 8.A
- * Use the table element to describe tabular data
+ * Use the table element to describe tabular data.
 **/
 
 export const checkTableStructure = (document) => {
@@ -30,11 +30,11 @@ export const checkTableStructure = (document) => {
  * @function checkTableHeaders
  * @param {Document} document
  * @return {string} Success message if all table header elements are valid
- * @return {string} Failure message if any table header elements are invalis
+ * @return {string} Failure message if any table header elements are invalid
  * @throws Error parsing the HTML file
  * @description
  * 8.B
- * The table headers have the correct <th> element(s)
+ * Use the th element for table headers (with appropriate scope attributes).
 **/
 
 export const checkTableHeaders = (document) => {
@@ -53,5 +53,28 @@ export const checkTableHeaders = (document) => {
     }
   
     return chalk.green('All table header elements are valid!');
+};
+
+/*
+ * @function checkTableCaptions
+ * @param {Document} document
+ * @return {string} Success message if all tables contain captions
+ * @return {string} Failure message if any table does not contain captions
+ * @throws Error parsing the HTML file
+ * @description
+ * 8.C
+ * Use the caption element to provide a title for the table.
+**/
+
+export const checkTableCaptions = (document) => {
+    const tables = document.querySelectorAll('table');
+  
+    for (const table of tables) {
+        if (table.querySelector('caption') == null) {
+            return chalk.red('Table(s) are missing the caption element.');
+        }
+    }
+  
+    return chalk.green('All tables contain captions!');
 };
 
