@@ -41,8 +41,7 @@ export const checkFocusStyles = (document) => {
   for (const control of controls) {
     const nodeElement = control.nodeName.toLowerCase();
     if (nodeElement == 'a' || nodeElement == "button" || nodeElement == "input" ||nodeElement == "textarea" ||nodeElement == "select" ) {
-
-      if (!document.activeElement.isSameNode(control)) {
+      if (document.activeElement == control) {
           return chalk.red(`Element ${control.outerHTML} does not have a :focus state.`);
       }
     }
