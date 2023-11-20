@@ -6,6 +6,7 @@ import chalk from "chalk";
  * @return {string} Success message if heading elements are in a logical sequence and no levels are skipped
  * @return {string} Failure message if heading elements are not in a logical sequence or if levels are skipped
  * @throws Error parsing the HTML file
+ * @type ERROR
  * @description
  * 5.C
  * Heading elements should be written in a logical sequence.
@@ -20,7 +21,7 @@ import chalk from "chalk";
 export const checkHeadingOrder = (document) => {
   try {
     const headings = document.querySelectorAll("h1, h2, h3, h4, h5, h6");
-    let currMax = 0
+    let currMax = 0;
 
     for (const heading of headings) {
       const level = parseInt(heading.tagName[1]);

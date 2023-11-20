@@ -7,6 +7,7 @@ import textReadability from "text-readability";
  * @return {string} Success message if the Flesch-Kincaid reading level is less than or equal to 12
  * @return {string} Failure message if the Flesch-Kincaid reading level is greater than 12
  * @throws Error parsing the HTML file
+ * @type ERROR/WARNING
  * @description
  * 1.A
  * Use plain language and avoid figures of speech, idioms, and complicated metaphors.
@@ -27,10 +28,16 @@ export const checkReadability = (document) => {
     // Calculate Flesch-Kincaid Grade Level
     const fleschGradeLevel = textReadability.fleschKincaidGrade(textContent);
 
-    // Check if the grade level is at or below 12
-    if (fleschGradeLevel <= 12) {
+    // Check if the grade level is at or below 8
+    if (fleschGradeLevel <= 8) {
       return chalk.green(
         `Readability test passed! (Flesch-Kincaid Grade Level: ${fleschGradeLevel.toFixed(
+          2,
+        )}`,
+      );
+    } else if (fleschGradeLevel <= 16) {
+      return chalk.yellow(
+        `Readability test failed! (Flesch-Kincaid Grade Level: ${fleschGradeLevel.toFixed(
           2,
         )}`,
       );
