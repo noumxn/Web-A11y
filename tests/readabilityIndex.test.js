@@ -1,5 +1,4 @@
 import { expect } from "chai";
-import chalk from "chalk";
 import { JSDOM } from "jsdom";
 import { checkReadability } from "../components/readabilityIndex.js";
 
@@ -20,9 +19,7 @@ describe("Readability Index Tests", () => {
   it("should pass because Readability Index is below max level", () => {
     const html2 = `<!DOCTYPE html>
 <html>
-<body><p>This paragraph lacks a blank line before it.</p><p>
-      Another valid paragraph.
-      Blank lines before and after.
+<body><p>These are some words</p><p>
   </p>
 </body>
 </html>`;
