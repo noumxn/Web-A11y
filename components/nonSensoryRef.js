@@ -11,20 +11,23 @@ import color from "color-string";
  * @description
  * 13.E
  * Make sure instructions are not visual only
- * Use a combination of characteristics to write cues, particularly the actual names of 
+ * Use a combination of characteristics to write cues, particularly the actual names of
  * sections and elements, rather than just descriptions like location (“on the right”).
  **/
 
-
 export const checkSensoryRefs = (document) => {
-  let output = ""
+  let output = "";
 
-  const descriptiveElements = document.querySelectorAll('p, div, input, a, button, textfield, img, span')
+  const descriptiveElements = document.querySelectorAll(
+    "p, div, input, a, button, textfield, img, span",
+  );
   for (let element of descriptiveElements) {
-    let elemContent = element.textContent.trim()
-    elemContent = elemContent.replace(/\s{2,}/g, ' ');
+    let elemContent = element.textContent.trim();
+    elemContent = elemContent.replace(/\s{2,}/g, " ");
     if (matchSentenceFormat(elemContent) && elemContent.length < 200) {
-      output += `${chalk.yellow("\nThis text might be using Positional/Sensory references to refer to elements:")} ${chalk.cyan(elemContent)}`;
+      output += `${chalk.yellow(
+        "\nThis text might be using Positional/Sensory references to refer to elements:",
+      )} ${chalk.cyan(elemContent)}`;
     }
   }
   if (output.length === 0) {
@@ -32,10 +35,10 @@ export const checkSensoryRefs = (document) => {
   } else {
     return output;
   }
-}
+};
 
 function matchSentenceFormat(sentence) {
-  sentence = sentence.toLowerCase()
+  sentence = sentence.toLowerCase();
 
   const verbRegex = /(press|click|select|choose|pick|provide|input|type)/i;
   const elementRegex = /(button|image|text field|link)/i;
@@ -50,11 +53,11 @@ function matchSentenceFormat(sentence) {
   const shapes = sentence.match(shapeRegex);
   let colors = false;
 
-  const words = sentence.split(' ')
+  const words = sentence.split(" ");
   for (let word of words) {
     if (color.get.rgb(word)) {
-      colors = true
-      break
+      colors = true;
+      break;
     }
   }
 

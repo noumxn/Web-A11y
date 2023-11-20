@@ -5,11 +5,16 @@ import chalk from "chalk";
  * @return {string} Success message if all interactive elements are focusable and are visible
  * @return {string} Failure message if any interactive element is not focusable and are not visible
  * @throws Error parsing the HTML file
+ * @type ERROR
  * @description
  * 3.A
  * Make sure there is a visible focus style for interactive elements that are navigated to via keyboard input.
+ * Can a person navigating with a keyboard, switch, voice control, or screen reader see where
+ * they currently are on the page?
  * 3.C
  * Check for invisible focusable elements.
+ * Remove the ability to focus on elements that are not presently meant to be discoverable.
+ * This includes things like inactive drop down menus, off screen navigations, or modals.
  **/
 
 export const checkKeyboardAccessibility = async (document) => {
