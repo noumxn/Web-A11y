@@ -17,7 +17,9 @@ import { checkTableStructure, checkTableHeaders, checkTableCaptions } from "./ta
 import { checkSkipLinks } from "./easyNavigation.js";
 import { checkHeadings } from "./headings.js";
 import { checkHeadingOrder } from "./headingOrder.js";
+import { checkGlobalCode } from "./globalCode.js";
 import { checkSensoryRefs } from "./nonSensoryRef.js";
+
 
 /*
  * @function testAccessibility
@@ -44,6 +46,7 @@ export const testAccessibility = async (document) => {
   funcRunner(checkSkipLinks, document);
   funcRunner(checkHeadings, document);
   funcRunner(checkHeadingOrder, document);
+  funcRunner(checkGlobalCode, document);
   funcRunner(checkSensoryRefs, document);
 };
 
