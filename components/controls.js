@@ -24,3 +24,21 @@ export const checkLinkElements = (document) => {
   
     return chalk.green('All elements with href attributes use the <a> element!');
   };
+
+  
+export const checkFocusStyles = (document) => {
+  const controls = document.querySelectorAll('[href], button');
+
+  for (const control of controls) {
+    const nodeElement = control.nodeName.toLowerCase();
+    if (nodeElement !== 'a' && nodeElement !== 'link' || nodeElement == "button") {
+      control.focus();
+
+      if (!document.activeElement.isSameNode(control)) {
+          return chalk.red(`Element ${control.outerHTML} does not have a :focus state.`);
+      }
+    }
+  }
+
+  return chalk.green('All control elements attributes have a :focus state!');
+};
