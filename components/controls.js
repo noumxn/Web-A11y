@@ -36,12 +36,11 @@ export const checkLinkElements = (document) => {
 **/
 
 export const checkFocusStyles = (document) => {
-  const controls = document.querySelectorAll('[href], button, input, textarea, select');
+  const controls = document.querySelectorAll('a[href], button, input, textarea, select');
 
   for (const control of controls) {
     const nodeElement = control.nodeName.toLowerCase();
-    if (nodeElement !== 'a' && nodeElement !== 'link' || nodeElement == "button" || nodeElement == "input" ||nodeElement == "textarea" ||nodeElement == "select" ) {
-      control.focus();
+    if (nodeElement == 'a' || nodeElement == "button" || nodeElement == "input" ||nodeElement == "textarea" ||nodeElement == "select" ) {
 
       if (!document.activeElement.isSameNode(control)) {
           return chalk.red(`Element ${control.outerHTML} does not have a :focus state.`);
