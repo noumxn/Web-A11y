@@ -6,6 +6,7 @@ import chalk from "chalk";
  * @return {string} Success message if all heading elements are descriptive of their content
  * @return {string} Failure message if any heading element is not descriptive of its content
  * @throws Error parsing the HTML file
+ * @type WARNING
  * @description
  * 5.A
  * Use heading elements to introduce content.
@@ -26,7 +27,7 @@ export const checkDescriptiveHeadings = (document) => {
     const percentageMatch = matchingTerms.length / keyTerms.length;
 
     if (percentageMatch < 0.4) {
-      output += `${chalk.red(
+      output += `${chalk.yellow(
         "\nThe heading may not be very descriptive of its content:",
       )} ${chalk.cyan(heading.outerHTML)}`;
     }
