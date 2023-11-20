@@ -17,6 +17,6 @@ describe("Skip Link", () => {
     const dom1 = new JSDOM(html1);
     const { document: document1 } = dom1.window;
     const result1 = checkSkipLinks(document1);
-    expect(result1).to.include(chalk.red("Missing skip link"));
+    expect(result1).to.include(chalk.yellow("Missing skip link"));
   });
 });

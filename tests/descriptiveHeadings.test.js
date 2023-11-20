@@ -13,7 +13,7 @@ describe("Descriptive Headings", () => {
     const { document: document1 } = dom1.window;
     const result1 = checkDescriptiveHeadings(document1);
     expect(result1).to.include(
-      chalk.red("The heading may not be very descriptive of its content:"),
+      chalk.yellow("The heading may not be very descriptive of its content:"),
     );
   });
 

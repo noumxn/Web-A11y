@@ -16,6 +16,7 @@ import { checkSkipLinks } from "./easyNavigation.js";
 import { checkHeadings } from "./headings.js";
 import { checkHeadingOrder } from "./headingOrder.js";
 import { checkLists } from "./lists.js";
+import { checkSensoryRefs } from "./nonSensoryRef.js";
 
 /*
  * @function testAccessibility
@@ -37,7 +38,6 @@ export const testAccessibility = async (document) => {
   funcRunner(checkSkipLinks, document);
   funcRunner(checkHeadings, document);
   funcRunner(checkHeadingOrder, document);
-  funcRunner(checkLists, document);
 };
 
 /*
