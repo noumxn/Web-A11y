@@ -12,11 +12,16 @@ import { checkReadability } from "./readabilityIndex.js";
 import { checkDescriptiveHeadings } from "./descriptiveHeadings.js";
 import { checkKeyboardAccessibility } from "./keyboardAccessible.js";
 import { checkPageTitle } from "./pageTitle.js";
+import { checkLinkElements, checkFocusStyles } from "./controls.js";
+import { checkTableStructure, checkTableHeaders, checkTableCaptions } from "./tables.js";
 import { checkSkipLinks } from "./easyNavigation.js";
 import { checkHeadings } from "./headings.js";
 import { checkHeadingOrder } from "./headingOrder.js";
+import { checkLists } from "./lists.js";
+import { checkGlobalCode } from "./globalCode.js";
 import { checkSensoryRefs } from "./nonSensoryRef.js";
 import { checkAutoplay } from "./autoplay.js";
+
 
 /*
  * @function testAccessibility
@@ -35,9 +40,16 @@ export const testAccessibility = async (document) => {
   funcRunner(checkDescriptiveHeadings, document);
   funcRunner(checkKeyboardAccessibility, document);
   funcRunner(checkPageTitle, document);
+  funcRunner(checkLinkElements, document);
+  funcRunner(checkFocusStyles, document);
+  funcRunner(checkTableStructure, document);
+  funcRunner(checkTableHeaders, document);
+  funcRunner(checkTableCaptions, document);
   funcRunner(checkSkipLinks, document);
   funcRunner(checkHeadings, document);
   funcRunner(checkHeadingOrder, document);
+  funcRunner(checkLists, document);
+  funcRunner(checkGlobalCode, document);
   funcRunner(checkSensoryRefs, document);
   funcRunner(checkAutoplay, document);
 };
