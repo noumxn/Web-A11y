@@ -6,7 +6,7 @@ import chalk from "chalk";
 describe("", () => {
   it("should fail", () => {
     const html1 = `<html><body>
-      <p> Click on the button below </p>
+      <p>Click on the button below</p>
       <button></button>
       </body></html>`;
     const dom1 = new JSDOM(html1);
@@ -20,7 +20,6 @@ describe("", () => {
   it("should fail", () => {
     const html1 = `<html><body>
       <div>Select one of the links below</div>
-      <div>News Next Page Icon Press Releases Our Stories Medical Meetings Media Library Media Contacts QUICK LINKS Scientific Media Resources > Disease State Infographics > Corporate Publications ></div>
       <a href="#"></a>
       </body></html>`;
     const dom1 = new JSDOM(html1);
