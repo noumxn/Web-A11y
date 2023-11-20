@@ -38,6 +38,8 @@ export const testAccessibility = async (document) => {
   funcRunner(checkSkipLinks, document);
   funcRunner(checkHeadings, document);
   funcRunner(checkHeadingOrder, document);
+  funcRunner(checkLists, document);
+  funcRunner(checkSensoryRefs, document);
 };
 
 /*
