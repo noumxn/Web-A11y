@@ -13,6 +13,10 @@ import { checkDescriptiveHeadings } from "./descriptiveHeadings.js";
 import { checkKeyboardAccessibility } from "./keyboardAccessible.js";
 import { checkPageTitle } from "./pageTitle.js";
 import { checkLinkElements, checkFocusStyles } from "./controls.js";
+import { checkSkipLinks } from "./easyNavigation.js";
+import { checkHeadings } from "./headings.js";
+import { checkHeadingOrder } from "./headingOrder.js";
+import { checkSensoryRefs } from "./nonSensoryRef.js";
 
 /*
  * @function testAccessibility
@@ -33,6 +37,10 @@ export const testAccessibility = async (document) => {
   funcRunner(checkPageTitle, document);
   funcRunner(checkLinkElements, document);
   funcRunner(checkFocusStyles, document);
+  funcRunner(checkSkipLinks, document);
+  funcRunner(checkHeadings, document);
+  funcRunner(checkHeadingOrder, document);
+  funcRunner(checkSensoryRefs, document);
 };
 
 /*

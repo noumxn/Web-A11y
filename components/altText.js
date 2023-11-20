@@ -6,6 +6,7 @@ import chalk from "chalk";
  * @return {string} Success message if all image elements have Alternate text property
  * @return {string} Failure message if any image elements have missing Alternate text
  * @throws Error parsing the HTML file
+ * @type ERROR
  * @description
  * 4.A
  * Make sure that all img elements have an alt attribute.
@@ -26,7 +27,7 @@ export const checkAltText = (document) => {
   try {
     let output = "";
     const images = document.querySelectorAll('img, [role="img"]');
-    images.forEach((element, index) => {
+    images.forEach((element) => {
       const alt = element.getAttribute("alt");
       const isHidden =
         element.hasAttribute("aria-hidden") &&

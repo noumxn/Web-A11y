@@ -1,5 +1,4 @@
 import { JSDOM } from "jsdom";
-import chalk from "chalk";
 import { checkButtonAccess } from "../components/buttons.js";
 import { expect } from "chai";
 
