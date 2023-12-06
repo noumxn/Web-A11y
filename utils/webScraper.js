@@ -9,16 +9,13 @@ import axios from "axios";
  **/
 
 export const scrapeWebsite = async (url) => {
+  let response;
+  let htmlContent;
   try {
-    const response = await axios.get(url);
-    const htmlContent = response.data;
-
+    response = await axios.get(url);
+    htmlContent = response.data;
     return htmlContent;
   } catch (e) {
-    if (e.response.data) {
-      return e.response.data;
-    } else {
-      throw "Error while fetching HTML content";
-    }
+    throw `Failed to fetch data from ${url}. Please ensure valid URL is provided.`;
   }
 };

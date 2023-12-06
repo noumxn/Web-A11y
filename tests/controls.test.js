@@ -9,7 +9,9 @@ describe("Link Elements", () => {
     const dom1 = new JSDOM(html1);
     const { document: document1 } = dom1.window;
     const result1 = checkLinkElements(document1);
-    expect(result1).to.include(chalk.green("All elements with href attributes use the <a> element!"));
+    expect(result1).to.include(
+      chalk.green("All elements with href attributes use the <a> element!"),
+    );
   });
 
   it("should fail when links are not in a element", () => {
@@ -17,7 +19,11 @@ describe("Link Elements", () => {
     const dom2 = new JSDOM(html2);
     const { document: document2 } = dom2.window;
     const result2 = checkLinkElements(document2);
-    expect(result2).to.include(chalk.red('Element with href="link.com" is not an <a> element. Element is <div href="link.com"></div>'));
+    expect(result2).to.include(
+      chalk.red(
+        'Element with href="link.com" is not an <a> element. Element is <div href="link.com"></div>',
+      ),
+    );
   });
 
   it("should pass for links used to import styles and scripts", () => {
@@ -25,7 +31,9 @@ describe("Link Elements", () => {
     const dom3 = new JSDOM(html3);
     const { document: document3 } = dom3.window;
     const result3 = checkLinkElements(document3);
-    expect(result3).to.equal(chalk.green("All elements with href attributes use the <a> element!"));
+    expect(result3).to.equal(
+      chalk.green("All elements with href attributes use the <a> element!"),
+    );
   });
 });
 
@@ -54,17 +62,23 @@ describe("Focus Styles", () => {
     const dom = new JSDOM(html);
     const { document: testDocument } = dom.window;
     const result = checkFocusStyles(testDocument);
-    expect(result).to.include(chalk.green("All control elements attributes have a :focus state!"));
+    expect(result).to.include(
+      chalk.green("All control elements attributes have a :focus state!"),
+    );
   });
 
   it("should fail when a link element does not have :focus state", () => {
     const html = `<html><body><a href="#link">Link</a></body></html>`;
     const dom = new JSDOM(html);
     const { document: testDocument } = dom.window;
-    const elem = testDocument.querySelector('a');
+    const elem = testDocument.querySelector("a");
     elem.focus();
     const result = checkFocusStyles(testDocument);
-    expect(result).to.include(chalk.red('Element <a href="#link">Link</a> does not have a :focus state.'));
+    expect(result).to.include(
+      chalk.red(
+        'Element <a href="#link">Link</a> does not have a :focus state.',
+      ),
+    );
   });
 
   it("should pass when no control elements are present", () => {
@@ -72,7 +86,9 @@ describe("Focus Styles", () => {
     const dom = new JSDOM(html);
     const { document: testDocument } = dom.window;
     const result = checkFocusStyles(testDocument);
-    expect(result).to.include(chalk.green("All control elements attributes have a :focus state!"));
+    expect(result).to.include(
+      chalk.green("All control elements attributes have a :focus state!"),
+    );
   });
 
   it("should fail when mixed control elements have :focus state", () => {
@@ -98,9 +114,13 @@ describe("Focus Styles", () => {
     `;
     const dom = new JSDOM(html);
     const { document: testDocument } = dom.window;
-    const elem = testDocument.querySelector('button');
+    const elem = testDocument.querySelector("button");
     elem.focus();
     const result = checkFocusStyles(testDocument);
-    expect(result).to.include(chalk.red("Element <button>Click me</button> does not have a :focus state."));
+    expect(result).to.include(
+      chalk.red(
+        "Element <button>Click me</button> does not have a :focus state.",
+      ),
+    );
   });
 });
