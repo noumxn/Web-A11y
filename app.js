@@ -7,10 +7,11 @@ import chalk from "chalk";
 import fs from "fs-extra";
 import { JSDOM } from "jsdom";
 import { testAccessibility } from "./components/index.js";
-import { __manual__, __prod__ } from "./constants.js";
+import { __prod__ } from "./constants.js";
 import { saveToOutputFile } from "./utils/fileSaver.js";
 import { validateHtml } from "./utils/htmlValidator.js";
 import { scrapeWebsite } from "./utils/webScraper.js";
+import { isValidURL } from "./utils/urlValidator.js";
 const outputFilePath = "./output.html";
 
 // NOTE: This is to suppress the punycode deprication warning in Node Version 21.0.0
@@ -22,10 +23,22 @@ process.noDeprecation = true;
  **/
 
 (async () => {
-  const url = process.argv[2];
+  let __manual__ = false;
+  let url = undefined;
+  let input = process.argv[2];
+
+  if (input === "-m" || input === "--manual") {
+    __manual__ = true;
+  } else {
+    url = input && isValidURL(input) ? input : undefined;
+  }
 
   if (!url && !__manual__) {
-    console.error(chalk.red("Error: Please provide a valid URL."));
+    console.error(
+      chalk.red(
+        "Error: Invalid command.\nUsage:\n\tnpm start <url> | [-m | --manual]",
+      ),
+    );
     return;
   }
 
