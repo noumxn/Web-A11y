@@ -26,6 +26,7 @@ import { checkGlobalCode } from "./globalCode.js";
 import { checkSensoryRefs } from "./nonSensoryRef.js";
 import { checkAutoplay } from "./autoplay.js";
 import { checkPauseMedia } from "./pauseMedia.js";
+import { checkViewportZoom } from "./viewportZoom.js";
 
 /*
  * @function testAccessibility
@@ -57,6 +58,7 @@ export const testAccessibility = async (document) => {
   funcRunner(checkSensoryRefs, document);
   funcRunner(checkAutoplay, document);
   funcRunner(checkPauseMedia, document);
+  funcRunner(checkViewportZoom, document);
 };
 
 /*
