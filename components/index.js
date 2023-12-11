@@ -29,6 +29,7 @@ import { checkPauseMedia } from "./pauseMedia.js";
 import { checkViewportZoom } from "./viewportZoom.js";
 import { checkLandmarkElements } from "./landmarkElements.js";
 import { checkTitleTooltips } from "./titleTooltips.js";
+import { checkFieldsetLegend } from "./formElements.js";
 
 /*
  * @function testAccessibility
@@ -63,6 +64,7 @@ export const testAccessibility = async (document) => {
   funcRunner(checkViewportZoom, document);
   funcRunner(checkLandmarkElements, document);
   funcRunner(checkTitleTooltips, document);
+  funcRunner(checkFieldsetLegend, document);
 };
 
 /*
