@@ -10,14 +10,14 @@ import { testAccessibility } from "./components/index.js";
 import { __prod__ } from "./constants.js";
 import { saveToOutputFile } from "./utils/fileSaver.js";
 import { validateHtml } from "./utils/htmlValidator.js";
-import { scrapeWebsite } from "./utils/webScraper.js";
 import { isValidURL } from "./utils/urlValidator.js";
+import { scrapeWebsite } from "./utils/webScraper.js";
 const outputFilePath = "./output.html";
 
 // NOTE: This is to suppress the punycode deprication warning in Node Version 21.0.0
 process.noDeprecation = true;
 
-/*
+/**
  * @function main()
  * @arg {string} url | process.argv[2]
  **/

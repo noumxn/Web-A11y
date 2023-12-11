@@ -1,6 +1,6 @@
 import chalk from "chalk";
 
-/*
+/**
  * @function checkLinkElements
  * @param {Document} document
  * @return {string} Success message if all links use the a element

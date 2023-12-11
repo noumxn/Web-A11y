@@ -1,10 +1,11 @@
 import chalk from "chalk";
-/*
+
+/**
  * @function checkViewportZoom
  * @param {Document} document
  * @return {string} Success message if meta element has viewport zoom enabled or by default
  * @return {string} Failure message if meta element is disabled
- * @type ERROR
+ * @kind ERROR
  * @throws Error parsing the HTML file
  * @description
  * 2. C Ensure that viewport zoom is not disabled.

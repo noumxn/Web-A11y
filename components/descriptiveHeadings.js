@@ -1,12 +1,12 @@
 import chalk from "chalk";
 
-/*
+/**
  * @function checkDescriptiveHeadings
  * @param {Document} document
  * @return {string} Success message if all heading elements are descriptive of their content
  * @return {string} Failure message if any heading element is not descriptive of its content
  * @throws Error parsing the HTML file
- * @type WARNING
+ * @kind WARNING
  * @description
  * 5.A
  * Use heading elements to introduce content.

@@ -1,6 +1,6 @@
 import chalk from "chalk";
 
-/*
+/**
  * @function checkTableStructure
  * @param {Document} document
  * @return {string} Success message if all table elements are valid

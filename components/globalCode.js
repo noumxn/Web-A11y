@@ -1,10 +1,11 @@
 import chalk from "chalk";
-/*
+
+/**
  * @function checkGlobalCode
  * @param {Document} document
  * @return {string} Success message if all elements have lang attribute, unique title, and do not use autofocus attribute
  * @return {string} Failure message if any elements do not have a lang attribute, unique titles, use autofocus attributes
- * @type ERROR
+ * @kind ERROR
  * @throws Error parsing the HTML file
  * @description
  * 1. A Use a lang attribute on the html element.

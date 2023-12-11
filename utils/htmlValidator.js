@@ -2,7 +2,7 @@ import axios from "axios";
 
 axios.defaults.headers.post["Content-Type"] = "text/html; charset=utf-8";
 
-/*
+/**
  * @async
  * @function validateHtml
  * @param {string} htmlContent

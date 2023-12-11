@@ -1,12 +1,12 @@
 import chalk from "chalk";
 
-/*
+/**
  * @function checkCaptions
  * @param {Document} document
  * @return {string} Success message if all complex elements that need a label, have a valid label
  * @return {string} Failure message if any complex element that needs a label, does not have a valid label
  * @throws Error parsing the HTML file
- * @type ERROR
+ * @kind ERROR
  * @description
  * 9.A
  * All inputs in a form are associated with a corresponding label element.

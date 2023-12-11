@@ -1,6 +1,6 @@
 import chalk from "chalk";
 
-/*
+/**
  * @description PERCIEVABLE: Time-Based Media: Check for audio descriptions for multimedia.
  **/
 

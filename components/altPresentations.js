@@ -1,6 +1,6 @@
 import chalk from "chalk";
 
-/*
+/**
  * @description PERCEIVABLE: Time-Based Media: Verify the availability of alternative presentations for time-based media.
  **/
 

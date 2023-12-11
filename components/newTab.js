@@ -1,12 +1,12 @@
 import chalk from "chalk";
 
-/*
+/**
  * @function checkNewTab
  * @param {Document} document
  * @return {string} Success message if all links opening in new tabs have appropriate warnings
  * @return {string} Failure message if any link opening in a new tab is missing the required warnings
  * @throws Error parsing the HTML file
- * @type ERROR
+ * @kind ERROR
  * @description
  * 7.F
  * Make sure that links that open in new windows or tabs inform users of the change in context.
