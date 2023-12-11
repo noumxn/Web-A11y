@@ -28,6 +28,10 @@ import {
   checkTableStructure,
 } from "./tables.js";
 import { checkViewportZoom } from "./viewportZoom.js";
+import { checkLandmarkElements } from "./landmarkElements.js";
+import { checkTitleTooltips } from "./titleTooltips.js";
+import { checkFieldsetLegend } from "./formElements.js";
+import { checkAutocomplete } from "./autocomplete.js";
 
 /**
  * @function testAccessibility
@@ -61,6 +65,10 @@ export const testAccessibility = async (document) => {
   funcRunner(checkPauseMedia, document);
   funcRunner(checkViewportZoom, document);
   funcRunner(checkNewTab, document);
+  funcRunner(checkLandmarkElements, document);
+  funcRunner(checkTitleTooltips, document);
+  funcRunner(checkFieldsetLegend, document);
+  funcRunner(checkAutocomplete, document);
 };
 
 /**
