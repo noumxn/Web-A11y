@@ -6,7 +6,7 @@ import chalk from "chalk";
  * @return {string} Success message if all image elements have Alternate text property
  * @return {string} Failure message if any image elements have missing Alternate text
  * @throws Error parsing the HTML file
- * @kind ERROR
+ * @desc ERROR
  * @description
  * 4.A
  * Make sure that all img elements have an alt attribute.

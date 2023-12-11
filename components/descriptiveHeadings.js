@@ -6,7 +6,7 @@ import chalk from "chalk";
  * @return {string} Success message if all heading elements are descriptive of their content
  * @return {string} Failure message if any heading element is not descriptive of its content
  * @throws Error parsing the HTML file
- * @kind WARNING
+ * @desc WARNING
  * @description
  * 5.A
  * Use heading elements to introduce content.

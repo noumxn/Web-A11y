@@ -6,6 +6,7 @@ import chalk from "chalk";
  * @return {string} Success message if all table elements are valid
  * @return {string} Failure message if any table elements are invalid
  * @throws Error parsing the HTML file
+ * @desc ERROR
  * @description
  * 8.A
  * Use the table element to describe tabular data.
@@ -30,12 +31,13 @@ export const checkTableStructure = (document) => {
   return chalk.green("All table elements are valid!");
 };
 
-/*
+/**
  * @function checkTableHeaders
  * @param {Document} document
  * @return {string} Success message if all table header elements are valid
  * @return {string} Failure message if any table header elements are invalid
  * @throws Error parsing the HTML file
+ * @desc ERROR
  * @description
  * 8.B
  * Use the th element for table headers (with appropriate scope attributes).
@@ -64,12 +66,13 @@ export const checkTableHeaders = (document) => {
   return chalk.green("All table header elements are valid!");
 };
 
-/*
+/**
  * @function checkTableCaptions
  * @param {Document} document
  * @return {string} Success message if all tables contain captions
  * @return {string} Failure message if any table does not contain captions
  * @throws Error parsing the HTML file
+ * @desc ERROR
  * @description
  * 8.C
  * Use the caption element to provide a title for the table.

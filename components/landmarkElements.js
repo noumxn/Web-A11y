@@ -1,12 +1,12 @@
 import chalk from "chalk";
 
-/*
+/**
  * @function checkLandmarkElements
  * @param {Document} document
  * @return {string} Success message if high-priority landmark elements are present
  * @return {string} Warning message if high-priority landmark elements are missing, but others are present
  * @return {string} Failure message if high-priority landmark elements are missing
- * @type ERROR
+ * @desc WARNING|ERROR
  * @throws Error parsing the HTML file
  * @description
  * 2.D Ensure that important content regions are marked using landmark elements.

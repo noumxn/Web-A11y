@@ -6,7 +6,7 @@ import chalk from "chalk";
  * @return {string} Success message skip link is present on web page
  * @return {string} Failure message skip link is missing
  * @throws Error parsing the HTML file
- * @kind WARNING
+ * @desc WARNING
  * @description
  * 7.E
  * Provide a skip link and make sure that it is visible when focused.

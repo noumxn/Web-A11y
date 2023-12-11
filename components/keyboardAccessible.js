@@ -6,7 +6,7 @@ import chalk from "chalk";
  * @return {string} Success message if all interactive elements are focusable and are visible
  * @return {string} Failure message if any interactive element is not focusable and are not visible
  * @throws Error parsing the HTML file
- * @kind ERROR
+ * @desc ERROR
  * @description
  * 3.A
  * Make sure there is a visible focus style for interactive elements that are navigated to via keyboard input.

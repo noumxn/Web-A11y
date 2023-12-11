@@ -6,9 +6,10 @@ import chalk from "chalk";
  * @return {string} Success message if fieldset and legend elements are used appropriately
  * @return {string} Failure message if fieldset and legend elements are missing where required (fieldset must have a legend, vice versa)
  * @throws Error parsing the HTML file
- * @type ERROR
+ * @desc ERROR
  * @description
  * 9.B Use fieldset and legend elements where appropriate.
+ * Use fieldset to group them, and legend to provide a label for what this section is for.
  */
 
 export const checkFieldsetLegend = (document) => {

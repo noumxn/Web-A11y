@@ -7,7 +7,7 @@ import textReadability from "text-readability";
  * @return {string} Success message if the Flesch-Kincaid reading level is less than or equal to 12
  * @return {string} Failure message if the Flesch-Kincaid reading level is greater than 12
  * @throws Error parsing the HTML file
- * @kind ERROR/WARNING
+ * @desc WARNING|ERROR
  * @description
  * 1.A
  * Use plain language and avoid figures of speech, idioms, and complicated metaphors.

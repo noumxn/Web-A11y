@@ -1,12 +1,12 @@
 import chalk from "chalk";
 
-/*
- * @function displayFormErrors
+/**
+ * @function checkErrorMessage
  * @param {string} document - HTML content in DOM-readable form
  * @return {string} Success message if form input errors are displayed above the form
  * @return {string} Failure message if form input errors are not displayed above the form
  * @throws Error parsing the HTML file
- * @type ERROR
+ * @desc WARNING
  * @description
  * 4.E
  * Ensure that form input errors are displayed in a list above the form after submission.

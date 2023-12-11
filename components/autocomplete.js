@@ -1,6 +1,6 @@
 import chalk from "chalk";
 
-/*
+/**
  * @function checkAutocomplete
  * @param {Document} document
  * @return {string} Success message if all input and textarea tags have the autocomplete attribute

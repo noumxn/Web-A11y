@@ -6,7 +6,7 @@ import chalk from "chalk";
  * @return {string} Success message if all complex elements that need a label, have a valid label
  * @return {string} Failure message if any complex element that needs a label, does not have a valid label
  * @throws Error parsing the HTML file
- * @kind ERROR
+ * @desc ERROR
  * @description
  * 9.A
  * All inputs in a form are associated with a corresponding label element.

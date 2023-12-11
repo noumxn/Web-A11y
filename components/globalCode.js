@@ -5,11 +5,18 @@ import chalk from "chalk";
  * @param {Document} document
  * @return {string} Success message if all elements have lang attribute, unique title, and do not use autofocus attribute
  * @return {string} Failure message if any elements do not have a lang attribute, unique titles, use autofocus attributes
- * @kind ERROR
  * @throws Error parsing the HTML file
+ * @desc ERROR
  * @description
- * 1. A Use a lang attribute on the html element.
- * 2. F Avoid using the autofocus attribute
+ * 2.B
+ * Use a lang attribute on the html element.
+ * This helps assistive technology such as screen readers to pronounce content correctly.
+ * 2.G
+ * Avoid using the autofocus attribute
+ * People who are blind or who have low vision may be disoriented when focus is moved
+ * without their permission. Additionally, autofocus can be problematic for people with
+ * motor control disabilities, as it may create extra work for them to navigate out
+ * from the autofocused area and to other locations on the page/view.
  **/
 
 export const checkGlobalCode = (document) => {
