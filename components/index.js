@@ -32,6 +32,7 @@ import { checkLandmarkElements } from "./landmarkElements.js";
 import { checkTitleTooltips } from "./titleTooltips.js";
 import { checkFieldsetLegend } from "./formElements.js";
 import { checkAutocomplete } from "./autocomplete.js";
+import { checkErrorMessage } from "./errorMessages.js";
 
 /**
  * @function testAccessibility
@@ -69,6 +70,7 @@ export const testAccessibility = async (document) => {
   funcRunner(checkTitleTooltips, document);
   funcRunner(checkFieldsetLegend, document);
   funcRunner(checkAutocomplete, document);
+  funcRunner(checkErrorMessage, document);
 };
 
 /**
