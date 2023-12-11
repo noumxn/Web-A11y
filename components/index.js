@@ -28,6 +28,7 @@ import { checkAutoplay } from "./autoplay.js";
 import { checkPauseMedia } from "./pauseMedia.js";
 import { checkViewportZoom } from "./viewportZoom.js";
 import { checkLandmarkElements } from "./landmarkElements.js";
+import { checkTitleTooltips } from "./titleTooltips.js";
 
 /*
  * @function testAccessibility
@@ -61,6 +62,7 @@ export const testAccessibility = async (document) => {
   funcRunner(checkPauseMedia, document);
   funcRunner(checkViewportZoom, document);
   funcRunner(checkLandmarkElements, document);
+  funcRunner(checkTitleTooltips, document);
 };
 
 /*
