@@ -1,6 +1,5 @@
 # Accessibility Testing Tool
 
-
 ## Setup:
 
 1. Clone the repository using the following command:
@@ -8,6 +7,7 @@
    git clone https://github.com/SE4AIResearch/Accessibility-Testing.git
    ```
 2. Check out the project repository:
+
    ```bash
    cd Assessibility-Testing/
    ```
@@ -17,6 +17,7 @@
    - To install node.js and npm, please check out the node.js website (https://nodejs.org/en/) and download the appropriate installer for your OS. Follow the installation instructions provided by the installer.
 
 4. Once you have successfully installed these, you can run the following commands to install the development dependencies:
+
    ```bash
    npm i
    ```
@@ -39,6 +40,7 @@
    ```
 
 ## Authors:
+
 - Ashna Razdan
 - Cindy Lee
 - Zuting Chen
