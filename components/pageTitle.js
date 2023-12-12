@@ -1,12 +1,12 @@
 import chalk from "chalk";
 
-/*
+/**
  * @function checkPageTitle
  * @param {Document} document
  * @return {string} Success message if the webpage has a Title
  * @return {string} Failure message if the title is missing from the webpage
  * @throws Error parsing the HTML file
- * @type ERROR
+ * @desc ERROR
  * @description
  * 2.B
  * Provide a unique title for each page or view.

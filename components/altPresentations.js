@@ -1,7 +1,14 @@
 import chalk from "chalk";
 
-/*
- * @description PERCEIVABLE: Time-Based Media: Verify the availability of alternative presentations for time-based media.
+/**
+ * @function checkTimeBasedMediaAlt
+ * @param {Document} document
+ * @return {string} Success message if all time based media has alt text
+ * @return {string} Failure message if any time based media does not have alt text
+ * @throws Error parsing the HTML file
+ * @desc ERROR
+ * @description
+ * Verify the availability of alternative presentations for time-based media.
  **/
 
 export const checkTimeBasedMediaAlt = (document) => {

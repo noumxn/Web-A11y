@@ -1,4 +1,4 @@
-/*
+/**
  * @async
  * @param {string} string
  * @return {boolean} Returns true when string matches regex for URL

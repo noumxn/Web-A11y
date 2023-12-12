@@ -21,6 +21,7 @@ module.exports = {
       },
     },
   ],
+  ignorePatterns: ["docs/"],
   rules: {
     "no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
   },

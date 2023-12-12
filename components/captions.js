@@ -1,12 +1,12 @@
 import chalk from "chalk";
 
-/*
+/**
  * @function checkCaptions
  * @param {Document} document
  * @return {string} Success message if all video elements have captions
  * @return {string} Failure message if any video elements have missing captions
  * @throws Error parsing the HTML file
- * @type ERROR
+ * @desc ERROR
  * @description
  * 11.A
  * Confirm the presence of captions.

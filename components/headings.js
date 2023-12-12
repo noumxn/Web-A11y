@@ -1,12 +1,12 @@
 import chalk from "chalk";
 
-/*
+/**
  * @function checkHeadings
  * @param {Document} document
  * @return {string} Success message if there is exactly one H1 tag
  * @return {string} Failure message if there are zero or more than one H1 tags
  * @throws Error parsing the HTML file
- * @type ERROR
+ * @desc ERROR
  * @description
  * 5.B
  * Use heading elements to introduce content.

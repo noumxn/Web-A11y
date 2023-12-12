@@ -1,11 +1,12 @@
 import chalk from "chalk";
-/*
+
+/**
  * @function checkKeyboardAccessibility
  * @param {Document} document
  * @return {string} Success message if all interactive elements are focusable and are visible
  * @return {string} Failure message if any interactive element is not focusable and are not visible
  * @throws Error parsing the HTML file
- * @type ERROR
+ * @desc ERROR
  * @description
  * 3.A
  * Make sure there is a visible focus style for interactive elements that are navigated to via keyboard input.

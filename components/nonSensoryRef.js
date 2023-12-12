@@ -1,13 +1,13 @@
 import chalk from "chalk";
 import color from "color-string";
 
-/*
+/**
  * @function checkSensoryRefs
  * @param {Document} document
  * @return {string} Success message if no Positional/Sensory references found
  * @return {string} Failure message if any Positional/Sensory references found
  * @throws Error parsing the HTML file
- * @type WARNING
+ * @desc WARNING
  * @description
  * 13.E
  * Make sure instructions are not visual only

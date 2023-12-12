@@ -1,6 +1,6 @@
 import fs from "fs-extra";
 
-/*
+/**
  * @function saveToOutputFile
  * @param {string} htmlContent
  * @description Saves HTML content to a file called 'output.html'

@@ -1,12 +1,12 @@
 import chalk from "chalk";
 
-/*
+/**
  * @function checkHeadingOrder
  * @param {Document} document
  * @return {string} Success message if heading elements are in a logical sequence and no levels are skipped
  * @return {string} Failure message if heading elements are not in a logical sequence or if levels are skipped
  * @throws Error parsing the HTML file
- * @type ERROR
+ * @desc ERROR
  * @description
  * 5.C
  * Heading elements should be written in a logical sequence.

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-/*
+/**
  * @async
  * @param {string} url
  * @return {htmlContent} Returns string representation of raw HTML

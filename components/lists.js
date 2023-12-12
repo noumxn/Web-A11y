@@ -1,5 +1,19 @@
 import chalk from "chalk";
 
+/**
+ * @function checkLists
+ * @param {Document} document
+ * @return {string} Success message if all lists use ol, ul, and dl elements
+ * @return {string} Failure message if any lists do not use ol, ul, and dl elements
+ * @throws Error parsing the HTML file
+ * @desc ERROR
+ * @description
+ * 6.A
+ * Use list elements (ol, ul, and dl elements) for list content.
+ * This may include sections of related content, items visually
+ * displayed in a grid-like layout, or sibling a elements.
+ **/
+
 export const checkLists = (document) => {
   try {
     const listPoints = [
