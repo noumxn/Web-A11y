@@ -12,6 +12,7 @@ import { saveToOutputFile } from "./utils/fileSaver.js";
 import { validateHtml } from "./utils/htmlValidator.js";
 import { isValidURL } from "./utils/urlValidator.js";
 import { scrapeWebsite } from "./utils/webScraper.js";
+import { fetchCss } from "./utils/cssUtil.js";
 const outputFilePath = "./output.html";
 
 // NOTE: This is to suppress the punycode deprication warning in Node Version 21.0.0
@@ -47,12 +48,17 @@ async function main() {
   try {
     let htmlContent;
     let cookieData;
+    let hrefs;
     if (!__manual__) {
       // Use axios to fetch html content
       const websiteData = await scrapeWebsite(url);
       htmlContent = websiteData.htmlContent;
       cookieData = websiteData.cookieData;
+      hrefs = websiteData.hrefs;
 
+      if (hrefs.length > 0) {
+        await fetchCss(url, hrefs);
+      }
       // Create a new file with html content
       if (!htmlContent) return;
       await saveToOutputFile(htmlContent);

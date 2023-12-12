@@ -3,6 +3,9 @@
 # HTML file
 output.html
 
+# CSS file
+output.css
+
 # node_modules
 .node_modules/
 
