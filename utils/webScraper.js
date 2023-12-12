@@ -11,10 +11,14 @@ import axios from "axios";
 export const scrapeWebsite = async (url) => {
   let response;
   let htmlContent;
+  let cookieData;
+
   try {
     response = await axios.get(url);
+
     htmlContent = response.data;
-    return htmlContent;
+    cookieData = response.headers["set-cookie"];
+    return { htmlContent: htmlContent, cookieData: cookieData };
   } catch (e) {
     throw `Failed to fetch data from ${url}. Please ensure valid URL is provided.`;
   }
