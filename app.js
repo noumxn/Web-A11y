@@ -19,10 +19,12 @@ process.noDeprecation = true;
 
 /**
  * @function main()
- * @arg {string} url | process.argv[2]
+ * @arg {string} url
+ * @arg {string} -m
+ * @arg {string} --manual
  **/
 
-(async () => {
+async function main() {
   let __manual__ = false;
   let url = undefined;
   let input = process.argv[2];
@@ -44,9 +46,13 @@ process.noDeprecation = true;
 
   try {
     let htmlContent;
+    let cookieData;
     if (!__manual__) {
       // Use axios to fetch html content
-      htmlContent = await scrapeWebsite(url);
+      const websiteData = await scrapeWebsite(url);
+      htmlContent = websiteData.htmlContent;
+      cookieData = websiteData.cookieData;
+
       // Create a new file with html content
       if (!htmlContent) return;
       await saveToOutputFile(htmlContent);
@@ -70,8 +76,9 @@ process.noDeprecation = true;
     const data = fs.readFileSync(outputFilePath, "utf-8");
     const dom = new JSDOM(data);
     const { document } = dom.window;
-    testAccessibility(document);
+    testAccessibility(document, cookieData);
   } catch (e) {
     console.error("Error:", e);
   }
-})();
+}
+main();

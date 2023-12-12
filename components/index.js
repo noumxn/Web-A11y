@@ -33,6 +33,7 @@ import { checkTitleTooltips } from "./titleTooltips.js";
 import { checkFieldsetLegend } from "./formElements.js";
 import { checkAutocomplete } from "./autocomplete.js";
 import { checkErrorMessage } from "./errorMessages.js";
+import { checkSessionTimeout } from "./sessionTimeout.js";
 
 /**
  * @function testAccessibility
@@ -41,7 +42,7 @@ import { checkErrorMessage } from "./errorMessages.js";
  * @todo Sort these in order of priority
  */
 
-export const testAccessibility = async (document) => {
+export const testAccessibility = async (document, cookie) => {
   funcRunner(checkAriaAttr, document);
   funcRunner(checkAltText, document);
   funcRunner(checkCaptions, document);
@@ -71,6 +72,7 @@ export const testAccessibility = async (document) => {
   funcRunner(checkFieldsetLegend, document);
   funcRunner(checkAutocomplete, document);
   funcRunner(checkErrorMessage, document);
+  funcRunner(checkSessionTimeout, document, cookie);
 };
 
 /**
@@ -80,7 +82,7 @@ export const testAccessibility = async (document) => {
  * @description Executes the function passed in as param, while passing document as its arguement, and logs the output returned
  **/
 
-async function funcRunner(func, document) {
-  const output = await func(document);
+async function funcRunner(func, document, cookie) {
+  const output = await func(document, cookie);
   if (output) console.log(output);
 }
