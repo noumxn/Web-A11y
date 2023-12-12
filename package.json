@@ -24,7 +24,8 @@
     "format": "prettier --write \"./*.{js,jsx,ts,tsx}\"",
     "lint:fix": "eslint --fix .",
     "fix:eslint": "eslint --ext .js,.ts,.jsx,.tsx --fix .",
-    "fix:prettier": "prettier --write ."
+    "fix:prettier": "prettier --write .",
+    "docs": "jsdoc -d docs --configure jsdocConf.json"
   },
   "dependencies": {
     "axios": "^1.5.1",
