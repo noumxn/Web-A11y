@@ -14,7 +14,7 @@ describe("Accessible buttons", () => {
     const {document: document1} = dom1.window;
     const result1 = checkButtonType(document1);
     expect(result1).to.include(
-      "Found a non-submit button without type=\"button\":",
+      `Found a non-submit button without type="button":`,
     );
   });
 
