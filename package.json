@@ -35,7 +35,8 @@
     "fs-extra": "^11.1.1",
     "jsdocs": "^1.0.0",
     "jsdom": "^22.1.0",
-    "text-readability": "^1.0.5"
+    "text-readability": "^1.0.5",
+    "wcag-color": "^1.1.1"
   },
   "husky": {
     "hooks": {
