@@ -14,7 +14,7 @@ export const checkButtonType = (document) => {
     const buttons = document.querySelectorAll('button:not([type="submit"])');
     buttons.forEach((button) => {
       if (!button.hasAttribute("type") || button.getAttribute("type") !== "button") {
-        output += `${chalk.red(`\nFound a non-submit button without type=\"button\":`)}${chalk.cyan(button.outerHTML)}`;
+        output += `${chalk.red(`\nFound a non-submit button without type="button":`)}${chalk.cyan(button.outerHTML)}`;
       }
     });
     if (output.length === 0) {
