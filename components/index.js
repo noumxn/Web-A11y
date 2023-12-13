@@ -35,6 +35,7 @@ import {checkAutocomplete} from "./autocomplete.js";
 import {checkErrorMessage} from "./errorMessages.js";
 import {checkSessionTimeout} from "./sessionTimeout.js";
 import {checkLinkDecoration} from "./linkDecoration.js";
+import {checkButtonType} from "./buttonType.js";
 
 /**
  * @function testAccessibility
@@ -75,6 +76,7 @@ export const testAccessibility = async (document, cookie) => {
   funcRunner(checkErrorMessage, document);
   funcRunner(checkSessionTimeout, document, cookie);
   funcRunner(checkLinkDecoration, document);
+  funcRunner(checkButtonType, document);
 };
 
 /**
