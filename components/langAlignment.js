@@ -14,37 +14,38 @@ import chalk from "chalk";
 export const checkTextAlignment = (document) => {
   try {
     let output = "";
-    const elementsWithText = document.querySelectorAll('p, div, span');
+    const elementsWithText = document.querySelectorAll("p, div, span");
 
     const checkAlignment = (element, expectedAlignment) => {
-      const computedAlignment = window.getComputedStyle(element).getPropertyValue('text-align');
+      const computedAlignment = window
+        .getComputedStyle(element)
+        .getPropertyValue("text-align");
       if (computedAlignment.trim() !== expectedAlignment) {
-        output +=
-          `${chalk.red(`Incorrect text alignment for ${expectedAlignment} languages:`)}${chalk.cyan(
-            element.outerHTML,
-          )}`;
+        output += `${chalk.red(
+          `Incorrect text alignment for ${expectedAlignment} languages:`,
+        )}${chalk.cyan(element.outerHTML)}`;
       }
     };
 
     elementsWithText.forEach((element) => {
-      const langAttribute = element.getAttribute('lang');
+      const langAttribute = element.getAttribute("lang");
       if (langAttribute) {
         const lang = langAttribute.toLowerCase();
-        if (lang === 'ar' || lang.startsWith('ar-')) {
+        if (lang === "ar" || lang.startsWith("ar-")) {
           // RTL language
-          checkAlignment(element, 'right');
+          checkAlignment(element, "right");
         } else {
           // LTR language
-          checkAlignment(element, 'left');
+          checkAlignment(element, "left");
         }
       }
     });
 
     if (output.length === 0) {
-      console.log("PASS")
+      console.log("PASS");
       return chalk.green("Text Alignment test passed!");
     } else {
-      console.log("FAIL")
+      console.log("FAIL");
       return output;
     }
   } catch (e) {

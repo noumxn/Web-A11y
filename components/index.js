@@ -3,45 +3,45 @@
  * @description Inward facing wrapper interface that calls all the functions that test a web-page for accessibility
  **/
 
-import {checkTimeBasedMediaAlt} from "./altPresentations.js";
-import {checkAltText} from "./altText.js";
-import {checkAriaAttr} from "./ariaLabel.js";
-import {checkAudioDesc} from "./audioDesc.js";
-import {checkAutoplay} from "./autoplay.js";
-import {checkCaptions} from "./captions.js";
-import {checkFocusStyles, checkLinkElements} from "./controls.js";
-import {checkDescriptiveHeadings} from "./descriptiveHeadings.js";
-import {checkSkipLinks} from "./easyNavigation.js";
-import {checkGlobalCode} from "./globalCode.js";
-import {checkHeadingOrder} from "./headingOrder.js";
-import {checkHeadings} from "./headings.js";
-import {checkKeyboardAccessibility} from "./keyboardAccessible.js";
-import {checkLists} from "./lists.js";
-import {checkNewTab} from "./newTab.js";
-import {checkSensoryRefs} from "./nonSensoryRef.js";
-import {checkPageTitle} from "./pageTitle.js";
-import {checkPauseMedia} from "./pauseMedia.js";
-import {checkReadability} from "./readabilityIndex.js";
+import { checkTimeBasedMediaAlt } from "./altPresentations.js";
+import { checkAltText } from "./altText.js";
+import { checkAriaAttr } from "./ariaLabel.js";
+import { checkAudioDesc } from "./audioDesc.js";
+import { checkAutoplay } from "./autoplay.js";
+import { checkCaptions } from "./captions.js";
+import { checkFocusStyles, checkLinkElements } from "./controls.js";
+import { checkDescriptiveHeadings } from "./descriptiveHeadings.js";
+import { checkSkipLinks } from "./easyNavigation.js";
+import { checkGlobalCode } from "./globalCode.js";
+import { checkHeadingOrder } from "./headingOrder.js";
+import { checkHeadings } from "./headings.js";
+import { checkKeyboardAccessibility } from "./keyboardAccessible.js";
+import { checkLists } from "./lists.js";
+import { checkNewTab } from "./newTab.js";
+import { checkSensoryRefs } from "./nonSensoryRef.js";
+import { checkPageTitle } from "./pageTitle.js";
+import { checkPauseMedia } from "./pauseMedia.js";
+import { checkReadability } from "./readabilityIndex.js";
 import {
   checkTableCaptions,
   checkTableHeaders,
   checkTableStructure,
 } from "./tables.js";
-import {checkViewportZoom} from "./viewportZoom.js";
-import {checkLandmarkElements} from "./landmarkElements.js";
-import {checkTitleTooltips} from "./titleTooltips.js";
-import {checkFieldsetLegend} from "./formElements.js";
-import {checkAutocomplete} from "./autocomplete.js";
-import {checkErrorMessage} from "./errorMessages.js";
-import {checkSessionTimeout} from "./sessionTimeout.js";
-import {checkLinkDecoration} from "./linkDecoration.js";
-import {checkButtonType} from "./buttonType.js";
-import {checkColorContrasts} from "./colorContrast.js";
-import {checkSelectionContrast} from "./selectionColor.js";
-import {checkOrientationSupport} from "./orientation.js";
-import {checkHorizontalScrolling} from "./horizontalScrolling.js";
-import {checkElementContent} from "./elementContent.js";
-import {checkTextAlignment} from "./langAlignment.js";
+import { checkViewportZoom } from "./viewportZoom.js";
+import { checkLandmarkElements } from "./landmarkElements.js";
+import { checkTitleTooltips } from "./titleTooltips.js";
+import { checkFieldsetLegend } from "./formElements.js";
+import { checkAutocomplete } from "./autocomplete.js";
+import { checkErrorMessage } from "./errorMessages.js";
+import { checkSessionTimeout } from "./sessionTimeout.js";
+import { checkLinkDecoration } from "./linkDecoration.js";
+import { checkButtonType } from "./buttonType.js";
+import { checkColorContrasts } from "./colorContrast.js";
+import { checkSelectionContrast } from "./selectionColor.js";
+import { checkOrientationSupport } from "./orientation.js";
+import { checkHorizontalScrolling } from "./horizontalScrolling.js";
+import { checkElementContent } from "./elementContent.js";
+import { checkTextAlignment } from "./langAlignment.js";
 
 /**
  * @function testAccessibility

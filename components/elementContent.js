@@ -14,23 +14,21 @@ import chalk from "chalk";
 export const checkElementContent = (document) => {
   try {
     let output = "";
-    const buttons = document.querySelectorAll('button');
-    const links = document.querySelectorAll('a');
-    const labels = document.querySelectorAll('label');
+    const buttons = document.querySelectorAll("button");
+    const links = document.querySelectorAll("a");
+    const labels = document.querySelectorAll("label");
 
     // Helper function to check if content is unique and descriptive
     const isUniqueAndDescriptive = (element) => {
       const content = element.textContent.trim();
       if (!content) {
-        output +=
-          `${chalk.red("\nElement with empty content:")}${chalk.cyan(
-            element.outerHTML,
-          )}`;
+        output += `${chalk.red("\nElement with empty content:")}${chalk.cyan(
+          element.outerHTML,
+        )}`;
       } else if (content.length < 3) {
-        output +=
-          `${chalk.yellow("\nElement with non-descriptive content:")}${chalk.cyan(
-            element.outerHTML,
-          )}`;
+        output += `${chalk.yellow(
+          "\nElement with non-descriptive content:",
+        )}${chalk.cyan(element.outerHTML)}`;
       }
     };
 

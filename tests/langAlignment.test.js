@@ -1,11 +1,10 @@
-import {expect} from "chai";
-import {checkTextAlignment} from "../components/langAlignment.js";
-import {JSDOM} from "jsdom";
-import chalk from "chalk";
+import { expect } from "chai";
+import { checkTextAlignment } from "../components/langAlignment.js";
+import { JSDOM } from "jsdom";
 
 describe("Check Language Text Alignment", () => {
-    it("should pass because english is right aligned", () => {
-        const html1 = `
+  it("should pass because english is right aligned", () => {
+    const html1 = `
             <!DOCTYPE html>
             <html lang="en">
             <head>
@@ -23,14 +22,14 @@ describe("Check Language Text Alignment", () => {
             </body>
             </html>
         `;
-        const dom1 = new JSDOM(html1);
-        const {document: document1} = dom1.window;
-        const result1 = checkTextAlignment(document1);
-        expect(result1).to.include("Text Alignment test passed!");
-    });
+    const dom1 = new JSDOM(html1);
+    const { document: document1 } = dom1.window;
+    const result1 = checkTextAlignment(document1);
+    expect(result1).to.include("Text Alignment test passed!");
+  });
 
-    it("should pass because arabic is left aligned", () => {
-        const html2 = `
+  it("should pass because arabic is left aligned", () => {
+    const html2 = `
                 <!DOCTYPE html>
             <html lang="ar">
             <head>
@@ -48,9 +47,9 @@ describe("Check Language Text Alignment", () => {
             </body>
             </html>
         `;
-        const dom2 = new JSDOM(html2);
-        const {document: document2} = dom2.window;
-        const result2 = checkTextAlignment(document2);
-        expect(result2).to.include("Text Alignment test passed!");
-    });
+    const dom2 = new JSDOM(html2);
+    const { document: document2 } = dom2.window;
+    const result2 = checkTextAlignment(document2);
+    expect(result2).to.include("Text Alignment test passed!");
+  });
 });
