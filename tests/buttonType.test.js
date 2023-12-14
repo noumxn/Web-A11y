@@ -1,6 +1,6 @@
-import {expect} from "chai";
-import {JSDOM} from "jsdom";
-import {checkButtonType} from "../components/buttonType.js";
+import { expect } from "chai";
+import { JSDOM } from "jsdom";
+import { checkButtonType } from "../components/buttonType.js";
 
 describe("Accessible buttons", () => {
   it(`should fail because button does not have type="missing"`, () => {
@@ -11,7 +11,7 @@ describe("Accessible buttons", () => {
 </body>
 </html>`;
     const dom1 = new JSDOM(html1);
-    const {document: document1} = dom1.window;
+    const { document: document1 } = dom1.window;
     const result1 = checkButtonType(document1);
     expect(result1).to.include(
       `Found a non-submit button without type="button":`,
@@ -27,10 +27,8 @@ describe("Accessible buttons", () => {
 </body>
 </html>`;
     const dom2 = new JSDOM(html2);
-    const {document: document2} = dom2.window;
+    const { document: document2 } = dom2.window;
     const result2 = checkButtonType(document2);
-    expect(result2).to.include(
-      "Button Type test passed!",
-    );
+    expect(result2).to.include("Button Type test passed!");
   });
 });

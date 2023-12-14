@@ -1,9 +1,9 @@
-import fs from 'fs/promises';
-import {ratio as contrastRatio} from 'wcag-color';
-import chalk from 'chalk';
-import path from 'path';
-import {dirname} from 'path';
-import {fileURLToPath} from 'url';
+import fs from "fs/promises";
+import { ratio as contrastRatio } from "wcag-color";
+import chalk from "chalk";
+import path from "path";
+import { dirname } from "path";
+import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -30,24 +30,31 @@ const cssFilePath = path.resolve(scriptDirectory, cssPath);
 export const checkColorContrasts = async (document) => {
   try {
     let output = "";
-    const cssContent = await fs.readFile(cssFilePath, 'utf8');
+    const cssContent = await fs.readFile(cssFilePath, "utf8");
 
-    const elements = document.querySelectorAll('*');
+    const elements = document.querySelectorAll("*");
     elements.forEach((element) => {
       if (element.parentElement) {
-        const parentColor = getColorFromCSS(element.parentElement, cssContent) || getInlineColor(element.parentElement);
-        const elementColor = getColorFromCSS(element, cssContent) || getInlineColor(element);
+        const parentColor =
+          getColorFromCSS(element.parentElement, cssContent) ||
+          getInlineColor(element.parentElement);
+        const elementColor =
+          getColorFromCSS(element, cssContent) || getInlineColor(element);
 
         if (parentColor && elementColor) {
           const contrast = contrastRatio(elementColor, parentColor);
           if (contrast < 4.5) {
-            output += `${chalk.red("Low contrast between element and parent:")} ${element.outerHTML} (Contrast ratio: ${contrast})\n`;
+            output += `${chalk.red(
+              "Low contrast between element and parent:",
+            )} ${element.outerHTML} (Contrast ratio: ${contrast})\n`;
           }
         }
       }
     });
 
-    return output.length === 0 ? chalk.green("Color contrast test passed!") : output;
+    return output.length === 0
+      ? chalk.green("Color contrast test passed!")
+      : output;
   } catch (err) {
     return `${chalk.red("Error processing the document or CSS file:")}${err}`;
   }
@@ -55,19 +62,22 @@ export const checkColorContrasts = async (document) => {
 
 const getColorFromCSS = (element, cssContent) => {
   if (!element || !element.tagName) return null;
-  const classSelector = element.className ? `.${element.className.toString().split(' ').join('.')}` : '';
-  const selector = element.tagName.toLowerCase() +
-    (element.id ? `#${element.id}` : '') +
+  const classSelector = element.className
+    ? `.${element.className.toString().split(" ").join(".")}`
+    : "";
+  const selector =
+    element.tagName.toLowerCase() +
+    (element.id ? `#${element.id}` : "") +
     classSelector;
-  const regex = new RegExp(`${selector}\\s*\\{([^}]+)\\}`, 'i');
+  const regex = new RegExp(`${selector}\\s*\\{([^}]+)\\}`, "i");
   const match = cssContent.match(regex);
 
   if (match) {
-    const properties = match[1].split(';');
+    const properties = match[1].split(";");
     for (const property of properties) {
       const trimmedProperty = property.trim().toLowerCase();
-      if (trimmedProperty.startsWith('color:')) {
-        return trimmedProperty.split(':')[1].trim();
+      if (trimmedProperty.startsWith("color:")) {
+        return trimmedProperty.split(":")[1].trim();
       }
     }
   }
@@ -78,11 +88,11 @@ const getInlineColor = (element) => {
   if (!element || !element.getAttribute) return null;
   const inlineStyle = element.getAttribute("style");
   if (inlineStyle) {
-    const properties = inlineStyle.split(';');
+    const properties = inlineStyle.split(";");
     for (const property of properties) {
       const trimmedProperty = property.trim().toLowerCase();
-      if (trimmedProperty.startsWith('color:')) {
-        return trimmedProperty.split(':')[1].trim();
+      if (trimmedProperty.startsWith("color:")) {
+        return trimmedProperty.split(":")[1].trim();
       }
     }
   }

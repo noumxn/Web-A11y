@@ -1,8 +1,8 @@
 import fs from "fs/promises";
 import chalk from "chalk";
 import path from "path";
-import { dirname } from "path";
-import { fileURLToPath } from "url";
+import {dirname} from "path";
+import {fileURLToPath} from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -18,7 +18,7 @@ const cssFilePath = path.resolve(scriptDirectory, cssPath);
  * @description
  * 16. A Check that the site can be rotated to any orientation.
  */
-export const checkOrientationSupport = async (__document) => {
+export const checkOrientationSupport = async () => {
   try {
     let output = "";
     const cssContent = await getCssContent();

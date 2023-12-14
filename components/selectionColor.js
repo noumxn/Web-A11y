@@ -1,9 +1,9 @@
-import {ratio} from 'wcag-color';
-import chalk from 'chalk';
-import fs from 'fs/promises';
-import path from 'path';
-import {dirname} from 'path';
-import {fileURLToPath} from 'url';
+import { ratio } from "wcag-color";
+import chalk from "chalk";
+import fs from "fs/promises";
+import path from "path";
+import { dirname } from "path";
+import { fileURLToPath } from "url";
 import toHex from "colornames";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -14,7 +14,7 @@ const cssFilePath = path.resolve(scriptDirectory, cssPath);
 
 /**
  * @function checkSelectionContrast
- * @param {document} Document 
+ * @param {document} Document
  * @param {string} cssFilePath
  * @return {string} Success message if ::selection color contrast for all elements is greater than 4.5:1
  * @return {string} Failure message if ::selection color contrast for any element is less than 4.5:1
@@ -25,9 +25,11 @@ const cssFilePath = path.resolve(scriptDirectory, cssPath);
  */
 export const checkSelectionContrast = async (document) => {
   try {
-    console.log("HELLO", toHex("yellow"))
-    const elements = new Set([...document.querySelectorAll('*')].map(el => el.tagName.toLowerCase()));
-    const cssContent = await fs.readFile(cssFilePath, 'utf8');
+    console.log("HELLO", toHex("yellow"));
+    const elements = new Set(
+      [...document.querySelectorAll("*")].map((el) => el.tagName.toLowerCase()),
+    );
+    const cssContent = await fs.readFile(cssFilePath, "utf8");
 
     let output = "";
     const selectionRegex = /([a-z]+)::selection\s*\{([^}]+)\}/gi;
@@ -39,7 +41,9 @@ export const checkSelectionContrast = async (document) => {
 
       if (elements.has(tag)) {
         const colorMatch = style.match(/color\s*:\s*(#[0-9a-fA-F]{3,6}|\w+)/);
-        const bgColorMatch = style.match(/background-color\s*:\s*(#[0-9a-fA-F]{3,6}|\w+)/);
+        const bgColorMatch = style.match(
+          /background-color\s*:\s*(#[0-9a-fA-F]{3,6}|\w+)/,
+        );
 
         if (colorMatch && bgColorMatch) {
           let color = colorMatch[1];
@@ -54,22 +58,27 @@ export const checkSelectionContrast = async (document) => {
             let rat = ratio(color, bgColor);
 
             if (rat < 3) {
-              output += `${chalk.red(`Low contrast in ::selection for <${tag}>: ${color} on ${bgColor}, ratio: ${rat}`)}\n`;
+              output += `${chalk.red(
+                `Low contrast in ::selection for <${tag}>: ${color} on ${bgColor}, ratio: ${rat}`,
+              )}\n`;
             }
           } catch (e) {
-            continue
+            continue;
           }
         }
       }
     }
 
-    return output.length === 0 ? chalk.green("Selection Color Contrast test passed!") : output;
+    return output.length === 0
+      ? chalk.green("Selection Color Contrast test passed!")
+      : output;
   } catch (e) {
     return `${chalk.red("Error processing the files:")}${e}`;
   }
 };
 
 const isColorString = (inputString) => {
-  const regex = /^(#?([a-fA-F0-9]{6}|[a-fA-F0-9]{3})|rgb\((\d{1,3}),\s*(\d{1,3}),\s*(\d{1,3})\)|hsl\((\d{1,3}),\s*([1-9]?[0-9]%,\s*100%|[1-9]?[0-9]%,\s*[1-9]?[0-9]%))$/;
+  const regex =
+    /^(#?([a-fA-F0-9]{6}|[a-fA-F0-9]{3})|rgb\((\d{1,3}),\s*(\d{1,3}),\s*(\d{1,3})\)|hsl\((\d{1,3}),\s*([1-9]?[0-9]%,\s*100%|[1-9]?[0-9]%,\s*[1-9]?[0-9]%))$/;
   return regex.test(inputString);
-}
+};
