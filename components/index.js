@@ -39,6 +39,7 @@ import { checkButtonType } from "./buttonType.js";
 import { checkColorContrasts } from "./colorContrast.js";
 import { checkSelectionContrast } from "./selectionColor.js";
 import { checkOrientationSupport } from "./orientation.js";
+import { checkHorizontalScrolling } from "./horizontalScrolling.js";
 
 /**
  * @function testAccessibility
@@ -83,6 +84,7 @@ export const testAccessibility = async (document, cookie) => {
   funcRunner(checkColorContrasts, document);
   funcRunner(checkSelectionContrast, document);
   funcRunner(checkOrientationSupport, document);
+  funcRunner(checkHorizontalScrolling, document);
 };
 
 /**
