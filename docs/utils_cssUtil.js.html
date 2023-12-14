@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>components/headings.js</title>
+    <title>utils/cssUtil.js</title>
 
     <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -184,46 +184,46 @@
         <div class="content">
           <header class="page-title">
             <p>Source</p>
-            <h1>components/headings.js</h1>
+            <h1>utils/cssUtil.js</h1>
           </header>
 
           <section>
             <article>
               <pre
                 class="prettyprint source linenums"
-              ><code>import chalk from "chalk";
+              ><code>import fs from "fs-extra";
+import axios from "axios";
 
 /**
- * @function checkHeadings
- * @param {Document} document
- * @return {string} Success message if there is exactly one H1 tag
- * @return {string} Failure message if there are zero or more than one H1 tags
- * @throws Error parsing the HTML file
- * @desc ERROR
- * @description
- * 5.B
- * Use heading elements to introduce content.
- * The h1 element should be used to communicate the high-level purpose of the page or view.
- * Do not use the h1 element for a heading that does not change between pages or
- * views (for example, the site's name).
+ * @function fetchCss
+ * @param {string[]} hrefs - Array of CSS links
+ * @description Fetches and saves CSS content to a file called 'output.css'
  **/
-
-export const checkHeadings = (document) => {
+export const fetchCss = async (url, hrefs) => {
   try {
-    const h1Headings = document.querySelectorAll("h1");
-    const numH1Headings = h1Headings.length;
+    const outputFilePath = "output.css";
 
-    if (numH1Headings &lt;= 1) {
-      return chalk.green("H1 Tag test passed!");
-    } else {
-      let output = chalk.red("More than one H1 tag found on the web-page:");
-      h1Headings.forEach((element, _index) => {
-        output += `\n${chalk.cyan(element.outerHTML)}`;
-      });
-      return output;
+    for (let i = 0; i &lt; hrefs.length; i++) {
+      if (hrefs[i][0] === "/") {
+        hrefs[i] = url + hrefs[i];
+      }
     }
-  } catch (e) {
-    return `${chalk.red("Error parsing the HTML file:")}${e}`;
+
+    const responses = await Promise.allSettled(
+      hrefs.map((link) => axios.get(link)),
+    );
+
+    const successfulResponses = responses
+      .filter((response) => response.status === "fulfilled")
+      .map((response) => response.value.data);
+
+    const combinedCSS = successfulResponses.join("\n");
+
+    fs.writeFileSync(outputFilePath, combinedCSS);
+
+    console.log("CSS content saved to output.css");
+  } catch (error) {
+    throw `Failed to fetch or save CSS data: ${error.message}`;
   }
 };
 </code></pre>

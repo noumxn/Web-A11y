@@ -70,7 +70,13 @@
                 <a href="global.html#checkAutocomplete">checkAutocomplete</a>
               </li>
               <li><a href="global.html#checkAutoplay">checkAutoplay</a></li>
+              <li><a href="global.html#checkButtonType">checkButtonType</a></li>
               <li><a href="global.html#checkCaptions">checkCaptions</a></li>
+              <li>
+                <a href="global.html#checkColorContrasts"
+                  >checkColorContrasts</a
+                >
+              </li>
               <li>
                 <a href="global.html#checkDescriptiveHeadings"
                   >checkDescriptiveHeadings</a
@@ -93,6 +99,11 @@
               </li>
               <li><a href="global.html#checkHeadings">checkHeadings</a></li>
               <li>
+                <a href="global.html#checkHorizontalScrolling"
+                  >checkHorizontalScrolling</a
+                >
+              </li>
+              <li>
                 <a href="global.html#checkKeyboardAccessibility"
                   >checkKeyboardAccessibility</a
                 >
@@ -107,13 +118,28 @@
               </li>
               <li><a href="global.html#checkLists">checkLists</a></li>
               <li><a href="global.html#checkNewTab">checkNewTab</a></li>
+              <li>
+                <a href="global.html#checkOrientationSupport"
+                  >checkOrientationSupport</a
+                >
+              </li>
               <li><a href="global.html#checkPageTitle">checkPageTitle</a></li>
               <li><a href="global.html#checkPauseMedia">checkPauseMedia</a></li>
               <li>
                 <a href="global.html#checkReadability">checkReadability</a>
               </li>
               <li>
+                <a href="global.html#checkSelectionContrast"
+                  >checkSelectionContrast</a
+                >
+              </li>
+              <li>
                 <a href="global.html#checkSensoryRefs">checkSensoryRefs</a>
+              </li>
+              <li>
+                <a href="global.html#checkSessionTimeout"
+                  >checkSessionTimeout</a
+                >
               </li>
               <li><a href="global.html#checkSkipLinks">checkSkipLinks</a></li>
               <li>
@@ -138,6 +164,7 @@
               <li>
                 <a href="global.html#checkViewportZoom">checkViewportZoom</a>
               </li>
+              <li><a href="global.html#fetchCss">fetchCss</a></li>
               <li><a href="global.html#funcRunner">funcRunner</a></li>
               <li><a href="global.html#isValidURL">isValidURL</a></li>
               <li><a href="global.html#main()">main()</a></li>
@@ -215,7 +242,8 @@
                     </h4>
 
                     <div class="description">
-                      Fetches HTML content of webpage provided in the URL
+                      Fetches HTML content of webpage provided in the URL, the
+                      session data, and an array of hrefs of CSS stylesheets
                     </div>
 
                     <dl class="details">
@@ -227,7 +255,7 @@
                           <a href="utils_webScraper.js.html"
                             >utils/webScraper.js</a
                           >,
-                          <a href="utils_webScraper.js.html#line11">line 11</a>
+                          <a href="utils_webScraper.js.html#line13">line 13</a>
                         </span>
                       </p>
                     </dl>
@@ -672,6 +700,110 @@
                   </div>
 
                   <div class="member">
+                    <h4 class="name" id="checkButtonType">
+                      <a class="href-link" href="#checkButtonType">#</a>
+
+                      <span class="code-name">
+                        checkButtonType<span class="signature">(document)</span
+                        ><span class="type-signature">
+                          &rarr; {string|string}</span
+                        >
+                      </span>
+                    </h4>
+
+                    <div class="description">
+                      Check if buttons not intended for form submission have
+                      type="button" attribute
+                    </div>
+
+                    <h5>Parameters:</h5>
+
+                    <div class="table-container">
+                      <table class="params table">
+                        <thead>
+                          <tr>
+                            <th>Name</th>
+
+                            <th>Type</th>
+
+                            <th class="last">Description</th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                          <tr class="deep-level-0">
+                            <td class="name"><code>document</code></td>
+
+                            <td class="type">
+                              <code class="param-type">Document</code>
+                            </td>
+
+                            <td class="description last"></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <dl class="details">
+                      <p class="tag-source">
+                        <a href="components_buttonType.js.html" class="button"
+                          >View Source</a
+                        >
+                        <span>
+                          <a href="components_buttonType.js.html"
+                            >components/buttonType.js</a
+                          >,
+                          <a href="components_buttonType.js.html#line3"
+                            >line 3</a
+                          >
+                        </span>
+                      </p>
+                    </dl>
+
+                    <div class="columns method-parameter">
+                      <div class="column is-2"><label>Throws:</label></div>
+                      <div class="column is-10">
+                        <div class="columns">
+                          <div class="param-desc column is-12">
+                            Error parsing the HTML file
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="columns method-parameter">
+                      <div class="column is-2"><label>Returns:</label></div>
+                      <div class="column is-10">
+                        <div class="columns">
+                          <div class="param-desc column is-7">
+                            Success message if all non-submit buttons have
+                            type="button"
+                          </div>
+
+                          <div class="column is-5 has-text-left">
+                            <label>Type: </label>
+
+                            <code class="param-type">string</code>
+                          </div>
+                        </div>
+
+                        <div class="columns">
+                          <div class="param-desc column is-7">
+                            Failure message if any non-submit button is missing
+                            type="button"
+                          </div>
+
+                          <div class="column is-5 has-text-left">
+                            <label>Type: </label>
+
+                            <code class="param-type">string</code>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="member">
                     <h4 class="name" id="checkCaptions">
                       <a class="href-link" href="#checkCaptions">#</a>
 
@@ -761,6 +893,115 @@
                           <div class="param-desc column is-7">
                             Failure message if any video elements have missing
                             captions
+                          </div>
+
+                          <div class="column is-5 has-text-left">
+                            <label>Type: </label>
+
+                            <code class="param-type">string</code>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="member">
+                    <h4 class="name" id="checkColorContrasts">
+                      <a class="href-link" href="#checkColorContrasts">#</a>
+
+                      <span class="code-name">
+                        checkColorContrasts<span class="signature"
+                          >(document)</span
+                        ><span class="type-signature">
+                          &rarr; {string|string}</span
+                        >
+                      </span>
+                    </h4>
+
+                    <div class="description">
+                      15.A Check the contrast for all normal-sized text. 15.B
+                      Check the contrast for all large-sized text. 15.D Check
+                      the contrast of borders for input elements (text input,
+                      radio buttons, checkboxes, etc.).
+                    </div>
+
+                    <h5>Parameters:</h5>
+
+                    <div class="table-container">
+                      <table class="params table">
+                        <thead>
+                          <tr>
+                            <th>Name</th>
+
+                            <th>Type</th>
+
+                            <th class="last">Description</th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                          <tr class="deep-level-0">
+                            <td class="name"><code>document</code></td>
+
+                            <td class="type">
+                              <code class="param-type">Document</code>
+                            </td>
+
+                            <td class="description last"></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <dl class="details">
+                      <p class="tag-source">
+                        <a
+                          href="components_colorContrast.js.html"
+                          class="button"
+                          >View Source</a
+                        >
+                        <span>
+                          <a href="components_colorContrast.js.html"
+                            >components/colorContrast.js</a
+                          >,
+                          <a href="components_colorContrast.js.html#line14"
+                            >line 14</a
+                          >
+                        </span>
+                      </p>
+                    </dl>
+
+                    <div class="columns method-parameter">
+                      <div class="column is-2"><label>Throws:</label></div>
+                      <div class="column is-10">
+                        <div class="columns">
+                          <div class="param-desc column is-12">
+                            Error parsing the HTML file
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="columns method-parameter">
+                      <div class="column is-2"><label>Returns:</label></div>
+                      <div class="column is-10">
+                        <div class="columns">
+                          <div class="param-desc column is-7">
+                            Success message if color contrast between all
+                            connected elements is more than 4.5:1
+                          </div>
+
+                          <div class="column is-5 has-text-left">
+                            <label>Type: </label>
+
+                            <code class="param-type">string</code>
+                          </div>
+                        </div>
+
+                        <div class="columns">
+                          <div class="param-desc column is-7">
+                            Failure message if color contrast between any
+                            connected elements is less than 4.5:1
                           </div>
 
                           <div class="column is-5 has-text-left">
@@ -1546,6 +1787,111 @@
                   </div>
 
                   <div class="member">
+                    <h4 class="name" id="checkHorizontalScrolling">
+                      <a class="href-link" href="#checkHorizontalScrolling"
+                        >#</a
+                      >
+
+                      <span class="code-name">
+                        checkHorizontalScrolling<span class="signature"
+                          >(document)</span
+                        ><span class="type-signature">
+                          &rarr; {string|string}</span
+                        >
+                      </span>
+                    </h4>
+
+                    <h5>Parameters:</h5>
+
+                    <div class="table-container">
+                      <table class="params table">
+                        <thead>
+                          <tr>
+                            <th>Name</th>
+
+                            <th>Type</th>
+
+                            <th class="last">Description</th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                          <tr class="deep-level-0">
+                            <td class="name"><code>document</code></td>
+
+                            <td class="type">
+                              <code class="param-type">Document</code>
+                            </td>
+
+                            <td class="description last"></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <dl class="details">
+                      <p class="tag-source">
+                        <a
+                          href="components_horizontalScrolling.js.html"
+                          class="button"
+                          >View Source</a
+                        >
+                        <span>
+                          <a href="components_horizontalScrolling.js.html"
+                            >components/horizontalScrolling.js</a
+                          >,
+                          <a
+                            href="components_horizontalScrolling.js.html#line13"
+                            >line 13</a
+                          >
+                        </span>
+                      </p>
+                    </dl>
+
+                    <div class="columns method-parameter">
+                      <div class="column is-2"><label>Throws:</label></div>
+                      <div class="column is-10">
+                        <div class="columns">
+                          <div class="param-desc column is-12">
+                            Error reading the CSS file or processing the HTML.
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="columns method-parameter">
+                      <div class="column is-2"><label>Returns:</label></div>
+                      <div class="column is-10">
+                        <div class="columns">
+                          <div class="param-desc column is-7">
+                            Success message if the main container has no
+                            horizontal scrolling.
+                          </div>
+
+                          <div class="column is-5 has-text-left">
+                            <label>Type: </label>
+
+                            <code class="param-type">string</code>
+                          </div>
+                        </div>
+
+                        <div class="columns">
+                          <div class="param-desc column is-7">
+                            Warning message if the main container has horizontal
+                            scrolling.
+                          </div>
+
+                          <div class="column is-5 has-text-left">
+                            <label>Type: </label>
+
+                            <code class="param-type">string</code>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="member">
                     <h4 class="name" id="checkKeyboardAccessibility">
                       <a class="href-link" href="#checkKeyboardAccessibility"
                         >#</a
@@ -2096,6 +2442,82 @@
                   </div>
 
                   <div class="member">
+                    <h4 class="name" id="checkOrientationSupport">
+                      <a class="href-link" href="#checkOrientationSupport">#</a>
+
+                      <span class="code-name">
+                        checkOrientationSupport<span class="signature">()</span
+                        ><span class="type-signature">
+                          &rarr; {string|string}</span
+                        >
+                      </span>
+                    </h4>
+
+                    <div class="description">
+                      16. A Check that the site can be rotated to any
+                      orientation.
+                    </div>
+
+                    <dl class="details">
+                      <p class="tag-source">
+                        <a href="components_orientation.js.html" class="button"
+                          >View Source</a
+                        >
+                        <span>
+                          <a href="components_orientation.js.html"
+                            >components/orientation.js</a
+                          >,
+                          <a href="components_orientation.js.html#line13"
+                            >line 13</a
+                          >
+                        </span>
+                      </p>
+                    </dl>
+
+                    <div class="columns method-parameter">
+                      <div class="column is-2"><label>Throws:</label></div>
+                      <div class="column is-10">
+                        <div class="columns">
+                          <div class="param-desc column is-12">
+                            Error reading the CSS file or processing the HTML.
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="columns method-parameter">
+                      <div class="column is-2"><label>Returns:</label></div>
+                      <div class="column is-10">
+                        <div class="columns">
+                          <div class="param-desc column is-7">
+                            A success message if there are media queries
+                            supporting rotation in the CSS.
+                          </div>
+
+                          <div class="column is-5 has-text-left">
+                            <label>Type: </label>
+
+                            <code class="param-type">string</code>
+                          </div>
+                        </div>
+
+                        <div class="columns">
+                          <div class="param-desc column is-7">
+                            A warning message if no media queries related to
+                            orientation are found.
+                          </div>
+
+                          <div class="column is-5 has-text-left">
+                            <label>Type: </label>
+
+                            <code class="param-type">string</code>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="member">
                     <h4 class="name" id="checkPageTitle">
                       <a class="href-link" href="#checkPageTitle">#</a>
 
@@ -2416,6 +2838,112 @@
                   </div>
 
                   <div class="member">
+                    <h4 class="name" id="checkSelectionContrast">
+                      <a class="href-link" href="#checkSelectionContrast">#</a>
+
+                      <span class="code-name">
+                        checkSelectionContrast<span class="signature"
+                          >(Document, cssFilePath)</span
+                        ><span class="type-signature">
+                          &rarr; {string|string}</span
+                        >
+                      </span>
+                    </h4>
+
+                    <div class="description">
+                      15.F Check if the contrast ratio in ::selection CSS
+                      declarations is greater than 4.5:1
+                    </div>
+
+                    <h5>Parameters:</h5>
+
+                    <div class="table-container">
+                      <table class="params table">
+                        <thead>
+                          <tr>
+                            <th>Name</th>
+
+                            <th>Type</th>
+
+                            <th class="last">Description</th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                          <tr class="deep-level-0">
+                            <td class="name"><code>Document</code></td>
+
+                            <td class="type">
+                              <code class="param-type">document</code>
+                            </td>
+
+                            <td class="description last"></td>
+                          </tr>
+
+                          <tr class="deep-level-0">
+                            <td class="name"><code>cssFilePath</code></td>
+
+                            <td class="type">
+                              <code class="param-type">string</code>
+                            </td>
+
+                            <td class="description last"></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <dl class="details">
+                      <p class="tag-source">
+                        <a
+                          href="components_selectionColor.js.html"
+                          class="button"
+                          >View Source</a
+                        >
+                        <span>
+                          <a href="components_selectionColor.js.html"
+                            >components/selectionColor.js</a
+                          >,
+                          <a href="components_selectionColor.js.html#line15"
+                            >line 15</a
+                          >
+                        </span>
+                      </p>
+                    </dl>
+
+                    <div class="columns method-parameter">
+                      <div class="column is-2"><label>Returns:</label></div>
+                      <div class="column is-10">
+                        <div class="columns">
+                          <div class="param-desc column is-7">
+                            Success message if ::selection color contrast for
+                            all elements is greater than 4.5:1
+                          </div>
+
+                          <div class="column is-5 has-text-left">
+                            <label>Type: </label>
+
+                            <code class="param-type">string</code>
+                          </div>
+                        </div>
+
+                        <div class="columns">
+                          <div class="param-desc column is-7">
+                            Failure message if ::selection color contrast for
+                            any element is less than 4.5:1
+                          </div>
+
+                          <div class="column is-5 has-text-left">
+                            <label>Type: </label>
+
+                            <code class="param-type">string</code>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="member">
                     <h4 class="name" id="checkSensoryRefs">
                       <a class="href-link" href="#checkSensoryRefs">#</a>
 
@@ -2511,6 +3039,114 @@
                           <div class="param-desc column is-7">
                             Failure message if any Positional/Sensory references
                             found
+                          </div>
+
+                          <div class="column is-5 has-text-left">
+                            <label>Type: </label>
+
+                            <code class="param-type">string</code>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="member">
+                    <h4 class="name" id="checkSessionTimeout">
+                      <a class="href-link" href="#checkSessionTimeout">#</a>
+
+                      <span class="code-name">
+                        checkSessionTimeout<span class="signature"
+                          >(cookie)</span
+                        ><span class="type-signature">
+                          &rarr; {string|string}</span
+                        >
+                      </span>
+                    </h4>
+
+                    <div class="description">
+                      2.G Setting minumim session timeout to 20 hours If the
+                      session timeout is less, it may interrupt the user causing
+                      screen readers to lose track of position/progress.
+                    </div>
+
+                    <h5>Parameters:</h5>
+
+                    <div class="table-container">
+                      <table class="params table">
+                        <thead>
+                          <tr>
+                            <th>Name</th>
+
+                            <th>Type</th>
+
+                            <th class="last">Description</th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                          <tr class="deep-level-0">
+                            <td class="name"><code>cookie</code></td>
+
+                            <td class="type">
+                              <code class="param-type">Array</code>
+                            </td>
+
+                            <td class="description last"></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <dl class="details">
+                      <p class="tag-source">
+                        <a
+                          href="components_sessionTimeout.js.html"
+                          class="button"
+                          >View Source</a
+                        >
+                        <span>
+                          <a href="components_sessionTimeout.js.html"
+                            >components/sessionTimeout.js</a
+                          >,
+                          <a href="components_sessionTimeout.js.html#line3"
+                            >line 3</a
+                          >
+                        </span>
+                      </p>
+                    </dl>
+
+                    <div class="columns method-parameter">
+                      <div class="column is-2"><label>Throws:</label></div>
+                      <div class="column is-10">
+                        <div class="columns">
+                          <div class="param-desc column is-12">
+                            Error parsing the HTML file
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="columns method-parameter">
+                      <div class="column is-2"><label>Returns:</label></div>
+                      <div class="column is-10">
+                        <div class="columns">
+                          <div class="param-desc column is-7">
+                            Success message if the webpage has a session timeout
+                            greater than 20 hours or no session timeout
+                          </div>
+
+                          <div class="column is-5 has-text-left">
+                            <label>Type: </label>
+
+                            <code class="param-type">string</code>
+                          </div>
+                        </div>
+
+                        <div class="columns">
+                          <div class="param-desc column is-7">
+                            Failure message if the webpage has a session timeout
+                            less than 20 hours
                           </div>
 
                           <div class="column is-5 has-text-left">
@@ -3269,6 +3905,62 @@
                   </div>
 
                   <div class="member">
+                    <h4 class="name" id="fetchCss">
+                      <a class="href-link" href="#fetchCss">#</a>
+
+                      <span class="code-name">
+                        fetchCss<span class="signature">(hrefs)</span
+                        ><span class="type-signature"></span>
+                      </span>
+                    </h4>
+
+                    <div class="description">
+                      Fetches and saves CSS content to a file called
+                      'output.css'
+                    </div>
+
+                    <h5>Parameters:</h5>
+
+                    <div class="table-container">
+                      <table class="params table">
+                        <thead>
+                          <tr>
+                            <th>Name</th>
+
+                            <th>Type</th>
+
+                            <th class="last">Description</th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                          <tr class="deep-level-0">
+                            <td class="name"><code>hrefs</code></td>
+
+                            <td class="type">
+                              <code class="param-type">Array.&lt;string></code>
+                            </td>
+
+                            <td class="description last">Array of CSS links</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <dl class="details">
+                      <p class="tag-source">
+                        <a href="utils_cssUtil.js.html" class="button"
+                          >View Source</a
+                        >
+                        <span>
+                          <a href="utils_cssUtil.js.html">utils/cssUtil.js</a>,
+                          <a href="utils_cssUtil.js.html#line4">line 4</a>
+                        </span>
+                      </p>
+                    </dl>
+                  </div>
+
+                  <div class="member">
                     <h4 class="name" id="funcRunner">
                       <a class="href-link" href="#funcRunner">#</a>
 
@@ -3330,7 +4022,7 @@
                           <a href="components_index.js.html"
                             >components/index.js</a
                           >,
-                          <a href="components_index.js.html#line76">line 76</a>
+                          <a href="components_index.js.html#line90">line 90</a>
                         </span>
                       </p>
                     </dl>
@@ -3341,7 +4033,7 @@
                       <a class="href-link" href="#main()">#</a>
 
                       <span class="code-name">
-                        main()<span class="signature">(url)</span
+                        main()<span class="signature">(url, -m, --manual)</span
                         ><span class="type-signature"></span>
                       </span>
                     </h4>
@@ -3368,7 +4060,27 @@
                               <code class="param-type">string</code>
                             </td>
 
-                            <td class="description last">| process.argv[2]</td>
+                            <td class="description last"></td>
+                          </tr>
+
+                          <tr class="deep-level-0">
+                            <td class="name"><code>-m</code></td>
+
+                            <td class="type">
+                              <code class="param-type">string</code>
+                            </td>
+
+                            <td class="description last"></td>
+                          </tr>
+
+                          <tr class="deep-level-0">
+                            <td class="name"><code>--manual</code></td>
+
+                            <td class="type">
+                              <code class="param-type">string</code>
+                            </td>
+
+                            <td class="description last"></td>
                           </tr>
                         </tbody>
                       </table>
@@ -3379,7 +4091,7 @@
                         <a href="app.js.html" class="button">View Source</a>
                         <span>
                           <a href="app.js.html">app.js</a>,
-                          <a href="app.js.html#line20">line 20</a>
+                          <a href="app.js.html#line21">line 21</a>
                         </span>
                       </p>
                     </dl>
@@ -3502,7 +4214,7 @@
                           <a href="components_index.js.html"
                             >components/index.js</a
                           >,
-                          <a href="components_index.js.html#line37">line 37</a>
+                          <a href="components_index.js.html#line44">line 44</a>
                         </span>
                       </p>
                     </dl>

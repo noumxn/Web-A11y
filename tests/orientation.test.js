@@ -1,7 +1,6 @@
 import fs from "fs";
 import { expect } from "chai";
 import { checkOrientationSupport } from "../components/orientation.js";
-import { JSDOM } from "jsdom";
 import path from "path";
 import chalk from "chalk";
 import { dirname } from "path";
@@ -66,36 +65,14 @@ describe("Orientation Check", () => {
   it("should pass because there are media queries supporting orientation", async () => {
     fs.writeFileSync(filePath, responsiveCSS);
 
-    const html = `<!DOCTYPE html>
-      <html>
-          <body><p>
-              <a href="/">This is a link</a>
-          </p></body>
-      </html>`;
-
-    const dom = new JSDOM(html, { runScripts: "dangerously" });
-    const { document: documentWithCSS } = dom.window;
-
-    const result = await checkOrientationSupport(documentWithCSS);
-
+    const result = await checkOrientationSupport();
     const expectedMessage = chalk.green("Rotation support test passed!");
     expect(result).to.include(expectedMessage);
   });
   it("should return warning because there are no media queries restricting orientation", async () => {
     fs.writeFileSync(filePath, noOrientationCSS);
 
-    const html = `<!DOCTYPE html>
-      <html>
-          <body><p>
-              <a href="/">This is a link</a>
-          </p></body>
-      </html>`;
-
-    const dom = new JSDOM(html, { runScripts: "dangerously" });
-    const { document: documentWithoutCSS } = dom.window;
-
-    const result = await checkOrientationSupport(documentWithoutCSS);
-
+    const result = await checkOrientationSupport();
     const expectedMessage = chalk.yellow(
       "Warning: No @media queries with orientation found in the CSS. Consider setting orientation styles.",
     );

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>components/headings.js</title>
+    <title>components/orientation.js</title>
 
     <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -184,46 +184,66 @@
         <div class="content">
           <header class="page-title">
             <p>Source</p>
-            <h1>components/headings.js</h1>
+            <h1>components/orientation.js</h1>
           </header>
 
           <section>
             <article>
               <pre
                 class="prettyprint source linenums"
-              ><code>import chalk from "chalk";
+              ><code>import fs from "fs/promises";
+import chalk from "chalk";
+import path from "path";
+import {dirname} from "path";
+import {fileURLToPath} from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+const cssPath = "../output.css";
+const scriptDirectory = __dirname;
+const cssFilePath = path.resolve(scriptDirectory, cssPath);
 
 /**
- * @function checkHeadings
- * @param {Document} document
- * @return {string} Success message if there is exactly one H1 tag
- * @return {string} Failure message if there are zero or more than one H1 tags
- * @throws Error parsing the HTML file
- * @desc ERROR
+ * @function checkOrientationSupport
+ * @return {string} A success message if there are media queries supporting rotation in the CSS.
+ * @return {string} A warning message if no media queries related to orientation are found.
+ * @throws Error reading the CSS file or processing the HTML.
  * @description
- * 5.B
- * Use heading elements to introduce content.
- * The h1 element should be used to communicate the high-level purpose of the page or view.
- * Do not use the h1 element for a heading that does not change between pages or
- * views (for example, the site's name).
- **/
-
-export const checkHeadings = (document) => {
+ * 16. A Check that the site can be rotated to any orientation.
+ */
+export const checkOrientationSupport = async () => {
   try {
-    const h1Headings = document.querySelectorAll("h1");
-    const numH1Headings = h1Headings.length;
+    let output = "";
+    const cssContent = await getCssContent();
 
-    if (numH1Headings &lt;= 1) {
-      return chalk.green("H1 Tag test passed!");
+    // Check if there are any @media queries with orientation in the CSS
+    const hasOrientationMediaQuery = /@media\s*\(orientation:[^}]+}/i.test(
+      cssContent,
+    );
+
+    if (hasOrientationMediaQuery) {
+      output += chalk.green("Rotation support test passed!");
     } else {
-      let output = chalk.red("More than one H1 tag found on the web-page:");
-      h1Headings.forEach((element, _index) => {
-        output += `\n${chalk.cyan(element.outerHTML)}`;
-      });
-      return output;
+      output += chalk.yellow(
+        "Warning: No @media queries with orientation found in the CSS. Consider setting orientation styles.",
+      );
     }
-  } catch (e) {
-    return `${chalk.red("Error parsing the HTML file:")}${e}`;
+
+    return output;
+  } catch (err) {
+    console.error(err);
+    return `${chalk.red(
+      "Error reading the CSS file or processing the HTML:",
+    )} ${err}`;
+  }
+};
+
+const getCssContent = async () => {
+  try {
+    const cssContent = await fs.readFile(cssFilePath, "utf8");
+    return cssContent;
+  } catch (err) {
+    throw new Error(`Error reading the CSS file: ${err}`);
   }
 };
 </code></pre>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>components/headings.js</title>
+    <title>components/sessionTimeout.js</title>
 
     <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -184,7 +184,7 @@
         <div class="content">
           <header class="page-title">
             <p>Source</p>
-            <h1>components/headings.js</h1>
+            <h1>components/sessionTimeout.js</h1>
           </header>
 
           <section>
@@ -194,36 +194,48 @@
               ><code>import chalk from "chalk";
 
 /**
- * @function checkHeadings
- * @param {Document} document
- * @return {string} Success message if there is exactly one H1 tag
- * @return {string} Failure message if there are zero or more than one H1 tags
+ * @function checkSessionTimeout
+ * @param {Array} cookie
+ * @return {string} Success message if the webpage has a session timeout greater than 20 hours
+ *                  or no session timeout
+ * @return {string} Failure message if the webpage has a session timeout less than 20 hours
  * @throws Error parsing the HTML file
  * @desc ERROR
  * @description
- * 5.B
- * Use heading elements to introduce content.
- * The h1 element should be used to communicate the high-level purpose of the page or view.
- * Do not use the h1 element for a heading that does not change between pages or
- * views (for example, the site's name).
+ * 2.G
+ * Setting minumim session timeout to 20 hours
+ * If the session timeout is less, it may interrupt the user causing screen readers to lose track of position/progress.
  **/
 
-export const checkHeadings = (document) => {
+export const checkSessionTimeout = (document, cookie) => {
   try {
-    const h1Headings = document.querySelectorAll("h1");
-    const numH1Headings = h1Headings.length;
-
-    if (numH1Headings &lt;= 1) {
-      return chalk.green("H1 Tag test passed!");
+    if (!cookie) {
+      return `${chalk.green("Session Timeout test passed!")}`;
+    }
+    const expirationRegex = /Expires=([^;]+)/;
+    const currDate = new Date();
+    let sessionDates = [];
+    for (let info in cookie) {
+      const expirationMatch = cookie[info].match(expirationRegex);
+      if (expirationMatch) {
+        let expirationDate = expirationMatch[1].trim();
+        expirationDate = new Date(expirationDate);
+        if (currDate > expirationDate) continue;
+        sessionDates.push(expirationDate);
+      }
+    }
+    const closestDate = new Date(Math.min(...sessionDates));
+    const timeDifference = Math.abs(closestDate - currDate);
+    const twentyHoursMs = 20 * 60 * 60 * 1000;
+    if (timeDifference &lt;= twentyHoursMs) {
+      return `${chalk.red(
+        `Session expires at ${closestDate} and has a max age of ${timeDifference}`,
+      )}`;
     } else {
-      let output = chalk.red("More than one H1 tag found on the web-page:");
-      h1Headings.forEach((element, _index) => {
-        output += `\n${chalk.cyan(element.outerHTML)}`;
-      });
-      return output;
+      return `${chalk.green("Session Timeout test passed!")}`;
     }
   } catch (e) {
-    return `${chalk.red("Error parsing the HTML file:")}${e}`;
+    throw `${chalk.red("Error parsing the HTML file:")} ${e}`;
   }
 };
 </code></pre>

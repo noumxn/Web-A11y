@@ -40,6 +40,8 @@ import { checkColorContrasts } from "./colorContrast.js";
 import { checkSelectionContrast } from "./selectionColor.js";
 import { checkOrientationSupport } from "./orientation.js";
 import { checkHorizontalScrolling } from "./horizontalScrolling.js";
+import { checkElementContent } from "./elementContent.js";
+import { checkTextAlignment } from "./langAlignment.js";
 
 /**
  * @function testAccessibility
@@ -83,8 +85,10 @@ export const testAccessibility = async (document, cookie) => {
   funcRunner(checkButtonType, document);
   funcRunner(checkColorContrasts, document);
   funcRunner(checkSelectionContrast, document);
-  funcRunner(checkOrientationSupport, document);
+  funcRunner(checkOrientationSupport);
   funcRunner(checkHorizontalScrolling, document);
+  funcRunner(checkElementContent, document);
+  funcRunner(checkTextAlignment, document);
 };
 
 /**
