@@ -18,7 +18,7 @@ const cssFilePath = path.resolve(scriptDirectory, cssPath);
  * @description
  * 16. A Check that the site can be rotated to any orientation.
  */
-export const checkOrientationSupport = async (document) => {
+export const checkOrientationSupport = async (__document) => {
   try {
     let output = "";
     const cssContent = await getCssContent();
