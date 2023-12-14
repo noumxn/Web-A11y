@@ -1,9 +1,9 @@
-import { ratio } from "wcag-color";
+import {ratio} from "wcag-color";
 import chalk from "chalk";
 import fs from "fs/promises";
 import path from "path";
-import { dirname } from "path";
-import { fileURLToPath } from "url";
+import {dirname} from "path";
+import {fileURLToPath} from "url";
 import toHex from "colornames";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -25,7 +25,6 @@ const cssFilePath = path.resolve(scriptDirectory, cssPath);
  */
 export const checkSelectionContrast = async (document) => {
   try {
-    console.log("HELLO", toHex("yellow"));
     const elements = new Set(
       [...document.querySelectorAll("*")].map((el) => el.tagName.toLowerCase()),
     );
