@@ -9,9 +9,11 @@
     "Nouman Syed"
   ],
   "devDependencies": {
+    "better-docs": "^2.7.3",
     "chai": "^4.3.10",
     "eslint": "^8.54.0",
     "husky": "^8.0.3",
+    "jsdoc": "^4.0.2",
     "lint-staged": "^15.1.0",
     "mocha": "^10.2.0",
     "mock-fs": "^5.2.0",
@@ -35,7 +37,6 @@
     "colornames": "^1.1.1",
     "esm": "^3.2.25",
     "fs-extra": "^11.1.1",
-    "jsdocs": "^1.0.0",
     "jsdom": "^22.1.0",
     "text-readability": "^1.0.5",
     "url": "^0.11.3",

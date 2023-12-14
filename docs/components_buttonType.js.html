@@ -7,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> components/altText.js</title>
+  <title> components/buttonType.js</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -76,7 +76,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>components/altText.js</h1>
+                    <h1>components/buttonType.js</h1>
                 </header>
                 
 
@@ -88,54 +88,29 @@
             <pre class="prettyprint source linenums"><code>import chalk from "chalk";
 
 /**
- * @function checkAltText
+ * @function checkButtonType
  * @param {Document} document
- * @return {string} Success message if all image elements have Alternate text property
- * @return {string} Failure message if any image elements have missing Alternate text
+ * @return {string} Success message if all non-submit buttons have type="button"
+ * @return {string} Failure message if any non-submit button is missing type="button"
  * @throws Error parsing the HTML file
- * @desc ERROR
- * @description
- * 4.A
- * Make sure that all img elements have an alt attribute.
- * alt attributes (alt text) give a description of an image for people who may not be able
- * to view them. When an alt attribute isn't present on an image, a screen reader may announce
- * the image's file name and path instead. This fails to communicate the image’s content.
- *
- * 4.B
- * Make sure that decorative images use null alt (empty) attribute values.
- * Null alt attributes are also sometimes known as empty alt attributes. They are made by
- * including no information between the opening and closing quotes of an alt attribute.
- * Decorative images do not communicate information that is required to understand the website's
- * overall meaning. Historically they were used for flourishes and spacer gif images, but tend to
- * be less relevant for modern websites and web apps.
+ * @desc Check if buttons not intended for form submission have type="button" attribute
  **/
-
-export const checkAltText = (document) => {
+export const checkButtonType = (document) => {
   try {
     let output = "";
-    const images = document.querySelectorAll('img, [role="img"]');
-    images.forEach((element) => {
-      const alt = element.getAttribute("alt");
-      const isHidden =
-        element.hasAttribute("aria-hidden") &amp;&amp;
-        element.getAttribute("aria-hidden") === "true";
-      const displayNone =
-        element.hasAttribute("style") &amp;&amp;
-        element.getAttribute("style") === "display:none";
-      const hasDecorativeClass =
-        element.classList.contains("decorative") &amp;&amp;
-        element.getAttribute("alt") === "";
-
-      if (!alt &amp;&amp; !isHidden &amp;&amp; !hasDecorativeClass &amp;&amp; !displayNone) {
-        output =
-          output +
-          `${chalk.red("\nImage without appropriate alt text:")}${chalk.cyan(
-            element.outerHTML,
-          )}`;
+    const buttons = document.querySelectorAll('button:not([type="submit"])');
+    buttons.forEach((button) => {
+      if (
+        !button.hasAttribute("type") ||
+        button.getAttribute("type") !== "button"
+      ) {
+        output += `${chalk.red(
+          `\nFound a non-submit button without type="button":`,
+        )}${chalk.cyan(button.outerHTML)}`;
       }
     });
     if (output.length === 0) {
-      return chalk.green("Alt Text test passed!");
+      return chalk.green("Button Type test passed!");
     } else {
       return output;
     }

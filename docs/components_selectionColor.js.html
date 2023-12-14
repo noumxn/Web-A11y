@@ -7,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> components/altText.js</title>
+  <title> components/selectionColor.js</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -76,7 +76,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>components/altText.js</h1>
+                    <h1>components/selectionColor.js</h1>
                 </header>
                 
 
@@ -85,63 +85,89 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import chalk from "chalk";
+            <pre class="prettyprint source linenums"><code>import { ratio } from "wcag-color";
+import chalk from "chalk";
+import fs from "fs/promises";
+import path from "path";
+import { dirname } from "path";
+import { fileURLToPath } from "url";
+import toHex from "colornames";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+const cssPath = "../output.css";
+const scriptDirectory = __dirname;
+const cssFilePath = path.resolve(scriptDirectory, cssPath);
 
 /**
- * @function checkAltText
- * @param {Document} document
- * @return {string} Success message if all image elements have Alternate text property
- * @return {string} Failure message if any image elements have missing Alternate text
- * @throws Error parsing the HTML file
+ * @function checkSelectionContrast
+ * @param {document} Document
+ * @param {string} cssFilePath
+ * @return {string} Success message if ::selection color contrast for all elements is greater than 4.5:1
+ * @return {string} Failure message if ::selection color contrast for any element is less than 4.5:1
  * @desc ERROR
  * @description
- * 4.A
- * Make sure that all img elements have an alt attribute.
- * alt attributes (alt text) give a description of an image for people who may not be able
- * to view them. When an alt attribute isn't present on an image, a screen reader may announce
- * the image's file name and path instead. This fails to communicate the image’s content.
- *
- * 4.B
- * Make sure that decorative images use null alt (empty) attribute values.
- * Null alt attributes are also sometimes known as empty alt attributes. They are made by
- * including no information between the opening and closing quotes of an alt attribute.
- * Decorative images do not communicate information that is required to understand the website's
- * overall meaning. Historically they were used for flourishes and spacer gif images, but tend to
- * be less relevant for modern websites and web apps.
- **/
-
-export const checkAltText = (document) => {
+ * 15.F
+ * Check if the contrast ratio in ::selection CSS declarations is greater than 4.5:1
+ */
+export const checkSelectionContrast = async (document) => {
   try {
-    let output = "";
-    const images = document.querySelectorAll('img, [role="img"]');
-    images.forEach((element) => {
-      const alt = element.getAttribute("alt");
-      const isHidden =
-        element.hasAttribute("aria-hidden") &amp;&amp;
-        element.getAttribute("aria-hidden") === "true";
-      const displayNone =
-        element.hasAttribute("style") &amp;&amp;
-        element.getAttribute("style") === "display:none";
-      const hasDecorativeClass =
-        element.classList.contains("decorative") &amp;&amp;
-        element.getAttribute("alt") === "";
+    console.log("HELLO", toHex("yellow"));
+    const elements = new Set(
+      [...document.querySelectorAll("*")].map((el) => el.tagName.toLowerCase()),
+    );
+    const cssContent = await fs.readFile(cssFilePath, "utf8");
 
-      if (!alt &amp;&amp; !isHidden &amp;&amp; !hasDecorativeClass &amp;&amp; !displayNone) {
-        output =
-          output +
-          `${chalk.red("\nImage without appropriate alt text:")}${chalk.cyan(
-            element.outerHTML,
-          )}`;
+    let output = "";
+    const selectionRegex = /([a-z]+)::selection\s*\{([^}]+)\}/gi;
+    let match;
+
+    while ((match = selectionRegex.exec(cssContent)) !== null) {
+      const tag = match[1];
+      const style = match[2];
+
+      if (elements.has(tag)) {
+        const colorMatch = style.match(/color\s*:\s*(#[0-9a-fA-F]{3,6}|\w+)/);
+        const bgColorMatch = style.match(
+          /background-color\s*:\s*(#[0-9a-fA-F]{3,6}|\w+)/,
+        );
+
+        if (colorMatch &amp;&amp; bgColorMatch) {
+          let color = colorMatch[1];
+          let bgColor = bgColorMatch[1];
+          try {
+            if (!isColorString(color)) {
+              color = toHex(color);
+            }
+            if (!isColorString(bgColor)) {
+              bgColor = toHex(bgColor);
+            }
+            let rat = ratio(color, bgColor);
+
+            if (rat &lt; 3) {
+              output += `${chalk.red(
+                `Low contrast in ::selection for &lt;${tag}>: ${color} on ${bgColor}, ratio: ${rat}`,
+              )}\n`;
+            }
+          } catch (e) {
+            continue;
+          }
+        }
       }
-    });
-    if (output.length === 0) {
-      return chalk.green("Alt Text test passed!");
-    } else {
-      return output;
     }
+
+    return output.length === 0
+      ? chalk.green("Selection Color Contrast test passed!")
+      : output;
   } catch (e) {
-    return `${chalk.red("Error parsing the HTML file:")}${e}`;
+    return `${chalk.red("Error processing the files:")}${e}`;
   }
+};
+
+const isColorString = (inputString) => {
+  const regex =
+    /^(#?([a-fA-F0-9]{6}|[a-fA-F0-9]{3})|rgb\((\d{1,3}),\s*(\d{1,3}),\s*(\d{1,3})\)|hsl\((\d{1,3}),\s*([1-9]?[0-9]%,\s*100%|[1-9]?[0-9]%,\s*[1-9]?[0-9]%))$/;
+  return regex.test(inputString);
 };
 </code></pre>
         </article>
