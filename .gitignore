@@ -14,6 +14,7 @@ Thumbs.db
 .DS_Store
 .git/
 .vscode/
+.github/
 
 # Lock Files
 package-lock.json
