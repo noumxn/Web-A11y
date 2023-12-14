@@ -37,6 +37,7 @@ import {checkSessionTimeout} from "./sessionTimeout.js";
 import {checkLinkDecoration} from "./linkDecoration.js";
 import {checkButtonType} from "./buttonType.js";
 import {checkColorContrasts} from "./colorContrast.js";
+import {checkSelectionContrast} from "./selectionColor.js";
 
 /**
  * @function testAccessibility
@@ -79,6 +80,7 @@ export const testAccessibility = async (document, cookie) => {
   funcRunner(checkLinkDecoration, document);
   funcRunner(checkButtonType, document);
   funcRunner(checkColorContrasts, document);
+  funcRunner(checkSelectionContrast, document);
 };
 
 /**
