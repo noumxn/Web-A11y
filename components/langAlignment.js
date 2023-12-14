@@ -42,10 +42,8 @@ export const checkTextAlignment = (document) => {
     });
 
     if (output.length === 0) {
-      console.log("PASS");
       return chalk.green("Text Alignment test passed!");
     } else {
-      console.log("FAIL");
       return output;
     }
   } catch (e) {
