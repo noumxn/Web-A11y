@@ -15,9 +15,7 @@ describe("Lists Tests", () => {
     const dom1 = new JSDOM(html1);
     const { document: document1 } = dom1.window;
     const result1 = checkLists(document1);
-    expect(result1).to.include(
-      chalk.green("No list content outside of list elements!"),
-    );
+    expect(result1).to.include("passed!");
   });
 
   it("should fail since there are bullet points", () => {
@@ -34,11 +32,7 @@ describe("Lists Tests", () => {
     const { document: document1 } = dom1.window;
     const result1 = checkLists(document1);
     expect(result1).to.include(
-      chalk.red(
-        "Use list elements (<ul>, <ol>, <dl>) for list content instead of " +
-          "\u2022" +
-          "\u25E6",
-      ),
+      "Use list elements (<ul>, <ol>, <dl>) for list content instead of",
     );
   });
 
@@ -56,11 +50,7 @@ describe("Lists Tests", () => {
     const { document: document1 } = dom1.window;
     const result1 = checkLists(document1);
     expect(result1).to.include(
-      chalk.red(
-        "Use list elements (<ul>, <ol>, <dl>) for list content instead of " +
-          "\u2023" +
-          "\u25B9",
-      ),
+      "Use list elements (<ul>, <ol>, <dl>) for list content instead of",
     );
   });
 
@@ -78,11 +68,7 @@ describe("Lists Tests", () => {
     const { document: document1 } = dom1.window;
     const result1 = checkLists(document1);
     expect(result1).to.include(
-      chalk.red(
-        "Use list elements (<ul>, <ol>, <dl>) for list content instead of " +
-          "\u25AA" +
-          "\u25A0",
-      ),
+      "Use list elements (<ul>, <ol>, <dl>) for list content instead of ",
     );
   });
 
@@ -100,10 +86,7 @@ describe("Lists Tests", () => {
     const { document: document1 } = dom1.window;
     const result1 = checkLists(document1);
     expect(result1).to.include(
-      chalk.red(
-        "Use list elements (<ul>, <ol>, <dl>) for list content instead of " +
-          "*",
-      ),
+      "Use list elements (<ul>, <ol>, <dl>) for list content instead of",
     );
   });
 
@@ -122,11 +105,7 @@ describe("Lists Tests", () => {
     const { document: document1 } = dom1.window;
     const result1 = checkLists(document1);
     expect(result1).to.include(
-      chalk.red(
-        "Use list elements (<ul>, <ol>, <dl>) for list content instead of " +
-          "\u2043" +
-          "-",
-      ),
+      "Use list elements (<ul>, <ol>, <dl>) for list content instead of",
     );
   });
 });

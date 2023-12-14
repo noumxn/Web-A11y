@@ -21,14 +21,14 @@ export const checkLinearContentFlow = async (document) => {
         tabIndexValue !== -1
       ) {
         output += chalk.red(
-          `Element with ID '${element.id}' has tabindex value ${tabIndexValue}. It should be 0 or -1.\n`,
+          `\nElement with ID '${element.id}' has tabindex value ${tabIndexValue}. It should be 0 or -1.`,
         );
       }
     });
 
     if (elementsWithTabindex.length === 0 || output === "") {
       output += chalk.green(
-        "Linear content flow check passes! All tabindex values are 0 or -1 or there are no elements with tabindex values.",
+        "\nLinear content flow check passes! All tabindex values are 0 or -1 or there are no elements with tabindex values.",
       );
     }
     return output;

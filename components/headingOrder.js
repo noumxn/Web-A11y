@@ -28,7 +28,7 @@ export const checkHeadingOrder = (document) => {
 
       if (level > currMax + 1) {
         return chalk.red(
-          `Heading order incorrect. h${currMax + 1} tag missing.`,
+          `\nHeading order incorrect. h${currMax + 1} tag missing.`,
         );
       } else if (level === currMax + 1) {
         currMax++;
@@ -37,7 +37,7 @@ export const checkHeadingOrder = (document) => {
       }
     }
 
-    return chalk.green("Heading Order test passed!");
+    return chalk.green("\nHeading Order test passed!");
   } catch (e) {
     return `${chalk.red("Error parsing the HTML file:")}${e}`;
   }

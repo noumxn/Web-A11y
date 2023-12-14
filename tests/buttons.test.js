@@ -19,9 +19,9 @@ describe("Keyboard Button Tests", () => {
     const dom1 = new JSDOM(html1);
     const { document: document1 } = dom1.window;
     const result1 = await checkButtonAccess(document1);
-    const expectedSuccessMessage =
-      "Keyboard accessibility for all buttons has passed!";
-    expect(result1.includes(expectedSuccessMessage)).to.be.true;
+    expect(result1).to.include(
+      "Keyboard accessibility for all buttons has passed!",
+    );
   });
 
   it("should fail because it can't find the button", async () => {
@@ -35,8 +35,7 @@ describe("Keyboard Button Tests", () => {
     const dom2 = new JSDOM(html2);
     const { document: document2 } = dom2.window;
     const result2 = await checkButtonAccess(document2);
-    const expectedErrorMessage = "No buttons found.";
-    expect(result2.includes(expectedErrorMessage)).to.be.true;
+    expect(result2).to.include("No buttons found.");
   });
 
   it("should fail because a button is invisible", async () => {
@@ -59,7 +58,6 @@ describe("Keyboard Button Tests", () => {
     const dom3 = new JSDOM(html3);
     const { document: document3 } = dom3.window;
     const result3 = await checkButtonAccess(document3);
-    const expectedErrorMessage = "Button 1 is invisible or not focusable";
-    expect(result3.includes(expectedErrorMessage)).to.be.true;
+    expect(result3).to.include("Button 1 is invisible or not focusable");
   });
 });

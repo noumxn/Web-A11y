@@ -1,7 +1,7 @@
 import { expect } from "chai";
-import { checkSensoryRefs } from "../components/nonSensoryRef.js";
-import { JSDOM } from "jsdom";
 import chalk from "chalk";
+import { JSDOM } from "jsdom";
+import { checkSensoryRefs } from "../components/nonSensoryRef.js";
 
 describe("", () => {
   it("should fail", () => {
@@ -57,7 +57,7 @@ describe("", () => {
     const dom2 = new JSDOM(html2);
     const { document: document2 } = dom2.window;
     const result2 = checkSensoryRefs(document2);
-    expect(result2).to.equal(
+    expect(result2).to.include(
       chalk.green("Positional/Sensory References test passed!"),
     );
   });

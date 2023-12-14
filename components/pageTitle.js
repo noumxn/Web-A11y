@@ -23,7 +23,7 @@ export const checkPageTitle = (document) => {
     let output = "";
     //the title exists on the document
     if (title) {
-      output += chalk.green("Title check passed!");
+      output += chalk.green("\nTitle check passed!");
       return output;
     } else {
       output += chalk.red("\nThe webpage does not have a title!");

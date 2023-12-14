@@ -58,7 +58,7 @@ export const checkDescriptiveHeadings = (document) => {
     }
 
     if (output.length === 0) {
-      return chalk.green(`All the Heading elements are descriptive!`);
+      return chalk.green(`\nDescriptive heading test passed!`);
     } else {
       return output;
     }

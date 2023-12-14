@@ -1,7 +1,7 @@
-import { JSDOM } from "jsdom";
-import chalk from "chalk";
-import { checkGlobalCode } from "../components/globalCode.js";
 import { expect } from "chai";
+import chalk from "chalk";
+import { JSDOM } from "jsdom";
+import { checkGlobalCode } from "../components/globalCode.js";
 
 describe("Global Code Tests", () => {
   it("should pass when lang attribute and unique title exist on <html> tag", () => {
@@ -21,7 +21,7 @@ describe("Global Code Tests", () => {
     const { document } = dom.window;
 
     const result = checkGlobalCode(document);
-    expect(result).to.equal(chalk.green("Global Code check pass!"));
+    expect(result).to.include("Global Code check passed!");
   });
 
   it("should fail when lang attribute is missing on <html> tag", () => {

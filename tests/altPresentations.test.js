@@ -1,7 +1,7 @@
 import { expect } from "chai";
-import { checkTimeBasedMediaAlt } from "../components/altPresentations.js";
-import { JSDOM } from "jsdom";
 import chalk from "chalk";
+import { JSDOM } from "jsdom";
+import { checkTimeBasedMediaAlt } from "../components/altPresentations.js";
 
 describe("Audio Description Component for Audios", () => {
   it("should fail when track is missing for audio elements", () => {
@@ -10,7 +10,7 @@ describe("Audio Description Component for Audios", () => {
     const { document: document1 } = dom1.window;
     const result1 = checkTimeBasedMediaAlt(document1);
     expect(result1).to.include(
-      chalk.red("Audio without appropriate descriptions:"),
+      chalk.red("\nAudio without appropriate descriptions:"),
     );
   });
 
@@ -20,7 +20,7 @@ describe("Audio Description Component for Audios", () => {
     const { document: document2 } = dom2.window;
     const result2 = checkTimeBasedMediaAlt(document2);
     expect(result2).to.include(
-      chalk.red("Audio without appropriate descriptions:"),
+      chalk.red("\nAudio without appropriate descriptions:"),
     );
   });
 
@@ -29,8 +29,8 @@ describe("Audio Description Component for Audios", () => {
     const dom3 = new JSDOM(html3);
     const { document: document3 } = dom3.window;
     const result3 = checkTimeBasedMediaAlt(document3);
-    expect(result3).to.equal(
-      chalk.green("Time-Based Media Alternatives test passed!"),
+    expect(result3).to.include(
+      chalk.green("\nTime-Based Media Alternatives test passed!"),
     );
   });
 });

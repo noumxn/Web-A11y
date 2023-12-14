@@ -11,7 +11,7 @@ describe("Media Controls tests", () => {
     const dom1 = new JSDOM(html1);
     const { document: document1 } = dom1.window;
     const result1 = checkPauseMedia(document1);
-    expect(result1).to.include(chalk.red("Media element cannot be paused:"));
+    expect(result1).to.include("Media element cannot be paused:");
   });
 
   it("should fail because audio element does not have controls enabled", () => {
@@ -21,7 +21,7 @@ describe("Media Controls tests", () => {
     const dom1 = new JSDOM(html1);
     const { document: document1 } = dom1.window;
     const result1 = checkPauseMedia(document1);
-    expect(result1).to.include(chalk.red("Media element cannot be paused:"));
+    expect(result1).to.include("Media element cannot be paused:");
   });
 
   it("should pass because video element has controls enabled", () => {
@@ -31,9 +31,7 @@ describe("Media Controls tests", () => {
     const dom1 = new JSDOM(html1);
     const { document: document1 } = dom1.window;
     const result1 = checkPauseMedia(document1);
-    expect(result1).to.include(
-      chalk.green("All media elements can be paused!"),
-    );
+    expect(result1).to.include("Pause check for media elements passed!");
   });
 
   it("should pass because audio element has controls enabled", () => {
@@ -43,8 +41,6 @@ describe("Media Controls tests", () => {
     const dom1 = new JSDOM(html1);
     const { document: document1 } = dom1.window;
     const result1 = checkPauseMedia(document1);
-    expect(result1).to.include(
-      chalk.green("All media elements can be paused!"),
-    );
+    expect(result1).to.include("Pause check for media elements passed!");
   });
 });

@@ -1,7 +1,7 @@
 import { expect } from "chai";
-import { checkAudioDesc } from "../components/audioDesc.js";
-import { JSDOM } from "jsdom";
 import chalk from "chalk";
+import { JSDOM } from "jsdom";
+import { checkAudioDesc } from "../components/audioDesc.js";
 
 describe("Audio Description Component for videos", () => {
   it("should fail when track is missing for video elements", () => {
@@ -10,7 +10,7 @@ describe("Audio Description Component for videos", () => {
     const { document: document1 } = dom1.window;
     const result1 = checkAudioDesc(document1);
     expect(result1).to.include(
-      chalk.red("Multimedia element without audio descriptions:"),
+      chalk.red("\nMultimedia element without audio descriptions:"),
     );
   });
 
@@ -20,7 +20,7 @@ describe("Audio Description Component for videos", () => {
     const { document: document2 } = dom2.window;
     const result2 = checkAudioDesc(document2);
     expect(result2).to.include(
-      chalk.red("Multimedia element without audio descriptions:"),
+      chalk.red("\nMultimedia element without audio descriptions:"),
     );
   });
 
@@ -29,8 +29,8 @@ describe("Audio Description Component for videos", () => {
     const dom3 = new JSDOM(html3);
     const { document: document3 } = dom3.window;
     const result3 = checkAudioDesc(document3);
-    expect(result3).to.equal(
-      chalk.green("Multimedia Audio Description test passed!"),
+    expect(result3).to.include(
+      chalk.green("\nMultimedia Audio Description test passed!"),
     );
   });
 });

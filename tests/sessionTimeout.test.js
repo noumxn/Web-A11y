@@ -34,6 +34,6 @@ describe("Check session timeout tests", () => {
       `VISITOR_PRIVACY_METADATA=CgJVUxIEGgAgSA%3D%3D; Domain=.youtube.com; Expires=${date2}; Path=/; Secure; HttpOnly; SameSite=lax`,
     ];
     const result3 = checkSessionTimeout(undefined, cookie3);
-    expect(result3).to.equal(chalk.green("Session Timeout test passed!"));
+    expect(result3).to.include(chalk.green("Session Timeout test passed!"));
   });
 });

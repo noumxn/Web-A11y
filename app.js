@@ -13,6 +13,7 @@ import { validateHtml } from "./utils/htmlValidator.js";
 import { isValidURL } from "./utils/urlValidator.js";
 import { scrapeWebsite } from "./utils/webScraper.js";
 import { fetchCss } from "./utils/cssUtil.js";
+import { output } from "./constants.js";
 const outputFilePath = "./output.html";
 
 // NOTE: This is to suppress the punycode deprication warning in Node Version 21.0.0
@@ -26,6 +27,14 @@ process.noDeprecation = true;
  **/
 
 async function main() {
+  if (process.argv.length > 3) {
+    console.error(
+      chalk.red(
+        "Error: Invalid command.\nUsage:\n\tnpm start <url> | [-m | --manual]",
+      ),
+    );
+    return;
+  }
   let __manual__ = false;
   let url = undefined;
   let input = process.argv[2];
@@ -88,7 +97,9 @@ async function main() {
     const data = fs.readFileSync(outputFilePath, "utf-8");
     const dom = new JSDOM(data);
     const { document } = dom.window;
-    testAccessibility(document, cookieData);
+    await testAccessibility(document, cookieData, output);
+    console.log(output.fail);
+    console.log(output.pass);
   } catch (e) {
     console.error("Error:", e);
   }

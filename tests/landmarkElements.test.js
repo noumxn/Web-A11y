@@ -1,7 +1,7 @@
-import { checkLandmarkElements } from "../components/landmarkElements.js";
-import { JSDOM } from "jsdom";
 import { expect } from "chai";
 import chalk from "chalk";
+import { JSDOM } from "jsdom";
+import { checkLandmarkElements } from "../components/landmarkElements.js";
 
 describe("Landmark Elements Tests", () => {
   it("should pass when high-priority landmark elements are present", () => {
@@ -23,7 +23,7 @@ describe("Landmark Elements Tests", () => {
     const dom = new JSDOM(html);
     const { document } = dom.window;
     const result = checkLandmarkElements(document);
-    expect(result).to.equal(
+    expect(result).to.include(
       chalk.green("High-Priority Landmark Elements check passed!"),
     );
   });
@@ -48,7 +48,7 @@ describe("Landmark Elements Tests", () => {
     const dom = new JSDOM(html);
     const { document } = dom.window;
     const result = checkLandmarkElements(document);
-    expect(result).to.equal(
+    expect(result).to.include(
       chalk.yellow("Some non-high-priority landmark elements are present."),
     );
   });
@@ -70,7 +70,7 @@ describe("Landmark Elements Tests", () => {
     const { document } = dom.window;
     const result = checkLandmarkElements(document);
     const missingElements = "header, nav, main, footer"; // Add the missing high-priority elements
-    expect(result).to.equal(
+    expect(result).to.include(
       chalk.red(
         `One or more high-priority landmark elements are missing: ${missingElements}`,
       ),

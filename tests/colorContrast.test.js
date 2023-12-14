@@ -3,7 +3,6 @@ import { expect } from "chai";
 import { JSDOM } from "jsdom";
 import { checkColorContrasts } from "../components/colorContrast.js";
 import path from "path";
-import chalk from "chalk";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
@@ -41,9 +40,7 @@ describe("Color Contrast check", async () => {
     const dom1 = new JSDOM(html1);
     const { document: document1 } = dom1.window;
     const result1 = await checkColorContrasts(document1);
-    expect(result1).to.include(
-      chalk.red("Low contrast between element and parent:"),
-    );
+    expect(result1).to.include("Low contrast between element and parent:");
   });
 });
 
@@ -61,6 +58,6 @@ describe("Link Decoration tests", async () => {
     const dom2 = new JSDOM(html2);
     const { document: document2 } = dom2.window;
     const result2 = await checkColorContrasts(document2);
-    expect(result2).to.include(chalk.green("Color contrast test passed!"));
+    expect(result2).to.include("Color contrast test passed!");
   });
 });

@@ -30,9 +30,9 @@ const isViewportZoomEnabled = (document) => {
 export const checkViewportZoom = (document) => {
   try {
     if (isViewportZoomEnabled(document)) {
-      return chalk.green("Viewport Zoom test passed!");
+      return chalk.green("\nViewport Zoom test passed!");
     } else {
-      return chalk.red("Viewport zoom is disabled.");
+      return chalk.red("\nViewport zoom is disabled.");
     }
   } catch (e) {
     return chalk.red(e.message);

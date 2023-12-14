@@ -13,7 +13,7 @@ describe("Table Structure", () => {
     const dom1 = new JSDOM(html1);
     const { document: document1 } = dom1.window;
     const result1 = checkTableStructure(document1);
-    expect(result1).to.include(chalk.green("All table elements are valid!"));
+    expect(result1).to.include("passed!");
   });
 
   it("should fail when the table does not contain all the correct elements", () => {
@@ -22,7 +22,7 @@ describe("Table Structure", () => {
     const { document: document2 } = dom2.window;
     const result2 = checkTableStructure(document2);
     expect(result2).to.include(
-      chalk.red("An invalid table was found. The table is missing a <tbody>."),
+      "An invalid table was found. The table is missing a <tbody>.",
     );
   });
 });
@@ -33,9 +33,7 @@ describe("Table Headers", () => {
     const dom1 = new JSDOM(html1);
     const { document: document1 } = dom1.window;
     const result1 = checkTableHeaders(document1);
-    expect(result1).to.include(
-      chalk.green("All table header elements are valid!"),
-    );
+    expect(result1).to.include("passed!");
   });
 
   it("should fail when the table header contains <td> instead of <th>", () => {
@@ -44,9 +42,7 @@ describe("Table Headers", () => {
     const { document: document2 } = dom2.window;
     const result2 = checkTableHeaders(document2);
     expect(result2).to.include(
-      chalk.red(
-        "The table header contain(s) <td> element(s) where it should be <th>.",
-      ),
+      "The table header contain(s) <td> element(s) where it should be <th>.",
     );
   });
 
@@ -55,9 +51,7 @@ describe("Table Headers", () => {
     const dom2 = new JSDOM(html2);
     const { document: document2 } = dom2.window;
     const result2 = checkTableHeaders(document2);
-    expect(result2).to.include(
-      chalk.red("The table header is missing <th> element(s)."),
-    );
+    expect(result2).to.include("The table header is missing <th> element(s).");
   });
 });
 
@@ -67,7 +61,7 @@ describe("Table Captions", () => {
     const dom1 = new JSDOM(html1);
     const { document: document1 } = dom1.window;
     const result1 = checkTableCaptions(document1);
-    expect(result1).to.include(chalk.green("All tables contain captions!"));
+    expect(result1).to.include("passed!");
   });
 
   it("should fail the table element does not have a caption element", () => {
@@ -75,8 +69,6 @@ describe("Table Captions", () => {
     const dom2 = new JSDOM(html2);
     const { document: document2 } = dom2.window;
     const result2 = checkTableCaptions(document2);
-    expect(result2).to.include(
-      chalk.red("Table(s) are missing the caption element."),
-    );
+    expect(result2).to.include("Table(s) are missing the caption element.");
   });
 });

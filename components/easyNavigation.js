@@ -28,9 +28,9 @@ export const checkSkipLinks = (document) => {
       }
     });
     if (hasSkip) {
-      return chalk.green("Skip Link test passed!");
+      return chalk.green("\nSkip Link test passed!");
     } else {
-      return chalk.yellow("Missing skip link");
+      return chalk.yellow("\nMissing skip link");
     }
   } catch (e) {
     return `${chalk.red("Error parsing the HTML file:")}${e}`;

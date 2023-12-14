@@ -28,7 +28,7 @@ export const checkCaptions = (document) => {
       }
     }
     if (output.length === 0) {
-      return chalk.green("Video Captions test passed!");
+      return chalk.green("\nVideo Captions test passed!");
     } else {
       return output;
     }

@@ -1,7 +1,7 @@
 import { expect } from "chai";
-import { checkHeadingOrder } from "../components/headingOrder.js";
-import { JSDOM } from "jsdom";
 import chalk from "chalk";
+import { JSDOM } from "jsdom";
+import { checkHeadingOrder } from "../components/headingOrder.js";
 
 describe("Heading Order", () => {
   it("should fail because heading level 4 is skipped", () => {
@@ -80,7 +80,7 @@ describe("Heading Order", () => {
     const dom4 = new JSDOM(html4);
     const { document: document4 } = dom4.window;
     const result4 = checkHeadingOrder(document4);
-    expect(result4).to.equal(chalk.green("Heading Order test passed!"));
+    expect(result4).to.include("Heading Order test passed!");
   });
 
   it("should pass because heading order is correct and no levels skipped", () => {
@@ -95,6 +95,6 @@ describe("Heading Order", () => {
     const dom5 = new JSDOM(html5);
     const { document: document5 } = dom5.window;
     const result5 = checkHeadingOrder(document5);
-    expect(result5).to.equal(chalk.green("Heading Order test passed!"));
+    expect(result5).to.include("Heading Order test passed!");
   });
 });

@@ -1,7 +1,7 @@
 import { expect } from "chai";
-import { checkNewTab } from "../components/newTab.js";
-import { JSDOM } from "jsdom";
 import chalk from "chalk";
+import { JSDOM } from "jsdom";
+import { checkNewTab } from "../components/newTab.js";
 
 describe("New tab link warning check", () => {
   it("should fail because this link opens in a new tab and does not provide appropriate warnings", () => {
@@ -19,7 +19,7 @@ describe("New tab link warning check", () => {
     const dom2 = new JSDOM(html2);
     const { document: document2 } = dom2.window;
     const result2 = checkNewTab(document2);
-    expect(result2).to.equal(chalk.green("New Tab Warning test passed!"));
+    expect(result2).to.include(chalk.green("New Tab Warning test passed!"));
   });
 
   it("should pass because the link opens in a new tab but also provides required warnings", () => {
@@ -28,6 +28,6 @@ describe("New tab link warning check", () => {
     const dom3 = new JSDOM(html3);
     const { document: document3 } = dom3.window;
     const result3 = checkNewTab(document3);
-    expect(result3).to.equal(chalk.green("New Tab Warning test passed!"));
+    expect(result3).to.include(chalk.green("New Tab Warning test passed!"));
   });
 });

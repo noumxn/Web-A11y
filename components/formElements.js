@@ -24,21 +24,21 @@ export const checkFieldsetLegend = (document) => {
       if (!hasFieldset && hasLegend) {
         success = false;
         return chalk.red(
-          "Legend element found without a corresponding fieldset.",
+          "\nLegend element found without a corresponding fieldset.",
         );
       }
 
       if (hasFieldset && !hasLegend) {
         success = false;
         return chalk.red(
-          "Fieldset element found without a corresponding legend.",
+          "\nFieldset element found without a corresponding legend.",
         );
       }
     });
 
     return success
-      ? chalk.green("Fieldset and Legend test passed!")
-      : chalk.red("Fieldset and Legend test failed!");
+      ? chalk.green("\nFieldset and Legend test passed!")
+      : chalk.red("\nFieldset and Legend test failed!");
   } catch (e) {
     return `${chalk.red("Error parsing the HTML file:")} ${e}`;
   }

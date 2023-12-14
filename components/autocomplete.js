@@ -33,7 +33,7 @@ export const checkAutocomplete = (document) => {
       }
     });
     if (output.length === 0) {
-      return chalk.green("Autocomplete Attribute test passed!");
+      return chalk.green("\nAutocomplete Attribute test passed!");
     } else {
       return output;
     }
