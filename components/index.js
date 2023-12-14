@@ -42,6 +42,7 @@ import { checkOrientationSupport } from "./orientation.js";
 import { checkHorizontalScrolling } from "./horizontalScrolling.js";
 import { checkElementContent } from "./elementContent.js";
 import { checkTextAlignment } from "./langAlignment.js";
+import { checkLinearContentFlow } from "./linearContentFlow.js";
 
 /**
  * @function testAccessibility
@@ -89,6 +90,7 @@ export const testAccessibility = async (document, cookie) => {
   funcRunner(checkHorizontalScrolling, document);
   funcRunner(checkElementContent, document);
   funcRunner(checkTextAlignment, document);
+  funcRunner(checkLinearContentFlow, document);
 };
 
 /**
