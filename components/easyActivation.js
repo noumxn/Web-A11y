@@ -23,7 +23,8 @@ export const checkInteractiveElementSize = async () => {
     let output = "";
     const cssContent = await getCssContent();
 
-    const hasInsufficientSize = /(\bbutton\b|\ba\b)[^}]*\bwidth\b[^:]*:\s*44px[^}]*\bheight\b[^:]*:\s*44px/i.test(
+    const hasInsufficientSize =
+      /(\bbutton\b|\ba\b)[^}]*\bwidth\b[^:]*:\s*44px[^}]*\bheight\b[^:]*:\s*44px/i.test(
         cssContent,
       );
 
@@ -38,7 +39,7 @@ export const checkInteractiveElementSize = async () => {
     return output;
   } catch (err) {
     console.error(err);
-    return `${chalk.red("Error reading the CSS file:",)} ${err}`;
+    return `${chalk.red("Error reading the CSS file:")} ${err}`;
   }
 };
 

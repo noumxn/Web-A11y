@@ -16,7 +16,6 @@ import { checkColorContrasts } from "./colorContrast.js";
 import { checkFocusStyles, checkLinkElements } from "./controls.js";
 import { checkDescriptiveHeadings } from "./descriptiveHeadings.js";
 import { checkSkipLinks } from "./easyNavigation.js";
-import { checkElementContent } from "./elementContent.js";
 import { checkErrorMessage } from "./errorMessages.js";
 import { checkFieldsetLegend } from "./formElements.js";
 import { checkGlobalCode } from "./globalCode.js";
@@ -43,18 +42,7 @@ import {
   checkTableStructure,
 } from "./tables.js";
 import { checkTitleTooltips } from "./titleTooltips.js";
-import { checkAutocomplete } from "./autocomplete.js";
-import { checkErrorMessage } from "./errorMessages.js";
-import { checkSessionTimeout } from "./sessionTimeout.js";
-import { checkLinkDecoration } from "./linkDecoration.js";
-import { checkButtonType } from "./buttonType.js";
-import { checkColorContrasts } from "./colorContrast.js";
-import { checkSelectionContrast } from "./selectionColor.js";
-import { checkOrientationSupport } from "./orientation.js";
-import { checkHorizontalScrolling } from "./horizontalScrolling.js";
 import { checkElementContent } from "./elementContent.js";
-import { checkTextAlignment } from "./langAlignment.js";
-import { checkLinearContentFlow } from "./linearContentFlow.js";
 import { checkInteractiveElementSize } from "./easyActivation.js";
 import { checkViewportZoom } from "./viewportZoom.js";
 

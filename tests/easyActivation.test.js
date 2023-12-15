@@ -43,7 +43,9 @@ describe("Interactive Element Size Check", () => {
     await fs.writeFile(filePath, validCSS);
 
     const result = await checkInteractiveElementSize();
-    const expectedMessage = chalk.green("Interactive element size test passed!");
+    const expectedMessage = chalk.green(
+      "Interactive element size test passed!",
+    );
     expect(result.trim()).to.equal(expectedMessage);
   });
 
@@ -52,7 +54,7 @@ describe("Interactive Element Size Check", () => {
 
     const result = await checkInteractiveElementSize();
     const expectedMessage = chalk.yellow(
-      "Warning: Some interactive elements have insufficient size. Ensure buttons and links are at least 44 x 44 pixels."
+      "Warning: Some interactive elements have insufficient size. Ensure buttons and links are at least 44 x 44 pixels.",
     );
     expect(result.trim()).to.equal(expectedMessage);
   });
