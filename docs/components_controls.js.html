@@ -90,6 +90,7 @@
                   >checkFieldsetLegend</a
                 >
               </li>
+              <li><a href="global.html#checkFlashes">checkFlashes</a></li>
               <li>
                 <a href="global.html#checkFocusStyles">checkFocusStyles</a>
               </li>
@@ -104,6 +105,11 @@
                 >
               </li>
               <li>
+                <a href="global.html#checkInteractiveElementSize"
+                  >checkInteractiveElementSize</a
+                >
+              </li>
+              <li>
                 <a href="global.html#checkKeyboardAccessibility"
                   >checkKeyboardAccessibility</a
                 >
@@ -111,6 +117,11 @@
               <li>
                 <a href="global.html#checkLandmarkElements"
                   >checkLandmarkElements</a
+                >
+              </li>
+              <li>
+                <a href="global.html#checkLinearContentFlow"
+                  >checkLinearContentFlow</a
                 >
               </li>
               <li>
@@ -127,6 +138,9 @@
               <li><a href="global.html#checkPauseMedia">checkPauseMedia</a></li>
               <li>
                 <a href="global.html#checkReadability">checkReadability</a>
+              </li>
+              <li>
+                <a href="global.html#checkReducedMotion">checkReducedMotion</a>
               </li>
               <li>
                 <a href="global.html#checkSelectionContrast"
@@ -223,7 +237,7 @@ export const checkLinkElements = (document) => {
     }
   }
 
-  return chalk.green("All elements with href attributes use the &lt;a> element!");
+  return chalk.green("\nLink &lt;a> tag check passed!!");
 };
 
 /**
@@ -263,7 +277,7 @@ export const checkFocusStyles = (document) => {
     }
   }
 
-  return chalk.green("All control elements attributes have a :focus state!");
+  return chalk.green("\n:focus state test passed!");
 };
 </code></pre>
             </article>

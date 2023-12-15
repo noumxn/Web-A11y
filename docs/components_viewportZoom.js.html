@@ -90,6 +90,7 @@
                   >checkFieldsetLegend</a
                 >
               </li>
+              <li><a href="global.html#checkFlashes">checkFlashes</a></li>
               <li>
                 <a href="global.html#checkFocusStyles">checkFocusStyles</a>
               </li>
@@ -104,6 +105,11 @@
                 >
               </li>
               <li>
+                <a href="global.html#checkInteractiveElementSize"
+                  >checkInteractiveElementSize</a
+                >
+              </li>
+              <li>
                 <a href="global.html#checkKeyboardAccessibility"
                   >checkKeyboardAccessibility</a
                 >
@@ -111,6 +117,11 @@
               <li>
                 <a href="global.html#checkLandmarkElements"
                   >checkLandmarkElements</a
+                >
+              </li>
+              <li>
+                <a href="global.html#checkLinearContentFlow"
+                  >checkLinearContentFlow</a
                 >
               </li>
               <li>
@@ -127,6 +138,9 @@
               <li><a href="global.html#checkPauseMedia">checkPauseMedia</a></li>
               <li>
                 <a href="global.html#checkReadability">checkReadability</a>
+              </li>
+              <li>
+                <a href="global.html#checkReducedMotion">checkReducedMotion</a>
               </li>
               <li>
                 <a href="global.html#checkSelectionContrast"
@@ -223,9 +237,9 @@ const isViewportZoomEnabled = (document) => {
 export const checkViewportZoom = (document) => {
   try {
     if (isViewportZoomEnabled(document)) {
-      return chalk.green("Viewport Zoom test passed!");
+      return chalk.green("\nViewport Zoom test passed!");
     } else {
-      return chalk.red("Viewport zoom is disabled.");
+      return chalk.red("\nViewport zoom is disabled.");
     }
   } catch (e) {
     return chalk.red(e.message);

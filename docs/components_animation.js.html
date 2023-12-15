@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>components/orientation.js</title>
+    <title>components/animation.js</title>
 
     <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -198,19 +198,18 @@
         <div class="content">
           <header class="page-title">
             <p>Source</p>
-            <h1>components/orientation.js</h1>
+            <h1>components/animation.js</h1>
           </header>
 
           <section>
             <article>
               <pre
                 class="prettyprint source linenums"
-              ><code>import fs from "fs/promises";
-import chalk from "chalk";
+              ><code>import chalk from "chalk";
 import path from "path";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
-
+import fs from "fs/promises";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const cssPath = "../output.css";
@@ -218,49 +217,150 @@ const scriptDirectory = __dirname;
 const cssFilePath = path.resolve(scriptDirectory, cssPath);
 
 /**
- * @function checkOrientationSupport
- * @return {string} A success message if there are media queries supporting rotation in the CSS.
- * @return {string} A warning message if no media queries related to orientation are found.
- * @throws Error reading the CSS file or processing the HTML.
- * @desc WARNING
+ * @function checkFlashes
+ * @param {Document} document
+ * @return {string} Success message if all animations flashe 3 times per second or less
+ * @return {string} Failure message if an animation flashes more than 3 times per second
+ * @throws Error parsing the HTML file
+ * @desc ERROR
  * @description
- * 16. A Check that the site can be rotated to any orientation.
- */
-export const checkOrientationSupport = async () => {
+ * 14.A
+ * Ensure animations are subtle and do not flash too much
+ * Certain kinds of strobing or flashing animations will trigger seizures
+ * Others may be distracting and disruptive, especially for certain kinds of
+ * cognitive disability such as ADHD
+ **/
+
+export const checkAnimationFlash = async () => {
   try {
-    let output = "";
-    const cssContent = await getCssContent();
+    let output =
+      "Make sure that all animations do not flash more than 3 times per second";
+    const cssContent = await fs.readFile(cssFilePath, "utf8");
 
-    // Check if there are any @media queries with orientation in the CSS
-    const hasOrientationMediaQuery = /@media\s*\(orientation:[^}]+}/i.test(
-      cssContent,
-    );
+    const flashViolations = checkFlashes(cssContent);
 
-    if (hasOrientationMediaQuery) {
-      output += chalk.green("\nRotation support test passed!");
-    } else {
-      output += chalk.yellow(
-        "\nNo @media queries with orientation found in the CSS. Consider setting orientation styles.",
-      );
+    if (flashViolations.length != 0) {
+      flashViolations.forEach((violation) => {
+        output += "Animation named: '" + violation;
+      });
     }
 
-    return output;
+    if (output.length == 0) {
+      return chalk.green("Animations do not exceed flash limit!");
+    } else {
+      return chalk.yellow(output);
+    }
   } catch (err) {
-    console.error(err);
-    return `${chalk.red(
-      "Error reading the CSS file or processing the HTML:",
-    )} ${err}`;
+    return `${chalk.red("Error processing the document or CSS file:")}${err}`;
   }
 };
 
-const getCssContent = async () => {
+/**
+ * @function checkReducedMotion
+ * @param {Document} document
+ * @return {string} Success message if all animations satify the prefers-reduced-motion query
+ * @return {string} Failure message if the prefers-reduced-motion query is not found
+ * @throws Error parsing the HTML file
+ * @desc ERROR
+ * @description
+ * 14.C
+ * Make sure all animation obeys the prefers-reduced-motion media query
+ **/
+
+export const checkReducedMotion = async () => {
   try {
     const cssContent = await fs.readFile(cssFilePath, "utf8");
-    return cssContent;
+    const kfPattern = /@keyframes\s+([\w-]+)\s*{[^}]*}/g;
+    const mediaQueryPattern =
+      /@media\s*\(prefers-reduced-motion:\s*reduce\)\s*{[^}]*}/g;
+    const animations = [];
+
+    // Find keyframes
+    let keyframes;
+    while ((keyframes = kfPattern.exec(cssContent)) !== null) {
+      const animationName = keyframes[1];
+      animations.push({ name: animationName });
+    }
+
+    if (animations.length == 0 || mediaQueryPattern.test(cssContent)) {
+      return chalk.green(
+        "All animations obey the prefers-reduced-motion media query",
+      );
+    } else {
+      return chalk.red(
+        "Animations do not obey the prefers-reduced-motion query",
+      );
+    }
   } catch (err) {
-    throw new Error(`Error reading the CSS file: ${err}`);
+    return `${chalk.red("Error processing the document or CSS file:")}${err}`;
   }
 };
+
+function countKeyframes(cssCode, animationName) {
+  const keyframesPattern = new RegExp(
+    `@keyframes\\s+${animationName}\\s*{([^}]*)}`,
+    "g",
+  );
+
+  const keyframesMatches = cssCode.match(keyframesPattern);
+
+  if (keyframesMatches) {
+    // Extract the keyframes block
+    const keyframesBlock = keyframesMatches[0];
+
+    // Count the number of frames
+    const framesCount = (keyframesBlock.match(/(?:\d+%)\s*{/g) || []).length;
+
+    return framesCount;
+  }
+
+  // If the animation name is not found
+  return 0;
+}
+
+function checkFlashes(cssContent) {
+  const kfPattern = /@keyframes\s+([\w-]+)\s*{[^}]*}/g;
+  const animPattern = /\s*animation\s*:\s*([^;]+);/g;
+  const durPattern = /\b(\d*\.?\d+)(s|ms)\b/g;
+  const flashesPerSec = 3; //limit flashes to 3 or less each second
+  const animations = [];
+
+  // Find keyframes
+  let keyframes;
+  while ((keyframes = kfPattern.exec(cssContent)) !== null) {
+    const animationName = keyframes[1];
+    const frames = countKeyframes(cssContent, animationName);
+    animations.push({ name: animationName, duration: 0, frames: frames });
+  }
+
+  // Find animations in regular rules
+  let matches;
+  while ((matches = animPattern.exec(cssContent)) !== null) {
+    const properties = matches[1].split(",");
+    for (const prop of properties) {
+      const parts = prop.trim().split(" ");
+      const animationName = parts[0];
+      const durationMatch = parts.find((part) => durPattern.test(part));
+
+      if (durationMatch) {
+        const [unit] = durationMatch.match(/\b(\d*\.?\d+)(s|ms)\b/);
+        const durationInSeconds = unit;
+
+        const animation = animations.find((a) => a.name === animationName);
+        if (animation) {
+          animation.duration = Math.max(animation.duration, durationInSeconds);
+        }
+      }
+    }
+  }
+  const violations = animations
+    .filter(
+      (animation) => animation.frames / animation.duration > flashesPerSec,
+    )
+    .map((animation) => animation.name);
+
+  return violations;
+}
 </code></pre>
             </article>
           </section>

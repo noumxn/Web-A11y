@@ -90,6 +90,7 @@
                   >checkFieldsetLegend</a
                 >
               </li>
+              <li><a href="global.html#checkFlashes">checkFlashes</a></li>
               <li>
                 <a href="global.html#checkFocusStyles">checkFocusStyles</a>
               </li>
@@ -104,6 +105,11 @@
                 >
               </li>
               <li>
+                <a href="global.html#checkInteractiveElementSize"
+                  >checkInteractiveElementSize</a
+                >
+              </li>
+              <li>
                 <a href="global.html#checkKeyboardAccessibility"
                   >checkKeyboardAccessibility</a
                 >
@@ -111,6 +117,11 @@
               <li>
                 <a href="global.html#checkLandmarkElements"
                   >checkLandmarkElements</a
+                >
+              </li>
+              <li>
+                <a href="global.html#checkLinearContentFlow"
+                  >checkLinearContentFlow</a
                 >
               </li>
               <li>
@@ -127,6 +138,9 @@
               <li><a href="global.html#checkPauseMedia">checkPauseMedia</a></li>
               <li>
                 <a href="global.html#checkReadability">checkReadability</a>
+              </li>
+              <li>
+                <a href="global.html#checkReducedMotion">checkReducedMotion</a>
               </li>
               <li>
                 <a href="global.html#checkSelectionContrast"
@@ -211,17 +225,17 @@ export const checkTableStructure = (document) => {
   for (const table of tables) {
     if (table.querySelector("thead") == null) {
       return chalk.red(
-        `An invalid table was found. The table is missing a &lt;thead>.`,
+        `\nAn invalid table was found. The table is missing a &lt;thead>.`,
       );
     }
     if (table.querySelector("tbody") == null) {
       return chalk.red(
-        `An invalid table was found. The table is missing a &lt;tbody>.`,
+        `\nAn invalid table was found. The table is missing a &lt;tbody>.`,
       );
     }
   }
 
-  return chalk.green("All table elements are valid!");
+  return chalk.green("\nAll table element checks passed!");
 };
 
 /**
@@ -246,17 +260,17 @@ export const checkTableHeaders = (document) => {
         header.querySelector("th") == null &amp;&amp;
         header.querySelector("td") == null
       ) {
-        return chalk.red(`The table header is missing &lt;th> element(s).`);
+        return chalk.red(`\nThe table header is missing &lt;th> element(s).`);
       }
       if (header.querySelector("td") != null) {
         return chalk.red(
-          `The table header contain(s) &lt;td> element(s) where it should be &lt;th>.`,
+          `\nThe table header contain(s) &lt;td> element(s) where it should be &lt;th>.`,
         );
       }
     }
   }
 
-  return chalk.green("All table header elements are valid!");
+  return chalk.green("\nAll table header element checks passed!");
 };
 
 /**
@@ -276,11 +290,11 @@ export const checkTableCaptions = (document) => {
 
   for (const table of tables) {
     if (table.querySelector("caption") == null) {
-      return chalk.red("Table(s) are missing the caption element.");
+      return chalk.red("\nTable(s) are missing the caption element.");
     }
   }
 
-  return chalk.green("All tables contain captions!");
+  return chalk.green("\nAll tables caption tests passed!");
 };
 </code></pre>
             </article>

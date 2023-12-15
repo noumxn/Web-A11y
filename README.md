@@ -1,6 +1,8 @@
-# Accessibility Testing Tool
+# Web-A11y
 
-## Setup:
+Web-a11y is a cutting-edge command line tool designed for comprehensive accessibility testing of websites. Simplify your development workflow and ensure your sites meet all accessibility standards with Web-a11y's efficient and user-friendly interface
+
+## Setup and Use:
 
 1. Clone the repository using the following command:
    ```bash
@@ -26,7 +28,7 @@
    ```bash
    npm start <url>
    ```
-6. To manually test a webpage for accessibility, you can add its HTML content to a file name `output.html` at the root of the project and run the following command:
+6. To manually test a webpage for accessibility, you can add its HTML content to a file name `output.html` and the linked CSS content in `output.css` at the root of the project and run the following command:
    ```bash
    npm start -m
    ```
@@ -45,3 +47,7 @@
 - Cindy Lee
 - Zuting Chen
 - Nouman Syed
+
+## Documentation:
+
+Each component and its functionality has been carefully documented. To access documentation, clone the repository, and then check out `docs/index.html`.

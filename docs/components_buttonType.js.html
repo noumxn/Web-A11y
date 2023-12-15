@@ -90,6 +90,7 @@
                   >checkFieldsetLegend</a
                 >
               </li>
+              <li><a href="global.html#checkFlashes">checkFlashes</a></li>
               <li>
                 <a href="global.html#checkFocusStyles">checkFocusStyles</a>
               </li>
@@ -104,6 +105,11 @@
                 >
               </li>
               <li>
+                <a href="global.html#checkInteractiveElementSize"
+                  >checkInteractiveElementSize</a
+                >
+              </li>
+              <li>
                 <a href="global.html#checkKeyboardAccessibility"
                   >checkKeyboardAccessibility</a
                 >
@@ -111,6 +117,11 @@
               <li>
                 <a href="global.html#checkLandmarkElements"
                   >checkLandmarkElements</a
+                >
+              </li>
+              <li>
+                <a href="global.html#checkLinearContentFlow"
+                  >checkLinearContentFlow</a
                 >
               </li>
               <li>
@@ -127,6 +138,9 @@
               <li><a href="global.html#checkPauseMedia">checkPauseMedia</a></li>
               <li>
                 <a href="global.html#checkReadability">checkReadability</a>
+              </li>
+              <li>
+                <a href="global.html#checkReducedMotion">checkReducedMotion</a>
               </li>
               <li>
                 <a href="global.html#checkSelectionContrast"
@@ -199,7 +213,7 @@
  * @return {string} Success message if all non-submit buttons have type="button"
  * @return {string} Failure message if any non-submit button is missing type="button"
  * @throws Error parsing the HTML file
- * @desc Check if buttons not intended for form submission have type="button" attribute
+ * @desc 7.D. Check if buttons not intended for form submission have type="button" attribute
  **/
 export const checkButtonType = (document) => {
   try {
@@ -216,7 +230,7 @@ export const checkButtonType = (document) => {
       }
     });
     if (output.length === 0) {
-      return chalk.green("Button Type test passed!");
+      return chalk.green("\nButton Type test passed!");
     } else {
       return output;
     }

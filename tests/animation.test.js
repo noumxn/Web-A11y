@@ -1,5 +1,8 @@
 import { expect } from "chai";
-import { checkAnimationFlash, checkReducedMotion } from "../components/animation.js";
+import {
+  checkAnimationFlash,
+  checkReducedMotion,
+} from "../components/animation.js";
 import { JSDOM } from "jsdom";
 import path from "path";
 import chalk from "chalk";
@@ -37,54 +40,54 @@ body {
 }
 `;
 
-
 describe("Animation Tests", async () => {
-    it("should warn the user to check their animations", async () => {
-        fs.writeFileSync(filePath, cssContent1);
-        const html1 = `<!DOCTYPE html>
+  it("should warn the user to check their animations", async () => {
+    fs.writeFileSync(filePath, cssContent1);
+    const html1 = `<!DOCTYPE html>
     <html>
         <body>
             <div class="element"></div>
         </body>
     </html>`;
-        const dom1 = new JSDOM(html1);
-        const { document: document1 } = dom1.window;
-        const result1 = await checkAnimationFlash(document1);
-        expect(result1).to.include(
-            chalk.yellow("Make sure that all animations do not flash more than 3 times per second"),
-        );
-    });
+    const dom1 = new JSDOM(html1);
+    const { document: document1 } = dom1.window;
+    const result1 = await checkAnimationFlash(document1);
+    expect(result1).to.include(
+      chalk.yellow(
+        "Make sure that all animations do not flash more than 3 times per second",
+      ),
+    );
+  });
 
-    it("should pass when prefers-reduced-motion media query is found", async () => {
-        fs.writeFileSync(filePath, cssContent2);
-        const html1 = `<!DOCTYPE html>
+  it("should pass when prefers-reduced-motion media query is found", async () => {
+    fs.writeFileSync(filePath, cssContent2);
+    const html1 = `<!DOCTYPE html>
     <html>
         <body>
             <div class="element"></div>
         </body>
     </html>`;
-        const dom1 = new JSDOM(html1);
-        const { document: document1 } = dom1.window;
-        const result1 = await checkReducedMotion(document1);
-        expect(result1).to.include(
-            chalk.green("All animations obey the prefers-reduced-motion media query"),
-        );
-    });
+    const dom1 = new JSDOM(html1);
+    const { document: document1 } = dom1.window;
+    const result1 = await checkReducedMotion(document1);
+    expect(result1).to.include(
+      chalk.green("All animations obey the prefers-reduced-motion media query"),
+    );
+  });
 
-    it("should fail when no prefers-reduced-motion media query is found", async () => {
-        fs.writeFileSync(filePath, cssContent1);
-        const html1 = `<!DOCTYPE html>
+  it("should fail when no prefers-reduced-motion media query is found", async () => {
+    fs.writeFileSync(filePath, cssContent1);
+    const html1 = `<!DOCTYPE html>
     <html>
         <body>
             <div class="element"></div>
         </body>
     </html>`;
-        const dom1 = new JSDOM(html1);
-        const { document: document1 } = dom1.window;
-        const result1 = await checkReducedMotion(document1);
-        expect(result1).to.include(
-            chalk.red("Animations do not obey the prefers-reduced-motion query"),
-        );
-    });
+    const dom1 = new JSDOM(html1);
+    const { document: document1 } = dom1.window;
+    const result1 = await checkReducedMotion(document1);
+    expect(result1).to.include(
+      chalk.red("Animations do not obey the prefers-reduced-motion query"),
+    );
+  });
 });
-

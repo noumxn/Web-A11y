@@ -90,6 +90,7 @@
                   >checkFieldsetLegend</a
                 >
               </li>
+              <li><a href="global.html#checkFlashes">checkFlashes</a></li>
               <li>
                 <a href="global.html#checkFocusStyles">checkFocusStyles</a>
               </li>
@@ -104,6 +105,11 @@
                 >
               </li>
               <li>
+                <a href="global.html#checkInteractiveElementSize"
+                  >checkInteractiveElementSize</a
+                >
+              </li>
+              <li>
                 <a href="global.html#checkKeyboardAccessibility"
                   >checkKeyboardAccessibility</a
                 >
@@ -111,6 +117,11 @@
               <li>
                 <a href="global.html#checkLandmarkElements"
                   >checkLandmarkElements</a
+                >
+              </li>
+              <li>
+                <a href="global.html#checkLinearContentFlow"
+                  >checkLinearContentFlow</a
                 >
               </li>
               <li>
@@ -127,6 +138,9 @@
               <li><a href="global.html#checkPauseMedia">checkPauseMedia</a></li>
               <li>
                 <a href="global.html#checkReadability">checkReadability</a>
+              </li>
+              <li>
+                <a href="global.html#checkReducedMotion">checkReducedMotion</a>
               </li>
               <li>
                 <a href="global.html#checkSelectionContrast"
@@ -226,7 +240,7 @@ export const checkErrorMessage = (document) => {
       document.querySelector(".errors");
 
     if (!form || (!isValid &amp;&amp; error)) {
-      return chalk.green("Form Errors Display test passed!");
+      return chalk.green("\nForm Errors Display test passed!");
     } else {
       return `${chalk.yellow(
         `Form with id="${form.id}" may not be throwing appropriate errors for invalid submission.`,

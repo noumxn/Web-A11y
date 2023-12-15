@@ -90,6 +90,7 @@
                   >checkFieldsetLegend</a
                 >
               </li>
+              <li><a href="global.html#checkFlashes">checkFlashes</a></li>
               <li>
                 <a href="global.html#checkFocusStyles">checkFocusStyles</a>
               </li>
@@ -104,6 +105,11 @@
                 >
               </li>
               <li>
+                <a href="global.html#checkInteractiveElementSize"
+                  >checkInteractiveElementSize</a
+                >
+              </li>
+              <li>
                 <a href="global.html#checkKeyboardAccessibility"
                   >checkKeyboardAccessibility</a
                 >
@@ -111,6 +117,11 @@
               <li>
                 <a href="global.html#checkLandmarkElements"
                   >checkLandmarkElements</a
+                >
+              </li>
+              <li>
+                <a href="global.html#checkLinearContentFlow"
+                  >checkLinearContentFlow</a
                 >
               </li>
               <li>
@@ -127,6 +138,9 @@
               <li><a href="global.html#checkPauseMedia">checkPauseMedia</a></li>
               <li>
                 <a href="global.html#checkReadability">checkReadability</a>
+              </li>
+              <li>
+                <a href="global.html#checkReducedMotion">checkReducedMotion</a>
               </li>
               <li>
                 <a href="global.html#checkSelectionContrast"
@@ -218,7 +232,6 @@ const cssFilePath = path.resolve(scriptDirectory, cssPath);
  */
 export const checkSelectionContrast = async (document) => {
   try {
-    console.log("HELLO", toHex("yellow"));
     const elements = new Set(
       [...document.querySelectorAll("*")].map((el) => el.tagName.toLowerCase()),
     );
@@ -252,7 +265,7 @@ export const checkSelectionContrast = async (document) => {
 
             if (rat &lt; 3) {
               output += `${chalk.red(
-                `Low contrast in ::selection for &lt;${tag}>: ${color} on ${bgColor}, ratio: ${rat}`,
+                `\nLow contrast in ::selection for &lt;${tag}>: ${color} on ${bgColor}, ratio: ${rat}`,
               )}\n`;
             }
           } catch (e) {
@@ -263,7 +276,7 @@ export const checkSelectionContrast = async (document) => {
     }
 
     return output.length === 0
-      ? chalk.green("Selection Color Contrast test passed!")
+      ? chalk.green("\nSelection Color Contrast test passed!")
       : output;
   } catch (e) {
     return `${chalk.red("Error processing the files:")}${e}`;

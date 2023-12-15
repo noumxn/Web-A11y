@@ -90,6 +90,7 @@
                   >checkFieldsetLegend</a
                 >
               </li>
+              <li><a href="global.html#checkFlashes">checkFlashes</a></li>
               <li>
                 <a href="global.html#checkFocusStyles">checkFocusStyles</a>
               </li>
@@ -104,6 +105,11 @@
                 >
               </li>
               <li>
+                <a href="global.html#checkInteractiveElementSize"
+                  >checkInteractiveElementSize</a
+                >
+              </li>
+              <li>
                 <a href="global.html#checkKeyboardAccessibility"
                   >checkKeyboardAccessibility</a
                 >
@@ -111,6 +117,11 @@
               <li>
                 <a href="global.html#checkLandmarkElements"
                   >checkLandmarkElements</a
+                >
+              </li>
+              <li>
+                <a href="global.html#checkLinearContentFlow"
+                  >checkLinearContentFlow</a
                 >
               </li>
               <li>
@@ -127,6 +138,9 @@
               <li><a href="global.html#checkPauseMedia">checkPauseMedia</a></li>
               <li>
                 <a href="global.html#checkReadability">checkReadability</a>
+              </li>
+              <li>
+                <a href="global.html#checkReducedMotion">checkReducedMotion</a>
               </li>
               <li>
                 <a href="global.html#checkSelectionContrast"
@@ -216,14 +230,14 @@ export const checkAutoplay = (document) => {
     for (let element of other) {
       let source = element.getAttribute("src");
       if (source.includes("autoplay=1")) {
-        return chalk.red("Media element with autoplay found");
+        return chalk.red("\nMedia element with autoplay found");
       }
     }
 
     if (media.length > 0) {
-      return chalk.red("Media element with autoplay found");
+      return chalk.red("\nMedia element with autoplay found");
     } else {
-      return chalk.green("No autoplay found!");
+      return chalk.green("\nMedia autoplay check passed!");
     }
   } catch (e) {
     return `${chalk.red("Error parsing the HTML file:")}${e}`;

@@ -90,6 +90,7 @@
                   >checkFieldsetLegend</a
                 >
               </li>
+              <li><a href="global.html#checkFlashes">checkFlashes</a></li>
               <li>
                 <a href="global.html#checkFocusStyles">checkFocusStyles</a>
               </li>
@@ -104,6 +105,11 @@
                 >
               </li>
               <li>
+                <a href="global.html#checkInteractiveElementSize"
+                  >checkInteractiveElementSize</a
+                >
+              </li>
+              <li>
                 <a href="global.html#checkKeyboardAccessibility"
                   >checkKeyboardAccessibility</a
                 >
@@ -111,6 +117,11 @@
               <li>
                 <a href="global.html#checkLandmarkElements"
                   >checkLandmarkElements</a
+                >
+              </li>
+              <li>
+                <a href="global.html#checkLinearContentFlow"
+                  >checkLinearContentFlow</a
                 >
               </li>
               <li>
@@ -127,6 +138,9 @@
               <li><a href="global.html#checkPauseMedia">checkPauseMedia</a></li>
               <li>
                 <a href="global.html#checkReadability">checkReadability</a>
+              </li>
+              <li>
+                <a href="global.html#checkReducedMotion">checkReducedMotion</a>
               </li>
               <li>
                 <a href="global.html#checkSelectionContrast"
@@ -210,7 +224,7 @@
 export const checkSessionTimeout = (document, cookie) => {
   try {
     if (!cookie) {
-      return `${chalk.green("Session Timeout test passed!")}`;
+      return `${chalk.green("\nSession Timeout test passed!")}`;
     }
     const expirationRegex = /Expires=([^;]+)/;
     const currDate = new Date();
@@ -229,10 +243,10 @@ export const checkSessionTimeout = (document, cookie) => {
     const twentyHoursMs = 20 * 60 * 60 * 1000;
     if (timeDifference &lt;= twentyHoursMs) {
       return `${chalk.red(
-        `Session expires at ${closestDate} and has a max age of ${timeDifference}`,
+        `\nSession expires at ${closestDate} and has a max age of ${timeDifference}`,
       )}`;
     } else {
-      return `${chalk.green("Session Timeout test passed!")}`;
+      return `${chalk.green("\nSession Timeout test passed!")}`;
     }
   } catch (e) {
     throw `${chalk.red("Error parsing the HTML file:")} ${e}`;
