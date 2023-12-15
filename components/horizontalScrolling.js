@@ -1,7 +1,6 @@
-import fs from "fs/promises";
 import chalk from "chalk";
-import path from "path";
-import { dirname } from "path";
+import fs from "fs/promises";
+import path, { dirname } from "path";
 import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -19,17 +18,17 @@ const cssFilePath = path.resolve(scriptDirectory, cssPath);
  */
 export const checkHorizontalScrolling = async (document) => {
   try {
-    let output = "";
+    let output1 = "";
 
     const hasMainContainerScroll = await hasHorizontalScrolling(document.body);
 
     if (hasMainContainerScroll) {
-      output += chalk.red("\nThe main container has horizontal scrolling.");
+      output1 += chalk.red("\nThe main container has horizontal scrolling.");
     } else {
-      output += chalk.green("\nHorizontal scrolling test passed!");
+      output1 += chalk.green("\nHorizontal scrolling test passed!");
     }
 
-    return output;
+    return output1;
   } catch (err) {
     console.error(err);
     return `${chalk.red(

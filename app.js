@@ -5,15 +5,15 @@
 
 import chalk from "chalk";
 import fs from "fs-extra";
-import { JSDOM } from "jsdom";
-import { testAccessibility } from "./components/index.js";
-import { __prod__ } from "./constants.js";
-import { saveToOutputFile } from "./utils/fileSaver.js";
-import { validateHtml } from "./utils/htmlValidator.js";
-import { isValidURL } from "./utils/urlValidator.js";
-import { scrapeWebsite } from "./utils/webScraper.js";
-import { fetchCss } from "./utils/cssUtil.js";
-import { output } from "./constants.js";
+import {JSDOM} from "jsdom";
+import {testAccessibility} from "./components/index.js";
+import {__prod__} from "./constants.js";
+import {saveToOutputFile} from "./utils/fileSaver.js";
+import {validateHtml} from "./utils/htmlValidator.js";
+import {isValidURL} from "./utils/urlValidator.js";
+import {scrapeWebsite} from "./utils/webScraper.js";
+import {fetchCss} from "./utils/cssUtil.js";
+import {output} from "./constants.js";
 const outputFilePath = "./output.html";
 
 // NOTE: This is to suppress the punycode deprication warning in Node Version 21.0.0
@@ -96,7 +96,7 @@ async function main() {
     // Load the HTML file
     const data = fs.readFileSync(outputFilePath, "utf-8");
     const dom = new JSDOM(data);
-    const { document } = dom.window;
+    const {document} = dom.window;
     await testAccessibility(document, cookieData, output);
     console.log(output.fail);
     console.log(output.pass);
