@@ -6,7 +6,7 @@ import chalk from "chalk";
  * @return {string} Success message if all non-submit buttons have type="button"
  * @return {string} Failure message if any non-submit button is missing type="button"
  * @throws Error parsing the HTML file
- * @desc Check if buttons not intended for form submission have type="button" attribute
+ * @desc 7.D. Check if buttons not intended for form submission have type="button" attribute
  **/
 export const checkButtonType = (document) => {
   try {

@@ -8,10 +8,10 @@ import chalk from "chalk";
  * @throws Error parsing the HTML file
  * @desc ERROR
  * @description
- * 2.B
+ * 2.A
  * Use a lang attribute on the html element.
  * This helps assistive technology such as screen readers to pronounce content correctly.
- * 2.G
+ * 2.F
  * Avoid using the autofocus attribute
  * People who are blind or who have low vision may be disoriented when focus is moved
  * without their permission. Additionally, autofocus can be problematic for people with
