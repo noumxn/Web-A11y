@@ -12,7 +12,7 @@ const cssFilePath = path.resolve(scriptDirectory, cssPath);
 /**
  * @function checkFlashes
  * @param {Document} document
- * @return {string} Success message if all animations flashes 3 times per second or less
+ * @return {string} Success message if all animations flashe 3 times per second or less
  * @return {string} Failure message if an animation flashes more than 3 times per second
  * @throws Error parsing the HTML file
  * @desc ERROR
@@ -46,6 +46,18 @@ export const checkAnimationFlash = async () => {
         return `${chalk.red("Error processing the document or CSS file:")}${err}`;
     }
 };
+
+/**
+ * @function checkReducedMotion
+ * @param {Document} document
+ * @return {string} Success message if all animations satify the prefers-reduced-motion query
+ * @return {string} Failure message if the prefers-reduced-motion query is not found
+ * @throws Error parsing the HTML file
+ * @desc ERROR
+ * @description
+ * 14.C
+ * Make sure all animation obeys the prefers-reduced-motion media query
+ **/
 
 export const checkReducedMotion = async () => {
     try {
