@@ -12,8 +12,8 @@ const cssFilePath = path.resolve(scriptDirectory, cssPath);
 /**
  * @function checkFlashes
  * @param {Document} document
- * @return {string} Success message if 
- * @return {string} Failure message if 
+ * @return {string} Success message if all animations flashes 3 times per second or less
+ * @return {string} Failure message if an animation flashes more than 3 times per second
  * @throws Error parsing the HTML file
  * @desc ERROR
  * @description
@@ -24,7 +24,7 @@ const cssFilePath = path.resolve(scriptDirectory, cssPath);
  * cognitive disability such as ADHD
  **/
 
-export const checkAnimationFlash = async (document) => {
+export const checkAnimationFlash = async () => {
     try {
         let output = "Make sure that all animations do not flash more than 3 times per second";
         const cssContent = await fs.readFile(cssFilePath, "utf8");
@@ -43,7 +43,33 @@ export const checkAnimationFlash = async (document) => {
         else { return chalk.yellow(output); }
 
     } catch (err) {
-        return `${err}${chalk.red("Error processing the document or CSS file:")}`;
+        return `${chalk.red("Error processing the document or CSS file:")}${err}`;
+    }
+};
+
+export const checkReducedMotion = async () => {
+    try {
+        const cssContent = await fs.readFile(cssFilePath, "utf8");
+        const kfPattern = /@keyframes\s+([\w-]+)\s*{[^}]*}/g;
+        const mediaQueryPattern = /@media\s*\(prefers-reduced-motion:\s*reduce\)\s*{[^}]*}/g;
+        const animations = [];
+
+        // Find keyframes
+        let keyframes;
+        while ((keyframes = kfPattern.exec(cssContent)) !== null) {
+            const animationName = keyframes[1];
+            animations.push({ name: animationName });
+        }
+
+        if (animations.length == 0 || mediaQueryPattern.test(cssContent)) {
+            return chalk.green("All animations obey the prefers-reduced-motion media query");
+        }
+        else {
+            return chalk.red("Animations do not obey the prefers-reduced-motion query");
+        }
+
+    } catch (err) {
+        return `${chalk.red("Error processing the document or CSS file:")}${err}`;
     }
 };
 
@@ -66,7 +92,6 @@ function countKeyframes(cssCode, animationName) {
     // If the animation name is not found
     return 0;
 }
-
 
 function checkFlashes(cssContent) {
     const kfPattern = /@keyframes\s+([\w-]+)\s*{[^}]*}/g;
@@ -93,7 +118,7 @@ function checkFlashes(cssContent) {
             const durationMatch = parts.find(part => durPattern.test(part));
 
             if (durationMatch) {
-                const [duration, unit] = durationMatch.match(/\b(\d*\.?\d+)(s|ms)\b/);
+                const [unit] = durationMatch.match(/\b(\d*\.?\d+)(s|ms)\b/);
                 const durationInSeconds = unit;
 
                 const animation = animations.find(a => a.name === animationName);
