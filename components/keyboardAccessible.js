@@ -54,7 +54,7 @@ export const checkKeyboardAccessibility = async (document) => {
 
     if (output.length === 0) {
       return `${chalk.green(
-        "Keyboard accessibility for all elements has passed!",
+        "\nKeyboard accessibility for all elements has passed!",
       )}`;
     }
 

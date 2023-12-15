@@ -23,7 +23,7 @@ export const checkButtonType = (document) => {
       }
     });
     if (output.length === 0) {
-      return chalk.green("Button Type test passed!");
+      return chalk.green("\nButton Type test passed!");
     } else {
       return output;
     }

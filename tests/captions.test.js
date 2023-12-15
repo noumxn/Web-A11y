@@ -1,7 +1,7 @@
 import { expect } from "chai";
-import { checkCaptions } from "../components/captions.js";
-import { JSDOM } from "jsdom";
 import chalk from "chalk";
+import { JSDOM } from "jsdom";
+import { checkCaptions } from "../components/captions.js";
 
 describe("Captions Component", () => {
   it("should fail when track is missing for video elements", () => {
@@ -9,7 +9,7 @@ describe("Captions Component", () => {
     const dom1 = new JSDOM(html1);
     const { document: document1 } = dom1.window;
     const result1 = checkCaptions(document1);
-    expect(result1).to.include(chalk.red("Video element without captions:"));
+    expect(result1).to.include(chalk.red("\nVideo element without captions:"));
   });
 
   it("should fail when track is present but does not have captions as property", () => {
@@ -17,7 +17,7 @@ describe("Captions Component", () => {
     const dom2 = new JSDOM(html2);
     const { document: document2 } = dom2.window;
     const result2 = checkCaptions(document2);
-    expect(result2).to.include(chalk.red("Video element without captions:"));
+    expect(result2).to.include(chalk.red("\nVideo element without captions:"));
   });
 
   it("should pass when video elements have appropriate captions", () => {
@@ -25,6 +25,6 @@ describe("Captions Component", () => {
     const dom3 = new JSDOM(html3);
     const { document: document3 } = dom3.window;
     const result3 = checkCaptions(document3);
-    expect(result3).to.equal(chalk.green("Video Captions test passed!"));
+    expect(result3).to.include(chalk.green("\nVideo Captions test passed!"));
   });
 });

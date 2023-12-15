@@ -30,7 +30,7 @@ export const checkPauseMedia = (document) => {
     });
 
     if (output.length === 0) {
-      return chalk.green("All media elements can be paused!");
+      return chalk.green("\nPause check for media elements passed!");
     }
 
     return chalk.red(output);

@@ -15,6 +15,7 @@ const cssFilePath = path.resolve(scriptDirectory, cssPath);
  * @return {string} A success message if there are media queries supporting rotation in the CSS.
  * @return {string} A warning message if no media queries related to orientation are found.
  * @throws Error reading the CSS file or processing the HTML.
+ * @desc WARNING
  * @description
  * 16. A Check that the site can be rotated to any orientation.
  */
@@ -29,10 +30,10 @@ export const checkOrientationSupport = async () => {
     );
 
     if (hasOrientationMediaQuery) {
-      output += chalk.green("Rotation support test passed!");
+      output += chalk.green("\nRotation support test passed!");
     } else {
       output += chalk.yellow(
-        "Warning: No @media queries with orientation found in the CSS. Consider setting orientation styles.",
+        "\nNo @media queries with orientation found in the CSS. Consider setting orientation styles.",
       );
     }
 

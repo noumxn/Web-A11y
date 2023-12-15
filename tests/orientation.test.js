@@ -74,7 +74,7 @@ describe("Orientation Check", () => {
 
     const result = await checkOrientationSupport();
     const expectedMessage = chalk.yellow(
-      "Warning: No @media queries with orientation found in the CSS. Consider setting orientation styles.",
+      "No @media queries with orientation found in the CSS. Consider setting orientation styles.",
     );
     expect(result).to.include(expectedMessage);
   });

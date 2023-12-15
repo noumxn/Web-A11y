@@ -39,7 +39,7 @@ export const checkAriaAttr = (document) => {
       }
     }
     if (output.length === 0) {
-      return chalk.green(`Aria Attributes test passed!`);
+      return chalk.green(`\nAria Attributes test passed!`);
     } else {
       return output;
     }

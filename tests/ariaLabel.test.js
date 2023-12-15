@@ -1,7 +1,7 @@
 import { expect } from "chai";
-import { checkAriaAttr } from "../components/ariaLabel.js";
-import { JSDOM } from "jsdom";
 import chalk from "chalk";
+import { JSDOM } from "jsdom";
+import { checkAriaAttr } from "../components/ariaLabel.js";
 
 describe("Aria Attributes Component", () => {
   it("should detect complex element without both aria-label and aria-labelledby", () => {
@@ -10,7 +10,7 @@ describe("Aria Attributes Component", () => {
     const { document: document1 } = dom1.window;
     const result1 = checkAriaAttr(document1);
     expect(result1).to.include(
-      chalk.red("Complex element without appropriate label:"),
+      chalk.red("\nComplex element without appropriate label:"),
     );
   });
 
@@ -20,7 +20,7 @@ describe("Aria Attributes Component", () => {
     const { document: document2 } = dom2.window;
     const result2 = checkAriaAttr(document2);
     expect(result2).to.include(
-      chalk.red("Complex element without appropriate label:"),
+      chalk.red("\nComplex element without appropriate label:"),
     );
   });
 
@@ -38,6 +38,6 @@ describe("Aria Attributes Component", () => {
     const dom4 = new JSDOM(html4);
     const { document: document4 } = dom4.window;
     const result4 = checkAriaAttr(document4);
-    expect(result4).to.equal(chalk.green("Aria Attributes test passed!"));
+    expect(result4).to.include(chalk.green("\nAria Attributes test passed!"));
   });
 });

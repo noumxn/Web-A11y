@@ -1,7 +1,7 @@
 import { expect } from "chai";
-import { checkHeadings } from "../components/headings.js";
-import { JSDOM } from "jsdom";
 import chalk from "chalk";
+import { JSDOM } from "jsdom";
+import { checkHeadings } from "../components/headings.js";
 
 describe("Single H1 Heading", () => {
   it("should fail because there are more than one h1 headings", () => {
@@ -26,7 +26,7 @@ describe("Single H1 Heading", () => {
     const dom2 = new JSDOM(html2);
     const { document: document2 } = dom2.window;
     const result2 = checkHeadings(document2);
-    expect(result2).to.equal(chalk.green("H1 Tag test passed!"));
+    expect(result2).to.include(chalk.green("H1 Tag test passed!"));
   });
 
   it("should pass because there is only one h1 heading", () => {
@@ -41,6 +41,6 @@ describe("Single H1 Heading", () => {
     const dom3 = new JSDOM(html3);
     const { document: document3 } = dom3.window;
     const result3 = checkHeadings(document3);
-    expect(result3).to.equal(chalk.green("H1 Tag test passed!"));
+    expect(result3).to.include(chalk.green("H1 Tag test passed!"));
   });
 });

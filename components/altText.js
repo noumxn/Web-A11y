@@ -48,7 +48,7 @@ export const checkAltText = (document) => {
       }
     });
     if (output.length === 0) {
-      return chalk.green("Alt Text test passed!");
+      return chalk.green("\nAlt Text test passed!");
     } else {
       return output;
     }

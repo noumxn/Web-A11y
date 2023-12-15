@@ -51,15 +51,15 @@ export const checkLandmarkElements = (document) => {
   try {
     const result = hasHighPriorityLandmarkElements(document);
     if (result === true) {
-      return chalk.green("High-Priority Landmark Elements check passed!");
+      return chalk.green("\nHigh-Priority Landmark Elements check passed!");
     } else if (result === "warning") {
       return chalk.yellow(
-        "Some non-high-priority landmark elements are present.",
+        "\nSome non-high-priority landmark elements are present.",
       );
     } else {
       const missingElements = result.join(", ");
       return chalk.red(
-        `One or more high-priority landmark elements are missing: ${missingElements}`,
+        `\nOne or more high-priority landmark elements are missing: ${missingElements}`,
       );
     }
   } catch (e) {

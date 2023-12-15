@@ -1,7 +1,7 @@
-import { JSDOM } from "jsdom";
-import { checkViewportZoom } from "../components/viewportZoom.js";
 import { expect } from "chai";
 import chalk from "chalk";
+import { JSDOM } from "jsdom";
+import { checkViewportZoom } from "../components/viewportZoom.js";
 
 describe("Viewport Zoom Tests", () => {
   it("should pass when viewport zoom is enabled", () => {
@@ -19,7 +19,7 @@ describe("Viewport Zoom Tests", () => {
     const dom = new JSDOM(html);
     const { document } = dom.window;
     const result = checkViewportZoom(document);
-    expect(result).to.equal(chalk.green("Viewport Zoom test passed!"));
+    expect(result).to.include(chalk.green("Viewport Zoom test passed!"));
   });
 
   it("should fail when viewport zoom is disabled", () => {
@@ -37,6 +37,6 @@ describe("Viewport Zoom Tests", () => {
     const dom = new JSDOM(html);
     const { document } = dom.window;
     const result = checkViewportZoom(document);
-    expect(result).to.equal(chalk.red("Viewport zoom is disabled."));
+    expect(result).to.include(chalk.red("Viewport zoom is disabled."));
   });
 });

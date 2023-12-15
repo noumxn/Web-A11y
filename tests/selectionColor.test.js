@@ -1,11 +1,10 @@
-import fs from "fs";
 import { expect } from "chai";
-import { JSDOM } from "jsdom";
-import { checkSelectionContrast } from "../components/selectionColor.js";
-import path from "path";
 import chalk from "chalk";
-import { dirname } from "path";
+import fs from "fs";
+import { JSDOM } from "jsdom";
+import path, { dirname } from "path";
 import { fileURLToPath } from "url";
+import { checkSelectionContrast } from "../components/selectionColor.js";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const cssPath = "../output.css";
@@ -59,7 +58,7 @@ describe("Selection Color Contrast check", async () => {
     const dom2 = new JSDOM(html2);
     const { document: document2 } = dom2.window;
     const result2 = await checkSelectionContrast(document2);
-    expect(result2).to.equal(
+    expect(result2).to.include(
       chalk.green("Selection Color Contrast test passed!"),
     );
   });

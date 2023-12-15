@@ -33,7 +33,7 @@ export const checkErrorMessage = (document) => {
       document.querySelector(".errors");
 
     if (!form || (!isValid && error)) {
-      return chalk.green("Form Errors Display test passed!");
+      return chalk.green("\nForm Errors Display test passed!");
     } else {
       return `${chalk.yellow(
         `Form with id="${form.id}" may not be throwing appropriate errors for invalid submission.`,
