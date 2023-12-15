@@ -40,7 +40,7 @@ export const checkAnimationFlash = async (document) => {
         if (output.length == 0) {
             return chalk.green("Animations do not exceed flash limit!")
         }
-        else { return chalk.red(output); }
+        else { return chalk.yellow(output); }
 
     } catch (err) {
         return `${err}${chalk.red("Error processing the document or CSS file:")}`;
@@ -107,32 +107,5 @@ function checkFlashes(cssContent) {
         .filter(animation => animation.frames / animation.duration > flashesPerSec)
         .map(animation => animation.name);
 
-    animations.forEach(element => {
-        console.log(element.name);
-        console.log(element.frames);
-        console.log(element.duration);
-    });
-
     return violations;
 }
-
-// Example usage
-const cssContent = `
-@keyframes fadeIn {
-    0% { opacity: 0; }
-    50% { opacity: 0.5; }
-    100% { opacity: 1; }
-  }
-  
-  @keyframes slideIn {
-    0% { transform: translateX(-100%); }
-    50% { transform: translateX(-50%); }
-    100% { transform: translateX(0); }
-  }
-  
-  .element {
-    animation: fadeIn 2s ease-in-out, slideIn 1s linear;
-  }
-  `;
-
-console.log(checkFlashes(cssContent));

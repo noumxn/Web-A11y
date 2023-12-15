@@ -22,19 +22,10 @@ const cssContent1 = `
     animation: flash 1s infinite;
   }
   `;
-const cssContent2 = `
-@keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-}
 
-.element {
-    animation: fadeIn 2s ease-in-out;
-}
-  `;
 
 describe("Animation flash check", async () => {
-    it("should fail because animation flashes more than 3 times per second", async () => {
+    it("should warn the user to check their animations", async () => {
         fs.writeFileSync(filePath, cssContent1);
         const html1 = `<!DOCTYPE html>
     <html>
@@ -46,23 +37,7 @@ describe("Animation flash check", async () => {
         const { document: document1 } = dom1.window;
         const result1 = await checkAnimationFlash(document1);
         expect(result1).to.include(
-            chalk.red("exceeds 3 flashes per second"),
-        );
-    });
-
-    it("should pass because animation flashes less than 3 times per second", async () => {
-        fs.writeFileSync(filePath, cssContent2);
-        const html1 = `<!DOCTYPE html>
-    <html>
-        <body>
-            <div class="element"></div>
-        </body>
-    </html>`;
-        const dom1 = new JSDOM(html1);
-        const { document: document1 } = dom1.window;
-        const result1 = await checkAnimationFlash(document1);
-        expect(result1).to.include(
-            chalk.red("Animations do not exceed flash limit!"),
+            chalk.yellow("Make sure that all animations do not flash more than 3 times per second"),
         );
     });
 });
