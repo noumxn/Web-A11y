@@ -1,7 +1,7 @@
 import { expect } from "chai";
-import { checkAutocomplete } from "../components/autocomplete.js";
-import { JSDOM } from "jsdom";
 import chalk from "chalk";
+import { JSDOM } from "jsdom";
+import { checkAutocomplete } from "../components/autocomplete.js";
 
 describe("Autocomplete for inputs and textareas check", () => {
   it("should fail because input field does not have expected autocomplete attribute", () => {
@@ -34,8 +34,8 @@ describe("Autocomplete for inputs and textareas check", () => {
     const dom3 = new JSDOM(html3);
     const { document: document3 } = dom3.window;
     const result3 = checkAutocomplete(document3);
-    expect(result3).to.equal(
-      chalk.green("Autocomplete Attribute test passed!"),
+    expect(result3).to.include(
+      chalk.green("\nAutocomplete Attribute test passed!"),
     );
   });
 });

@@ -17,7 +17,7 @@ import chalk from "chalk";
 export const checkSessionTimeout = (document, cookie) => {
   try {
     if (!cookie) {
-      return `${chalk.green("Session Timeout test passed!")}`;
+      return `${chalk.green("\nSession Timeout test passed!")}`;
     }
     const expirationRegex = /Expires=([^;]+)/;
     const currDate = new Date();
@@ -36,10 +36,10 @@ export const checkSessionTimeout = (document, cookie) => {
     const twentyHoursMs = 20 * 60 * 60 * 1000;
     if (timeDifference <= twentyHoursMs) {
       return `${chalk.red(
-        `Session expires at ${closestDate} and has a max age of ${timeDifference}`,
+        `\nSession expires at ${closestDate} and has a max age of ${timeDifference}`,
       )}`;
     } else {
-      return `${chalk.green("Session Timeout test passed!")}`;
+      return `${chalk.green("\nSession Timeout test passed!")}`;
     }
   } catch (e) {
     throw `${chalk.red("Error parsing the HTML file:")} ${e}`;

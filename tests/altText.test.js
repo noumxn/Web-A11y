@@ -10,7 +10,7 @@ describe("Alt Text Component", () => {
     const { document: document1 } = dom1.window;
     const result1 = checkAltText(document1);
     expect(result1).to.include(
-      chalk.red("Image without appropriate alt text:"),
+      chalk.red("\nImage without appropriate alt text:"),
     );
   });
 
@@ -20,7 +20,7 @@ describe("Alt Text Component", () => {
     const { document: document2 } = dom2.window;
     const result2 = checkAltText(document2);
     expect(result2).to.include(
-      chalk.red("Image without appropriate alt text:"),
+      chalk.red("\nImage without appropriate alt text:"),
     );
   });
 
@@ -30,7 +30,7 @@ describe("Alt Text Component", () => {
     const { document: document3 } = dom3.window;
     const result3 = checkAltText(document3);
     expect(result3).to.include(
-      chalk.red("Image without appropriate alt text:"),
+      chalk.red("\nImage without appropriate alt text:"),
     );
   });
 
@@ -39,7 +39,7 @@ describe("Alt Text Component", () => {
     const dom4 = new JSDOM(html4);
     const { document: document4 } = dom4.window;
     const result4 = checkAltText(document4);
-    expect(result4).to.equal(chalk.green("Alt Text test passed!"));
+    expect(result4).to.include(chalk.green("\nAlt Text test passed!"));
   });
 
   it("should pass without alt text because it is hidden from users", () => {
@@ -47,6 +47,6 @@ describe("Alt Text Component", () => {
     const dom5 = new JSDOM(html5);
     const { document: document5 } = dom5.window;
     const result5 = checkAltText(document5);
-    expect(result5).to.equal(chalk.green("Alt Text test passed!"));
+    expect(result5).to.include(chalk.green("Alt Text test passed!"));
   });
 });

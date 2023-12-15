@@ -27,18 +27,18 @@ export const checkGlobalCode = (document) => {
       // Global Code A: Use a lang attribute on the html element.
       const langAttribute = htmlTag.getAttribute("lang");
       if (!langAttribute) {
-        let output = chalk.red("Missing lang attribute on the <html> tag:");
+        let output = chalk.red("\nMissing lang attribute on the <html> tag:");
         output += `\n${chalk.cyan(htmlTag.outerHTML)}`;
         return output;
       }
 
       // Global Code F: Avoid using the autofocus attribute.
       if (htmlTag.hasAttribute("autofocus")) {
-        return chalk.red("Autofocus attribute exists on the <html> tag:");
+        return chalk.red("\nAutofocus attribute exists on the <html> tag:");
       }
     }
 
-    return chalk.green("Global Code check pass!");
+    return chalk.green("\nGlobal Code check passed!");
   } catch (e) {
     return `${chalk.red("Error parsing the HTML file:")}${e}`;
   }

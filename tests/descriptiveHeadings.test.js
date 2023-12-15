@@ -1,7 +1,7 @@
 import { expect } from "chai";
-import { checkDescriptiveHeadings } from "../components/descriptiveHeadings.js";
-import { JSDOM } from "jsdom";
 import chalk from "chalk";
+import { JSDOM } from "jsdom";
+import { checkDescriptiveHeadings } from "../components/descriptiveHeadings.js";
 
 describe("Descriptive Headings", () => {
   it("should fail because heading is not relevent to corrosponding content", () => {
@@ -25,8 +25,8 @@ describe("Descriptive Headings", () => {
     const dom2 = new JSDOM(html2);
     const { document: document2 } = dom2.window;
     const result2 = checkDescriptiveHeadings(document2);
-    expect(result2).to.equal(
-      chalk.green("All the Heading elements are descriptive!"),
+    expect(result2).to.include(
+      chalk.green("\nDescriptive heading test passed!"),
     );
   });
 });

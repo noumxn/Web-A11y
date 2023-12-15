@@ -21,9 +21,9 @@ export const checkHeadings = (document) => {
     const numH1Headings = h1Headings.length;
 
     if (numH1Headings <= 1) {
-      return chalk.green("H1 Tag test passed!");
+      return chalk.green("\nH1 Tag test passed!");
     } else {
-      let output = chalk.red("More than one H1 tag found on the web-page:");
+      let output = chalk.red("\nMore than one H1 tag found on the web-page:");
       h1Headings.forEach((element, _index) => {
         output += `\n${chalk.cyan(element.outerHTML)}`;
       });

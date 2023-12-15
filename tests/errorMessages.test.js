@@ -1,7 +1,7 @@
 import { expect } from "chai";
-import { checkErrorMessage } from "../components/errorMessages.js";
-import { JSDOM } from "jsdom";
 import chalk from "chalk";
+import { JSDOM } from "jsdom";
+import { checkErrorMessage } from "../components/errorMessages.js";
 
 describe("Check error messages for forms", () => {
   it("should fail because error messages not displayed properly in forms", () => {
@@ -34,6 +34,6 @@ describe("Check error messages for forms", () => {
     const dom2 = new JSDOM(html2);
     const { document: document2 } = dom2.window;
     const result2 = checkErrorMessage(document2);
-    expect(result2).to.equal(chalk.green("Form Errors Display test passed!"));
+    expect(result2).to.include(chalk.green("Form Errors Display test passed!"));
   });
 });

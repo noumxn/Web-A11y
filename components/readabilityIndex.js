@@ -31,19 +31,19 @@ export const checkReadability = (document) => {
     // Check if the grade level is at or below 8
     if (fleschGradeLevel <= 8) {
       return chalk.green(
-        `Readability test passed! (Flesch-Kincaid Grade Level: ${fleschGradeLevel.toFixed(
+        `\nReadability test passed! (Flesch-Kincaid Grade Level: ${fleschGradeLevel.toFixed(
           2,
         )}`,
       );
     } else if (fleschGradeLevel <= 16) {
       return chalk.yellow(
-        `Readability test failed! (Flesch-Kincaid Grade Level: ${fleschGradeLevel.toFixed(
+        `\nReadability test failed! (Flesch-Kincaid Grade Level: ${fleschGradeLevel.toFixed(
           2,
         )}`,
       );
     } else {
       return chalk.red(
-        `Readability test failed! (Flesch-Kincaid Grade Level: ${fleschGradeLevel.toFixed(
+        `\nReadability test failed! (Flesch-Kincaid Grade Level: ${fleschGradeLevel.toFixed(
           2,
         )}`,
       );

@@ -1,9 +1,8 @@
-import fs from "fs/promises";
-import { ratio as contrastRatio } from "wcag-color";
 import chalk from "chalk";
-import path from "path";
-import { dirname } from "path";
+import fs from "fs/promises";
+import path, { dirname } from "path";
 import { fileURLToPath } from "url";
+import { ratio as contrastRatio } from "wcag-color";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -45,7 +44,7 @@ export const checkColorContrasts = async (document) => {
           const contrast = contrastRatio(elementColor, parentColor);
           if (contrast < 4.5) {
             output += `${chalk.red(
-              "Low contrast between element and parent:",
+              "\nLow contrast between element and parent:",
             )} ${element.outerHTML} (Contrast ratio: ${contrast})\n`;
           }
         }
@@ -53,7 +52,7 @@ export const checkColorContrasts = async (document) => {
     });
 
     return output.length === 0
-      ? chalk.green("Color contrast test passed!")
+      ? chalk.green("\nColor contrast test passed!")
       : output;
   } catch (err) {
     return `${chalk.red("Error processing the document or CSS file:")}${err}`;

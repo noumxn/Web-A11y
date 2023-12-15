@@ -51,7 +51,7 @@ export const checkLinkDecoration = async (document) => {
     });
 
     if (output.length === 0) {
-      return chalk.green("Link Decoration test passed!");
+      return chalk.green("\nLink Decoration test passed!");
     } else {
       return output;
     }

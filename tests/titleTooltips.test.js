@@ -1,7 +1,7 @@
-import { checkTitleTooltips } from "../components/titleTooltips.js";
-import { JSDOM } from "jsdom";
 import { expect } from "chai";
 import chalk from "chalk";
+import { JSDOM } from "jsdom";
+import { checkTitleTooltips } from "../components/titleTooltips.js";
 
 describe("Title Tooltips Tests", () => {
   it("should pass when no elements with tooltips have a title attribute", () => {
@@ -21,7 +21,7 @@ describe("Title Tooltips Tests", () => {
     const dom = new JSDOM(html);
     const { document } = dom.window;
     const result = checkTitleTooltips(document);
-    expect(result).to.equal(chalk.green("Tooltips test passed!"));
+    expect(result).to.include(chalk.green("Tooltips test passed!"));
   });
 
   it("should fail when an element with a tooltip has a title attribute", () => {

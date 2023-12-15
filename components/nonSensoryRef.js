@@ -31,7 +31,7 @@ export const checkSensoryRefs = (document) => {
     }
   }
   if (output.length === 0) {
-    return chalk.green(`Positional/Sensory References test passed!`);
+    return chalk.green(`\nPositional/Sensory References test passed!`);
   } else {
     return output;
   }
