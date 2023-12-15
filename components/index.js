@@ -43,7 +43,6 @@ import {
   checkTableStructure,
 } from "./tables.js";
 import { checkTitleTooltips } from "./titleTooltips.js";
-import { checkFieldsetLegend } from "./formElements.js";
 import { checkAutocomplete } from "./autocomplete.js";
 import { checkErrorMessage } from "./errorMessages.js";
 import { checkSessionTimeout } from "./sessionTimeout.js";
