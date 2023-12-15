@@ -94,6 +94,9 @@ export const testAccessibility = async (document, cookie) => {
   funcRunner(checkElementContent, document);
   funcRunner(checkTextAlignment, document);
   funcRunner(checkLinearContentFlow, document);
+  funcRunner(checkInteractiveElementSize, document);
+  funcRunner(checkAnimationFlash);
+  funcRunner(checkReducedMotion);
 };
 
 /**
