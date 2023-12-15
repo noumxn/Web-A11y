@@ -5,7 +5,6 @@ import {
   checkTableCaptions,
 } from "../components/tables.js";
 import { JSDOM } from "jsdom";
-import chalk from "chalk";
 
 describe("Table Structure", () => {
   it("should pass when the table contains all the correct elements", () => {

@@ -1,5 +1,4 @@
 import { expect } from "chai";
-import chalk from "chalk";
 import { JSDOM } from "jsdom";
 import { checkFocusStyles, checkLinkElements } from "../components/controls.js";
 

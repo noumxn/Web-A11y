@@ -1,7 +1,6 @@
 import { expect } from "chai";
 import { checkLists } from "../components/lists.js";
 import { JSDOM } from "jsdom";
-import chalk from "chalk";
 
 describe("Lists Tests", () => {
   it("should pass since there is no list content outside of the <ul> element", () => {

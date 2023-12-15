@@ -1,7 +1,6 @@
 import { expect } from "chai";
 import { checkPauseMedia } from "../components/pauseMedia.js";
 import { JSDOM } from "jsdom";
-import chalk from "chalk";
 
 describe("Media Controls tests", () => {
   it("should fail because video element does not have controls enabled", () => {
