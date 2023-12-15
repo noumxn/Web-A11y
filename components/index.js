@@ -3,7 +3,6 @@
  * @description Inward facing wrapper interface that calls all the functions that test a web-page for accessibility
  **/
 
-import chalk from "chalk";
 import { checkTimeBasedMediaAlt } from "./altPresentations.js";
 import { checkAltText } from "./altText.js";
 import { checkAriaAttr } from "./ariaLabel.js";
