@@ -29,7 +29,7 @@ export const checkTitleTooltips = (document) => {
     }
 
     if (output.length === 0) {
-      return chalk.green("Tooltips test passed!");
+      return chalk.green("\nTooltips test passed!");
     } else {
       return output;
     }

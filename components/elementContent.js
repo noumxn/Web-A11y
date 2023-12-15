@@ -45,7 +45,7 @@ export const checkElementContent = (document) => {
     });
 
     if (output.length === 0) {
-      return chalk.green("Element Content test passed!");
+      return chalk.green("\nElement Content test passed!");
     } else {
       return output;
     }

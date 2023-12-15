@@ -58,7 +58,7 @@ export const checkSelectionContrast = async (document) => {
 
             if (rat < 3) {
               output += `${chalk.red(
-                `Low contrast in ::selection for <${tag}>: ${color} on ${bgColor}, ratio: ${rat}`,
+                `\nLow contrast in ::selection for <${tag}>: ${color} on ${bgColor}, ratio: ${rat}`,
               )}\n`;
             }
           } catch (e) {
@@ -69,7 +69,7 @@ export const checkSelectionContrast = async (document) => {
     }
 
     return output.length === 0
-      ? chalk.green("Selection Color Contrast test passed!")
+      ? chalk.green("\nSelection Color Contrast test passed!")
       : output;
   } catch (e) {
     return `${chalk.red("Error processing the files:")}${e}`;

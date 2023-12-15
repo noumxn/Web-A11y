@@ -29,7 +29,7 @@ export const checkAudioDesc = (document) => {
       }
     }
     if (output.length === 0) {
-      return chalk.green("Multimedia Audio Description test passed!");
+      return chalk.green("\nMultimedia Audio Description test passed!");
     } else {
       return output;
     }

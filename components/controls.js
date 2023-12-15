@@ -30,7 +30,7 @@ export const checkLinkElements = (document) => {
     }
   }
 
-  return chalk.green("All elements with href attributes use the <a> element!");
+  return chalk.green("\nLink <a> tag check passed!!");
 };
 
 /**
@@ -70,5 +70,5 @@ export const checkFocusStyles = (document) => {
     }
   }
 
-  return chalk.green("All control elements attributes have a :focus state!");
+  return chalk.green("\n:focus state test passed!");
 };

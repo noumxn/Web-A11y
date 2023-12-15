@@ -18,17 +18,17 @@ export const checkTableStructure = (document) => {
   for (const table of tables) {
     if (table.querySelector("thead") == null) {
       return chalk.red(
-        `An invalid table was found. The table is missing a <thead>.`,
+        `\nAn invalid table was found. The table is missing a <thead>.`,
       );
     }
     if (table.querySelector("tbody") == null) {
       return chalk.red(
-        `An invalid table was found. The table is missing a <tbody>.`,
+        `\nAn invalid table was found. The table is missing a <tbody>.`,
       );
     }
   }
 
-  return chalk.green("All table elements are valid!");
+  return chalk.green("\nAll table element checks passed!");
 };
 
 /**
@@ -53,17 +53,17 @@ export const checkTableHeaders = (document) => {
         header.querySelector("th") == null &&
         header.querySelector("td") == null
       ) {
-        return chalk.red(`The table header is missing <th> element(s).`);
+        return chalk.red(`\nThe table header is missing <th> element(s).`);
       }
       if (header.querySelector("td") != null) {
         return chalk.red(
-          `The table header contain(s) <td> element(s) where it should be <th>.`,
+          `\nThe table header contain(s) <td> element(s) where it should be <th>.`,
         );
       }
     }
   }
 
-  return chalk.green("All table header elements are valid!");
+  return chalk.green("\nAll table header element checks passed!");
 };
 
 /**
@@ -83,9 +83,9 @@ export const checkTableCaptions = (document) => {
 
   for (const table of tables) {
     if (table.querySelector("caption") == null) {
-      return chalk.red("Table(s) are missing the caption element.");
+      return chalk.red("\nTable(s) are missing the caption element.");
     }
   }
 
-  return chalk.green("All tables contain captions!");
+  return chalk.green("\nAll tables caption tests passed!");
 };

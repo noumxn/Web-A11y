@@ -35,7 +35,7 @@ export const checkNewTab = (document) => {
       }
     });
     if (output.length === 0) {
-      return chalk.green("New Tab Warning test passed!");
+      return chalk.green("\nNew Tab Warning test passed!");
     } else {
       return output;
     }

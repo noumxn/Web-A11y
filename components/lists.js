@@ -36,10 +36,10 @@ export const checkLists = (document) => {
     });
 
     if (msg == "") {
-      return chalk.green("No list content outside of list elements!");
+      return chalk.green("\nList style test passed!");
     } else {
       return chalk.red(
-        "Use list elements (<ul>, <ol>, <dl>) for list content instead of " +
+        "\nUse list elements (<ul>, <ol>, <dl>) for list content instead of " +
           msg,
       );
     }

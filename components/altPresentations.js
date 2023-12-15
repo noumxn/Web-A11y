@@ -28,7 +28,7 @@ export const checkTimeBasedMediaAlt = (document) => {
     });
 
     if (output.length === 0) {
-      return chalk.green("Time-Based Media Alternatives test passed!");
+      return chalk.green("\nTime-Based Media Alternatives test passed!");
     } else {
       return output;
     }

@@ -3,46 +3,48 @@
  * @description Inward facing wrapper interface that calls all the functions that test a web-page for accessibility
  **/
 
+import chalk from "chalk";
 import { checkTimeBasedMediaAlt } from "./altPresentations.js";
 import { checkAltText } from "./altText.js";
 import { checkAriaAttr } from "./ariaLabel.js";
 import { checkAudioDesc } from "./audioDesc.js";
+import { checkAutocomplete } from "./autocomplete.js";
 import { checkAutoplay } from "./autoplay.js";
+import { checkButtonType } from "./buttonType.js";
 import { checkCaptions } from "./captions.js";
+import { checkColorContrasts } from "./colorContrast.js";
 import { checkFocusStyles, checkLinkElements } from "./controls.js";
 import { checkDescriptiveHeadings } from "./descriptiveHeadings.js";
 import { checkSkipLinks } from "./easyNavigation.js";
+import { checkErrorMessage } from "./errorMessages.js";
+import { checkFieldsetLegend } from "./formElements.js";
 import { checkGlobalCode } from "./globalCode.js";
 import { checkHeadingOrder } from "./headingOrder.js";
 import { checkHeadings } from "./headings.js";
+import { checkHorizontalScrolling } from "./horizontalScrolling.js";
 import { checkKeyboardAccessibility } from "./keyboardAccessible.js";
+import { checkLandmarkElements } from "./landmarkElements.js";
+import { checkTextAlignment } from "./langAlignment.js";
+import { checkLinearContentFlow } from "./linearContentFlow.js";
+import { checkLinkDecoration } from "./linkDecoration.js";
 import { checkLists } from "./lists.js";
 import { checkNewTab } from "./newTab.js";
 import { checkSensoryRefs } from "./nonSensoryRef.js";
+import { checkOrientationSupport } from "./orientation.js";
 import { checkPageTitle } from "./pageTitle.js";
 import { checkPauseMedia } from "./pauseMedia.js";
 import { checkReadability } from "./readabilityIndex.js";
+import { checkSelectionContrast } from "./selectionColor.js";
+import { checkSessionTimeout } from "./sessionTimeout.js";
 import {
   checkTableCaptions,
   checkTableHeaders,
   checkTableStructure,
 } from "./tables.js";
-import { checkViewportZoom } from "./viewportZoom.js";
-import { checkLandmarkElements } from "./landmarkElements.js";
 import { checkTitleTooltips } from "./titleTooltips.js";
-import { checkFieldsetLegend } from "./formElements.js";
-import { checkAutocomplete } from "./autocomplete.js";
-import { checkErrorMessage } from "./errorMessages.js";
-import { checkSessionTimeout } from "./sessionTimeout.js";
-import { checkLinkDecoration } from "./linkDecoration.js";
-import { checkButtonType } from "./buttonType.js";
-import { checkColorContrasts } from "./colorContrast.js";
-import { checkSelectionContrast } from "./selectionColor.js";
-import { checkOrientationSupport } from "./orientation.js";
-import { checkHorizontalScrolling } from "./horizontalScrolling.js";
 import { checkElementContent } from "./elementContent.js";
-import { checkTextAlignment } from "./langAlignment.js";
-import { checkLinearContentFlow } from "./linearContentFlow.js";
+import { checkInteractiveElementSize } from "./easyActivation.js";
+import { checkViewportZoom } from "./viewportZoom.js";
 import { checkAnimationFlash, checkReducedMotion } from "./animation.js";
 
 /**
@@ -92,8 +94,6 @@ export const testAccessibility = async (document, cookie) => {
   funcRunner(checkElementContent, document);
   funcRunner(checkTextAlignment, document);
   funcRunner(checkLinearContentFlow, document);
-  funcRunner(checkAnimationFlash, document);
-  funcRunner(checkReducedMotion);
 };
 
 /**
@@ -103,7 +103,12 @@ export const testAccessibility = async (document, cookie) => {
  * @description Executes the function passed in as param, while passing document as its arguement, and logs the output returned
  **/
 
-async function funcRunner(func, document, cookie) {
-  const output = await func(document, cookie);
-  if (output) console.log(output);
+async function funcRunner(func, document, cookie, output) {
+  let res = undefined;
+  res = await func(document, cookie);
+  if (res.includes("passed!")) {
+    output.pass += res;
+  } else {
+    output.fail += res;
+  }
 }

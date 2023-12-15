@@ -1,9 +1,9 @@
-import { JSDOM } from "jsdom";
-import chalk from "chalk";
-import { checkLinearContentFlow } from "../components/linearContentFlow.js";
 import { expect } from "chai";
+import chalk from "chalk";
+import { JSDOM } from "jsdom";
+import { checkLinearContentFlow } from "../components/linearContentFlow.js";
 
-describe("Linear Content Flow Tests" , () => {
+describe("Linear Content Flow Tests", () => {
   it("should pass when tabindex values are either 0 or -1", async () => {
     const html = `<!DOCTYPE html>
       <html lang="en">
@@ -23,7 +23,7 @@ describe("Linear Content Flow Tests" , () => {
     const { document } = dom.window;
 
     const result = await checkLinearContentFlow(document);
-    expect(result).to.equal(
+    expect(result).to.include(
       chalk.green(
         "Linear content flow check passes! All tabindex values are 0 or -1 or there are no elements with tabindex values.",
       ),

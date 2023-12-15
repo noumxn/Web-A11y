@@ -49,9 +49,7 @@ describe("Horizontal Scrolling Test", () => {
     const dom1 = new JSDOM(html1);
     const { document: document1 } = dom1.window;
     const result1 = await checkHorizontalScrolling(document1);
-    expect(result1).to.include(
-      chalk.green("The main container has no horizontal scrolling."),
-    );
+    expect(result1).to.include("passed!");
   });
 
   it("should fail because the main container has horizontal scrolling", async () => {

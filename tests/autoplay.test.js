@@ -12,7 +12,7 @@ describe("Autoplay tests", () => {
     const dom1 = new JSDOM(html1);
     const { document: document1 } = dom1.window;
     const result1 = checkAutoplay(document1);
-    expect(result1).to.include(chalk.green("No autoplay found!"));
+    expect(result1).to.include(chalk.green("\nMedia autoplay check passed!"));
   });
 
   it("should fail because there is audio with the autoplay attribute", () => {
@@ -23,7 +23,9 @@ describe("Autoplay tests", () => {
     const dom1 = new JSDOM(html1);
     const { document: document1 } = dom1.window;
     const result1 = checkAutoplay(document1);
-    expect(result1).to.include(chalk.red("Media element with autoplay found"));
+    expect(result1).to.include(
+      chalk.red("\nMedia element with autoplay found"),
+    );
   });
 
   it("should fail because there is video with the autoplay attribute", () => {
@@ -34,7 +36,9 @@ describe("Autoplay tests", () => {
     const dom1 = new JSDOM(html1);
     const { document: document1 } = dom1.window;
     const result1 = checkAutoplay(document1);
-    expect(result1).to.include(chalk.red("Media element with autoplay found"));
+    expect(result1).to.include(
+      chalk.red("\nMedia element with autoplay found"),
+    );
   });
 
   it("should fail because there is a youtube video that autoplays", () => {
@@ -44,6 +48,8 @@ describe("Autoplay tests", () => {
     const dom1 = new JSDOM(html1);
     const { document: document1 } = dom1.window;
     const result1 = checkAutoplay(document1);
-    expect(result1).to.include(chalk.red("Media element with autoplay found"));
+    expect(result1).to.include(
+      chalk.red("\nMedia element with autoplay found"),
+    );
   });
 });

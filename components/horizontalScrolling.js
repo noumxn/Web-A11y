@@ -24,9 +24,9 @@ export const checkHorizontalScrolling = async (document) => {
     const hasMainContainerScroll = await hasHorizontalScrolling(document.body);
 
     if (hasMainContainerScroll) {
-      output += chalk.red("The main container has horizontal scrolling.");
+      output += chalk.red("\nThe main container has horizontal scrolling.");
     } else {
-      output += chalk.green("The main container has no horizontal scrolling.");
+      output += chalk.green("\nHorizontal scrolling test passed!");
     }
 
     return output;

@@ -32,7 +32,7 @@ export const checkButtonAccess = async (document) => {
 
     if (output.length === 0) {
       output += chalk.green(
-        "Keyboard accessibility for all buttons has passed!",
+        "\nKeyboard accessibility for all buttons has passed!",
       );
     }
 

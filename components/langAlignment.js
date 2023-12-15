@@ -22,7 +22,7 @@ export const checkTextAlignment = (document) => {
         .getPropertyValue("text-align");
       if (computedAlignment.trim() !== expectedAlignment) {
         output += `${chalk.red(
-          `Incorrect text alignment for ${expectedAlignment} languages:`,
+          `\nIncorrect text alignment for ${expectedAlignment} languages:`,
         )}${chalk.cyan(element.outerHTML)}`;
       }
     };
@@ -42,10 +42,8 @@ export const checkTextAlignment = (document) => {
     });
 
     if (output.length === 0) {
-      console.log("PASS");
-      return chalk.green("Text Alignment test passed!");
+      return chalk.green("\nText Alignment test passed!");
     } else {
-      console.log("FAIL");
       return output;
     }
   } catch (e) {
